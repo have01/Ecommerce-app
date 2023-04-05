@@ -3,9 +3,9 @@ import Meta from "../../../components/meta";
 const index = () => {
   return (
     <>
-      <Meta title="Login" description="Login page of ecommerce app">
+      {/* <Meta title="Login" description="Login page of ecommerce app"> */}
         <Login />
-      </Meta>
+      {/* </Meta> */}
     </>
   );
 };
