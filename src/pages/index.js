@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-"use client";
 import Image from "next/image";
 import Homepage from "../features/Home";
 // export async function getServerSideProps(req) {

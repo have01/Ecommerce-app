@@ -9,7 +9,7 @@ const index = () => {
       <Meta title="Login" description="Login page">
 >>>>>>> Stashed changes
         <Login />
-      </Meta>
+      {/* </Meta> */}
     </>
   );
 };
