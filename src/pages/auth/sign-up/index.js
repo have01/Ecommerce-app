@@ -3,7 +3,7 @@ import Meta from "../../../components/meta";
 const index = () => {
   return (
     <>
-      <Meta title="SignUp" description="Signup page of ecommerce app">
+      <Meta title="Signup" description="Signup page">
         <Register />
       </Meta>
     </>
