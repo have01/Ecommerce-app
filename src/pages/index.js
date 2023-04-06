@@ -13,10 +13,6 @@ import Homepage from "../features/Home";
 //     },
 //   };
 // }
-export default function Home() {
-  return <>{/* <Homepage data={data} /> */}</>;
-=======
 export default function Example() {
   return <>Harsh le le bhai</>;
->>>>>>> Stashed changes
 }

@@ -15,7 +15,6 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
-import { getCookies } from "cookies-next";
 import Cookies from "js-cookie";
 
 const products = [
@@ -67,7 +66,7 @@ const Header = () => {
     if (cookieData) {
       setUserName(cookieData);
     }
-  }, []);
+  }, [userName]);
   return (
     <>
       <header className="bg-white">
@@ -182,9 +181,9 @@ const Header = () => {
           </Popover.Group>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {userName ? (
+            {userName ? 
               userName
-            ) : (
+            : 
               <Link
                 href="/auth/sign-in"
                 className="text-sm font-semibold leading-6 text-gray-900"
@@ -192,7 +191,7 @@ const Header = () => {
                 Login
                 <span aria-hidden="true">&rarr;</span>
               </Link>
-            )}
+            }
           </div>
         </nav>
         <Dialog
