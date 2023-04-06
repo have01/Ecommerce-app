@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 "use client";
 import Image from "next/image";
 import Homepage from "../features/Home";
@@ -16,4 +17,8 @@ import Homepage from "../features/Home";
 // }
 export default function Home() {
   return <>{/* <Homepage data={data} /> */}</>;
+=======
+export default function Example() {
+  return <>Harsh le le bhai</>;
+>>>>>>> Stashed changes
 }
