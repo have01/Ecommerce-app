@@ -21,6 +21,8 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import { Menu, Transition } from '@headlessui/react'
+
+
 const products = [
   {
     name: "Analytics",
@@ -66,20 +68,11 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userName, setUserName] = useState(null);
   const profileData = useSelector((state) => state?.profile?.profile)
-  console.log("Header profile data",profileData)
-function getToken() {
-    const tokenString = sessionStorage.getItem('token')
-    const userToken = JSON.parse(tokenString)
-    // console.log("token--------------->",userToken.data.token)
-} 
+
+
   useEffect(() => {
-     const tokenString = sessionStorage.getItem('token')
-    // console.log("token---------------->", tokenString)
-    const cookieData = Cookies.get("userName");
-    if (cookieData) {
-      setUserName(cookieData);
-    }
-  }, [userName]);
+    console.log("data", profileData)
+  }, []);
   return (
     <>
       <header className="bg-white shadow-lg">
@@ -95,7 +88,7 @@ function getToken() {
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               />
-     
+
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -108,37 +101,35 @@ function getToken() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          
-          
-        
-<SearchBar/>
-  
+
+          <SearchBar />
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-center items-center">
-            
+
             <div className="mr-2">
-                {userName ? 
-            <ProfileDropdown />
-            : 
-              <Link
-                href="/auth/sign-in"
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                Login
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
-            }      
+              {profileData?.user?.name ?
+                <ProfileDropdown profileData={profileData} />
+                :
+                <Link
+                  href="/auth/sign-in"
+                  className="text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Login
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              }
             </div>
             <div>
               <Menu as="div" className="relative inline-block text-left">
-                  <Menu.Button className="inline-flex w-full justify-center gap-x-1.5  bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 ">
-            <Link href="/cart">Cart</Link>      
-        </Menu.Button>
-                </Menu>
-             
+                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5  bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 ">
+                  <Link href="/cart">Cart</Link>
+                </Menu.Button>
+              </Menu>
+
             </div>
-          
+
           </div>
-          
+
         </nav>
         <Dialog
           as="div"
