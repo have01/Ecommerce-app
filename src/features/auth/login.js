@@ -4,32 +4,44 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
+import { useDispatch } from "react-redux";
+import { profileAction } from "../../redux/profileSlice";
+
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
   const router = useRouter();
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(e);
-    axios
-      .post("https://auth-task-app.up.railway.app/api/users/login", user)
-      .then(function (response) {
-        console.log(response);
-        Cookies.set("userName", response.data.user.name, {
+
+    await fetch("https://auth-task-app.up.railway.app/api/users/login", {
+      method: "POST",
+      headers: { 
+        "Accept": "application/json", 
+        "content-Type":"application/json"
+      },
+      body:JSON.stringify(user)
+   } )  .then( async  (response)=> {
+    const resp = await response.json()
+    console.log("login resp",resp)
+    dispatch(profileAction.setProfile(resp));
+    Cookies.set("userName", resp?.user?.name, {
           expires: 7,
           sameSite: "strict",
         });
-        Cookies.set("tokken", response.data.token, {
+       Cookies.set("tokken", resp?.token, {
           expires: 7,
           sameSite: "strict",
         });
+      sessionStorage.setItem('token', resp?.token)
         router.push("/");
       })
       .catch(function (error) {
-        toast.error(error.response.data, {
+        toast.error(error?.response?.data, {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -78,7 +90,7 @@ const Login = () => {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type="text"
                     id="password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

@@ -9,7 +9,12 @@ const nextConfig = {
         hostname: "png.pngtree.com",
         port: "",
         pathname: "/background/20210712/original/**",
-      },
+      }, {
+        protocol: "https",
+        hostname: "rukminim1.flixcart.com",
+        port: "",
+        pathname:"fk-p-flap/1688/280/image/**"
+      }
     ],
   },
 };

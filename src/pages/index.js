@@ -1,18 +1,18 @@
-import Image from "next/image";
-import Homepage from "../features/Home";
-// export async function getServerSideProps(req) {
-//   let data;
-//   try {
-//     const response = await fetch("https://fakestoreapi.com/products");
-//     data = await response.json();
-//     console.log(data);
-//   } catch (error) {}
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
+"use client"
+import axios  from "axios";
+import { useEffect } from "react";
+import Carousel from "../components/Carousel";
+
+
 export default function Example() {
-  return <>Harsh le le bhai</>;
+  useEffect(() => {
+  const tokenString = sessionStorage.getItem('token')
+    axios.get('https://auth-task-app.up.railway.app/api/users/v1/me', {
+  headers: { Authorization: `Bearer ${tokenString}` }
+}).then((response)=>console.log(response)).catch((error)=>console.log(error));
+
+  }, [])
+  
+
+  return <><div className=" container flex  mt-5cl  justify-center items-center "><Carousel/></div></>;
 }
