@@ -6,16 +6,17 @@ import Header from "../components/header";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { persistor, store } from "../redux/store"
+import { PersistGate } from "redux-persist/integration/react"
+import { Provider } from "react-redux";
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  useEffect(() => {
-    const cookieData = Cookies.get("userName");
-    if (cookieData) {
-      router.push("/");
-    }
-  }, []);
+
+
   return (
     <>
+        <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
       <Head>
         <meta charset="UTF-8" />
         <meta name="keywords" content="titla, meta, nextjs" />
@@ -35,8 +36,12 @@ function MyApp({ Component, pageProps }) {
         pauseOnHover
         theme="colored"
       />
-      <Header />
-      <Component {...pageProps} />
+    
+         <Header />
+          <Component {...pageProps} />
+          </PersistGate>
+      </Provider>
+     
     </>
   );
 }

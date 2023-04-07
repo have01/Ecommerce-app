@@ -1,6 +1,38 @@
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const [user, setUser] = useState({
+      name:"",
+    email: "",
+    password: "",
+  });
+
+  const router = useRouter();
+  const handleSignUp= async (e) => {
+    e.preventDefault();
+    axios
+      .post("https://auth-task-app.up.railway.app/api/users", user)
+      .then(function (response) {
+   router.push("/");
+      })
+      .catch(function (error) {
+        
+      toast.error(error.response.data, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
   return (
     <>
       <section className="bg-gray-200 dark:bg-gray-900">
@@ -10,7 +42,26 @@ const Register = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create and account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSignUp}>
+                  <div>
+                  <label
+                    htmlFor="Name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="Name"
+                    name="Name"
+                    id="Name"
+                    placeholder="Name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required=""
+                        onChange={(e) =>
+                      setUser({ ...user, name: e.target.value })
+                    }
+                  />
+                </div>
                 <div>
                   <label
                     htmlFor="email"
@@ -25,6 +76,9 @@ const Register = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required=""
+                        onChange={(e) =>
+                      setUser({ ...user, email: e.target.value })
+                    }
                   />
                 </div>
                 <div>
@@ -41,24 +95,12 @@ const Register = () => {
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
+                        onChange={(e) =>
+                      setUser({ ...user, password: e.target.value })
+                    }
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="confirm-password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Confirm password
-                  </label>
-                  <input
-                    type="confirm-password"
-                    name="confirm-password"
-                    id="confirm-password"
-                    placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                  />
-                </div>
+              
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
