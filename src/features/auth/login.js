@@ -20,26 +20,24 @@ const Login = () => {
 
     await fetch("https://auth-task-app.up.railway.app/api/users/login", {
       method: "POST",
-      headers: { 
-        "Accept": "application/json", 
-        "content-Type":"application/json"
+      headers: {
+        "Accept": "application/json",
+        "content-Type": "application/json"
       },
-      body:JSON.stringify(user)
-   } )  .then( async  (response)=> {
-    const resp = await response.json()
-    console.log("login resp",resp)
-    dispatch(profileAction.setProfile(resp));
-    Cookies.set("userName", resp?.user?.name, {
-          expires: 7,
-          sameSite: "strict",
-        });
-       Cookies.set("tokken", resp?.token, {
-          expires: 7,
-          sameSite: "strict",
-        });
-      sessionStorage.setItem('token', resp?.token)
-        router.push("/");
-      })
+      body: JSON.stringify(user)
+    }).then(async (response) => {
+      const resp = await response.json()
+      dispatch(profileAction.setProfile(resp));
+      Cookies.set("userName", resp?.user?.name, {
+        expires: 7,
+        sameSite: "strict",
+      });
+      Cookies.set("tokken", resp?.token, {
+        expires: 7,
+        sameSite: "strict",
+      });
+      router.push("/");
+    })
       .catch(function (error) {
         toast.error(error?.response?.data, {
           position: "top-center",
