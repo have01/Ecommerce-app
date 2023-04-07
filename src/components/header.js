@@ -65,16 +65,16 @@ function classNames(...classes) {
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userName, setUserName] = useState(null);
-  const profileData = useSelector((state) => state)
-  console.log("amrit profile lodu",profileData)
+  const profileData = useSelector((state) => state?.profile?.profile)
+  console.log("Header profile data",profileData)
 function getToken() {
     const tokenString = sessionStorage.getItem('token')
     const userToken = JSON.parse(tokenString)
-    console.log("token--------------->",userToken.data.token)
+    // console.log("token--------------->",userToken.data.token)
 } 
   useEffect(() => {
      const tokenString = sessionStorage.getItem('token')
-    console.log("token---------------->", tokenString)
+    // console.log("token---------------->", tokenString)
     const cookieData = Cookies.get("userName");
     if (cookieData) {
       setUserName(cookieData);

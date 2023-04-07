@@ -27,17 +27,17 @@ const Login = () => {
       body:JSON.stringify(user)
    } )  .then( async  (response)=> {
     const resp = await response.json()
-    console.log(resp)
-    // await   Cookies.set("userName", response?.data?.user?.name, {
-    //       expires: 7,
-    //       sameSite: "strict",
-    //     });
-    //    await Cookies.set("tokken", response?.data?.token, {
-    //       expires: 7,
-    //       sameSite: "strict",
-    //     });
-    //   await sessionStorage.setItem('token', response.data.token)
-       dispatch(profileAction.setProfile(resp?.data));
+    console.log("login resp",resp)
+    dispatch(profileAction.setProfile(resp));
+    Cookies.set("userName", resp?.user?.name, {
+          expires: 7,
+          sameSite: "strict",
+        });
+       Cookies.set("tokken", resp?.token, {
+          expires: 7,
+          sameSite: "strict",
+        });
+      sessionStorage.setItem('token', resp?.token)
         router.push("/");
       })
       .catch(function (error) {

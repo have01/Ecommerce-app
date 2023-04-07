@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const intialState = {
-    profile:{}
-}
+const initialState = {}
+
 const ProfileSlice = createSlice({
     name: "profileInfo",
-    intialState,
+    initialState,
     reducers: {
-        stateProfile(state, { payload }) {
-            state.profile= payload 
+        setProfile(state, { payload }) {
+            state.profile = payload 
         }
     }
 })
