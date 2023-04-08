@@ -9,14 +9,21 @@ const nextConfig = {
         hostname: "png.pngtree.com",
         port: "",
         pathname: "/background/20210712/original/**",
-      }, {
+      },
+      {
         protocol: "https",
         hostname: "rukminim1.flixcart.com",
         port: "",
-        pathname:"fk-p-flap/1688/280/image/**"
-      }
+        pathname: "fk-p-flap/1688/280/image/**",
+      },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+        port: "",
+        pathname: " img / logos/**",
+      },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

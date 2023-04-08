@@ -1,12 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-    background: rgb(229 231 235);
+body {
+  background: rgb(229 231 235);
 }
-.carousel .control-prev.control-arrow:before{
+.carousel .control-prev.control-arrow:before {
   border-right: 14px solid black;
 }
-.carousel.carousel-slider .control-arrow{
-    background: azure;
+.carousel.carousel-slider .control-arrow {
+  background: azure;
 }
