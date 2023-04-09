@@ -26,11 +26,11 @@ function classNames(...classes) {
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const profileData = useSelector((state) => state?.profile?.profile)
-  console.log(profileData)
+
   return (
     <>
       <header className="bg-white shadow-lg">
-        <nav
+        <div
           className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
           aria-label="Global"
         >
@@ -43,9 +43,6 @@ const Header = () => {
               />
               <Image></Image>
             </Link>
-            <span className="text-indigo-600 text-xl font-semibold ml-1">
-              Ecommerce App
-            </span>
           </div>
 
           <div className="flex lg:hidden">
@@ -58,7 +55,10 @@ const Header = () => {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <SearchBar />
+          <div className="hidden lg:block">
+            <SearchBar />
+          </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-center items-center">
             <div className="mr-2">
               {profileData?.user?.name ? (
@@ -75,13 +75,15 @@ const Header = () => {
             </div>
             <div>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full justify-center items-center gap-x-1.5  bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 ">
-                  <ShoppingBasketRoundedIcon /> <Link href="/cart">Cart</Link>
-                </Menu.Button>
+                <Link href="/cart">
+                  <button className="inline-flex w-full justify-center items-center gap-x-1.5  bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 ">
+                    <ShoppingBasketRoundedIcon /> Cart
+                  </button>
+                </Link>
               </Menu>
             </div>
           </div>
-        </nav>
+        </div>
         <Dialog
           as="div"
           className="lg:hidden"
@@ -119,18 +121,7 @@ const Header = () => {
                             aria-hidden="true"
                           />
                         </Disclosure.Button>
-                        <Disclosure.Panel className="mt-2 space-y-2">
-                          {[...products, ...callsToAction].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as="a"
-                              href={item.href}
-                              className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                            >
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
-                        </Disclosure.Panel>
+                        <Disclosure.Panel className="mt-2 space-y-2"></Disclosure.Panel>
                       </>
                     )}
                   </Disclosure>

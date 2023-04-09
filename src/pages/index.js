@@ -2,6 +2,9 @@
 import axios from "axios"
 import { useEffect } from "react"
 import Carousel from "../components/Carousel"
+import Faq1 from "../components/Faq"
+import Highlight from "../components/Highlights"
+import ProductsCarousel from "../components/ProductsCarousel"
 
 export default function Example() {
   // useEffect(() => {
@@ -17,6 +20,9 @@ export default function Example() {
       <div className="container mx-auto  flex mt-2   justify-center items-center ">
         <Carousel />
       </div>
+      <ProductsCarousel />
+      <ProductsCarousel />
+      <Highlight />
     </>
   )
 }

@@ -13,6 +13,7 @@ const Login = () => {
     email: "",
     password: "",
   })
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   function togglePasswordVisibility(event) {
@@ -24,37 +25,39 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     e.stopPropagation()
-    await fetch("https://auth-task-app.up.railway.app/api/users/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then(async (response) => {
-        const resp = await response.json()
-        dispatch(profileAction.setProfile(resp))
-        Cookies.set("tokken", resp?.token, {
-          expires: 7,
-          sameSite: "strict",
-        })
-        router.push("/")
+    const response = await fetch(
+      "https://auth-task-app.up.railway.app/api/users/login",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    )
+    const resp = await response.json()
+    console.log(resp)
+    if (resp.success) {
+      dispatch(profileAction.setProfile(resp))
+      Cookies.set("tokken", resp?.token, {
+        expires: 7,
+        sameSite: "strict",
       })
-      .catch(function (error) {
-        toast.error(error?.response?.data, {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        })
+      router.push("/")
+    } else {
+      toast.error(resp?.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
       })
+    }
   }
-
   return (
     <>
       <section className="bg-gray-200 dark:bg-gray-900">
@@ -171,55 +174,36 @@ const Login = () => {
                     Forgot password?
                   </a>
                 </div>
+
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 focus:ring-4 focus:outline-none hover:bg-blue-400 text-white font-bold py-2 px-4  focus:ring-primary-300 hover:border-blue-500 rounded-lg"
+                  class="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
                 >
-                  Sign In
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                    />
+                  </svg>
+                  <span>Login</span>
                 </button>
                 <div className="w-full h-0.5 bg-slate-400"></div>
 
-                <button
-                  type="button"
-                  className="w-full flex justify-center text-white  bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/5  font-bold rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2"
-                >
-                  <svg
-                    className="w-4 h-4 mr-2 -ml-1"
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fab"
-                    data-icon="facebook-f"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 320 512"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"
-                    ></path>
-                  </svg>
-                  Sign in with Facebook
-                </button>
-                <button
-                  type="button"
-                  className="w-full lex justify-center text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
-                >
-                  <svg
-                    className="w-4 h-4 mr-2 -ml-1"
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fab"
-                    data-icon="google"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 488 512"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-                    ></path>
-                  </svg>
-                  Sign in with Google
+                <button class="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                  <img
+                    src="https://www.svgrepo.com/show/355037/google.svg"
+                    class="w-6 h-6"
+                    alt=""
+                  />{" "}
+                  <span>Login with Google</span>
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?
