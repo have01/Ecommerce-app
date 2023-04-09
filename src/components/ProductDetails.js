@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import ReactImageMagnify from 'react-image-magnify';
 
 const ProductDetails = () => {
   const [show, setShow] = useState(false)
@@ -7,16 +8,24 @@ const ProductDetails = () => {
   return (
     <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-        <img
-          className="w-full"
-          alt="img of a girl posing"
-          src="https://i.ibb.co/QMdWfzX/component-image-one.png"
-        />
-        <img
-          className="mt-6 w-full"
-          alt="img of a girl posing"
-          src="https://i.ibb.co/qxkRXSq/component-image-two.png"
-        />
+        <ReactImageMagnify {...{
+            smallImage: {
+              alt: 'Wristwatch by Ted Baker London',
+            //   isFluidWidth: true,
+              src: 'https://i.ibb.co/QMdWfzX/component-image-one.png',
+              width: 300,
+              height: 400
+            //   srcSet: this.srcSet,
+            //   sizes: '(min-width: 800px) 33.5vw, (min-width: 415px) 50vw, 100vw',
+            },
+            largeImage: {
+              alt: '',
+              src: 'https://i.ibb.co/QMdWfzX/component-image-one.png',
+              width: 400,
+              height: 900
+            },
+            isHintEnabled: true
+          }}/>
       </div>
       <div className="md:hidden">
         <img
