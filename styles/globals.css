@@ -10,3 +10,14 @@ body {
 .carousel.carousel-slider .control-arrow {
   background: azure;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.slide___3-Nqo
+  slideHorizontal___1NzNV
+  carousel__slide
+  carousel__slide--visible {
+  width: 9.5%;
+}

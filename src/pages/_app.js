@@ -7,6 +7,7 @@ import Cookies from "js-cookie"
 import { persistor, store } from "../redux/store"
 import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
+import Footer1 from "../components/Footer"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }) {
           />
           <Header />
           <Component {...pageProps} />
+          <Footer1 />
         </PersistGate>
       </Provider>
     </>
