@@ -2,12 +2,12 @@ import "../../styles/globals.css"
 import "react-toastify/dist/ReactToastify.css"
 import Head from "next/head"
 import { ToastContainer } from "react-toastify"
-import Header from "../components/header"
+import Header from "../components/Header/header"
 import Cookies from "js-cookie"
 import { persistor, store } from "../redux/store"
 import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
-import Footer1 from "../components/Footer"
+import Footer from "../components/Footer/Footer"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           />
           <Header />
           <Component {...pageProps} />
-          <Footer1 />
+          <Footer />
         </PersistGate>
       </Provider>
     </>

@@ -1,4 +1,4 @@
-import ProductDetails from "../../components/ProductDetails"
+import ProductDetails from "../../components/Products/ProductDetails"
 
 const index = () => {
   return <ProductDetails />

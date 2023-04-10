@@ -2,14 +2,14 @@ import { useState } from "react"
 import { Dialog, Disclosure } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useSelector } from "react-redux"
-import ProfileDropdown from "./ProfileDropdown"
+import ProfileDropdown from "../ProfileDropdown"
 import {
   ChevronDownIcon,
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid"
 import Link from "next/link"
-import SearchBar from "./SearchBar"
+import SearchBar from "../SearchBar"
 import { Menu } from "@headlessui/react"
 import Image from "next/image"
 
