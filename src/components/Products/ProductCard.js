@@ -3,11 +3,11 @@ import { Rating } from "@mui/material"
 const ProductCard = () => {
   return (
     <>
-      <div className="flex flex-col bg-white w-full sm:w-auto p-4 shadow-2xl">
+      <div className="flex flex-col bg-white   p-2 ">
         <div className="w-full ">
           <img
-            class="rounded-t-lg"
-            src="https://rukminim1.flixcart.com/image/200/200/l58iaa80/electric-cycle/i/y/f/-original-imagfykthgudy4qz.jpeg?q=70"
+            class="  w-10"
+            src="https://rukminim1.flixcart.com/image/312/312/xif0q/electric-cycle/x/y/x/sensei-yellow-18-niion-single-speed-original-imagzaknffyf6wjg.jpeg?q=70"
             alt="product image"
           />
         </div>

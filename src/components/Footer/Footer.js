@@ -2,7 +2,7 @@ import React from "react"
 
 const Footer1 = () => {
   return (
-    <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4 bg-white">
+    <div className="mx-auto w-full py-16 xl:px-20 lg:px-12 sm:px-6 px-4 bg-white">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
         <div className="flex flex-col flex-shrink-0">
           <div>
@@ -120,6 +120,7 @@ const Footer1 = () => {
             Terms of service
           </p>
         </div>
+
         <div className="mt-10 lg:block hidden">
           <label className="text-xl font-medium leading-5 text-gray-800">
             Get updates

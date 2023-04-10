@@ -4,8 +4,7 @@ import { useEffect } from "react"
 import Carousel from "../components/Carousel"
 import Faq1 from "../components/Faq"
 import Highlight from "../components/Highlights"
-import ProductsCarousel from "../components/ProductsCarousel"
-
+import ProductsCarousel from "../components/Products/ProductsCarousel"
 export default function Example() {
   // useEffect(() => {
   //   const tokenString = sessionStorage.getItem('token')
