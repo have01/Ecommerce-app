@@ -32,9 +32,7 @@ export default function Example() {
         dispatch(profileAction.setProfile({}))
         router.push("/")
       })
-      .catch(function (error) {
-        console.log(error)
-      })
+      .catch(function (error) {})
   }
   return (
     <Menu as="div" className="relative inline-block text-left">

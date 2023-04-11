@@ -1,9 +1,9 @@
 "use client"
-import { useEffect, useState } from "react";
-import Profile from "../../features/Profile";
-import axios from "axios";
+import { useEffect, useState } from "react"
+import Profile from "../../features/Profile"
+import axios from "axios"
 
-// export async function getServerSideProps(req) { 
+// export async function getServerSideProps(req) {
 
 // let data;
 //   try {
@@ -22,14 +22,16 @@ import axios from "axios";
 
 const Index = () => {
   useEffect(() => {
-  const tokenString = sessionStorage.getItem('token')
-    axios.get('https://auth-task-app.up.railway.app/api/users/v1/me', {
-  headers: { Authorization: `Bearer ${tokenString}` }
-}).then((response)=>console.log(response)).catch((error)=>console.log(error));
-
+    const tokenString = sessionStorage.getItem("token")
+    axios
+      .get("https://auth-task-app.up.railway.app/api/users/v1/me", {
+        headers: { Authorization: `Bearer ${tokenString}` },
+      })
+      .then((response) => {})
+      .catch((error) => {})
   }, [])
-  
-  return <Profile />;
+
+  return <Profile />
 }
 
-export default Index;
+export default Index

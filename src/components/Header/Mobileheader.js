@@ -2,12 +2,34 @@ import { Disclosure } from "@headlessui/react"
 import Link from "next/link"
 import React, { useState } from "react"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
+import { useDispatch, useSelector } from "react-redux"
+import { profileAction } from "../../redux/profileSlice"
+import Cookies from "js-cookie"
 
-const Mobileheader = ({ setMobileMenuOpen }) => {
+const Mobileheader = ({ setMobileMenuOpen, profile }) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
   }
-
+  const dispatch = useDispatch()
+  const profileData = useSelector((state) => state?.profile?.profile)
+  const handleSignOut = async () => {
+    await fetch("https://auth-task-app.up.railway.app/api/users/logout", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "content-Type": "application/json",
+        Authorization: `Bearer ${profileData.token}`,
+      },
+    })
+      .then(async (response) => {
+        Cookies.remove("tokken")
+        Cookies.remove("userName")
+        dispatch(profileAction.setProfile({}))
+        setMobileMenuOpen(false)
+        router.push("/")
+      })
+      .catch(function (error) {})
+  }
   return (
     <div className="mt-6 flow-root">
       <div className="-my-6 divide-y divide-gray-500/10">
@@ -49,13 +71,23 @@ const Mobileheader = ({ setMobileMenuOpen }) => {
           </a>
         </div>
         <div className="py-6">
-          <Link
-            href="/auth/sign-in"
-            class="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Log in
-          </Link>
+          {profileData?.user?.name ? (
+            <Link
+              href="/auth/sign-in"
+              className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </Link>
+          ) : (
+            <Link
+              href="/auth/sign-in"
+              className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Log in
+            </Link>
+          )}
         </div>
       </div>
     </div>

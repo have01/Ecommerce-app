@@ -12,14 +12,15 @@ import { styled } from "@mui/material/styles"
 import ProductCard from "./ProductCard"
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
-export default function ProductsCarousel() {
+export default function ProductsCarousel({ data }) {
+  
   return (
     <>
       <div className="text-center mt-2 p-2 container mx-auto">
         <h1 className="text-3xl font-semibold">Shop By Cateogries</h1>
       </div>
       <div className="container mx-auto mt-1 mb-2 ">
-        <div className="flex items-center justify-center w-full h-full  sm:py-4  bg-gray-200">
+        <div className="flex items-center justify-center w-full h-[400px]  sm:py-4  bg-gray-200">
           {/* Carousel for desktop and large size devices */}
           <CarouselProvider
             className="lg:block hidden"
@@ -30,7 +31,7 @@ export default function ProductsCarousel() {
             step={1}
             infinite={true}
           >
-            <div className="w-full relative flex items-center justify-center">
+            <div className="w-full h-[400px] relative flex items-center justify-center">
               <ButtonBack
                 role="button"
                 aria-label="slide backward"
@@ -57,12 +58,17 @@ export default function ProductsCarousel() {
                 <Slider>
                   <div
                     id="slider"
-                    className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
+                    className="h-[400px] flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                   >
-                    <Slide index={0}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={1}>
+                    {data.map((val, ind) => {
+                      return (
+                        <Slide index={ind} key={ind}>
+                          <ProductCard data={val} />
+                        </Slide>
+                      )
+                    })}
+
+                    {/* <Slide index={1}>
                       <ProductCard />
                     </Slide>
                     <Slide index={2}>
@@ -85,7 +91,7 @@ export default function ProductsCarousel() {
                     </Slide>
                     <Slide index={8}>
                       <ProductCard />
-                    </Slide>
+                    </Slide> */}
                   </div>
                 </Slider>
               </div>
@@ -640,39 +646,39 @@ export default function ProductsCarousel() {
                     </Slide>
                     <Slide index={10}>
                       <div className="mt-5 ml-5">
-                        <div class="w-[250px] bg-white border border-gray-200 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700">
+                        <div className="w-[250px] bg-white border border-gray-200 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700">
                           <a href="#" className="w-full flex justify-center">
                             <img
-                              class="p-8 rounded-t-lg h-[200px]"
+                              className="p-8 rounded-t-lg h-[200px]"
                               src="https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/blue-polo-women.png"
                               alt="product image"
                             />
                           </a>
-                          <div class="px-3 pb-5">
+                          <div className="px-3 pb-5">
                             <a href="#">
-                              <h5 class="text-base font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
+                              <h5 className="text-base font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
                                 Apple Watch Series 7 GPS, Aluminium Case,
                                 Starlight Sport
                               </h5>
                             </a>
 
-                            <div class="flex items-center">
-                              <span class="text-sm font-bold text-blue-600 dark:text-white">
+                            <div className="flex items-center">
+                              <span className="text-sm font-bold text-blue-600 dark:text-white">
                                 $599{" "}
                               </span>
-                              <span class="text-gray-900 text-xs ml-1 dark:text-white">
+                              <span className="text-gray-900 text-xs ml-1 dark:text-white">
                                 {" "}
                                 (26% off){" "}
                               </span>
                             </div>
 
-                            <div class="flex justify-between mt-3.5 mb-5">
+                            <div className="flex justify-between mt-3.5 mb-5">
                               <Rating
                                 name="size-small"
                                 defaultValue={2}
                                 size="small"
                               />
-                              <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
+                              <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
                                 190 reviews
                               </span>
                             </div>
