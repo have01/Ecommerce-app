@@ -20,7 +20,7 @@ const Register = () => {
   const router = useRouter()
   const handleSignUp = async (e) => {
     e.preventDefault()
-    console.log(user)
+
     axios
       .post("https://auth-task-app.up.railway.app/api/users", user)
       .then(function (response) {

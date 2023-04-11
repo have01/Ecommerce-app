@@ -1,32 +1,40 @@
 import { Rating } from "@mui/material"
+import Image from "next/image"
+import Link from "next/link"
 
-const ProductCard = () => {
+const ProductCard = ({ data }) => {
+
   return (
     <>
-      <div className="flex flex-col bg-white   p-2 ">
-        <div className="w-full ">
-          <img
-            class="  w-10"
-            src="https://rukminim1.flixcart.com/image/312/312/xif0q/electric-cycle/x/y/x/sensei-yellow-18-niion-single-speed-original-imagzaknffyf6wjg.jpeg?q=70"
-            alt="product image"
-          />
-        </div>
+      <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-110 p-2 cursor-pointer ">
+        <Link href={`/productDetail/${data._id}`}
+        >
+          <div className="w-full ">
 
-        <h5 class="text-base font-semibold tracking-tight text-gray-900 dark:text-white mt-2 mb-2">
-          Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
+            <img
+              className="w-[200px] h-[200px] object-cover"
+              src={data?.thumbnail}
+              alt="product image"
+            />
+
+          </div>
+        </Link>
+
+        <h5 className="text-base font-semibold tracking-tight h-5 overflow-hidden text-gray-900 dark:text-white mt-2 mb-2">
+          {data?.title}
         </h5>
 
-        <div class="flex items-center">
-          <span class="text-sm font-bold text-blue-600 dark:text-white">
-            $599
+        <div className="flex items-center">
+          <span className="text-sm font-bold text-blue-600 dark:text-white">
+            {data?.price}
           </span>
-          <span class="text-gray-900 text-xs ml-1 dark:text-white">
-            (26% off)
+          <span className="text-gray-900 text-xs ml-1 dark:text-white">
+            {data?.discount}
           </span>
         </div>
-        <div class="flex  mt-3.5 mb-5">
+        <div className="flex  mt-3.5 mb-5">
           {" "}
-          <Rating name="size-small" defaultValue={2} size="small" />
+          <Rating name="size-small" defaultValue={data?.rating} size="small" />
         </div>
       </div>
     </>
