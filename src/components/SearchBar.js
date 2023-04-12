@@ -1,23 +1,10 @@
-import { Menu, Transition } from "@headlessui/react"
+
 import axios from "axios"
-import React, { useState, useEffect, Fragment, useRef } from "react"
-import Person2RoundedIcon from "@mui/icons-material/Person2Rounded"
-import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded"
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded"
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded"
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded"
-import { ChevronDownIcon } from "@heroicons/react/24/outline"
-import { useRouter } from "next/router"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import OutsideClickHandler from "react-outside-click-handler/build/OutsideClickHandler"
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -33,44 +20,41 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
   const [searchProductsData, setSearchProductsData] = useState([])
-  const [open, setOpen] = useState(false);
-
+  const [prevSearchTerm, setPrevSearchTerm] = useState(true);
   useEffect(() => {
-    if (!searchTerm) {
-      setLoading(false)
-      setOpen(false)
-    } else {
-      setLoading(true)
-      setOpen(true)
-      setTimeout(() => {
+    console.log(searchTerm, prevSearchTerm)
+    let isMounted = true;
+    const term = searchTerm || prevSearchTerm;
+    setTimeout(() => {
+      if (searchTerm) {
         axios
           .get(
-            `https://auth-task-app.up.railway.app/api/products/search/${searchTerm}`
+            `https://auth-task-app.up.railway.app/api/products/search/${term}`
           )
           .then((response) => {
-            setSearchProductsData(response?.data)
-            setLoading(true)
-            setOpen(true)
-          })
-          .catch((error) => { })
-      }, 1000)
-    }
+            if (isMounted) {
+              setSearchProductsData(response?.data);
+              setLoading(true);
 
-    return () =>
-      clearTimeout(
-        setTimeout(() => {
-          axios
-            .get(
-              `https://auth-task-app.up.railway.app/api/products/search/${searchTerm}`
-            )
-            .then((response) => {
-              setSearchProductsData(response?.data)
-              setLoading(true)
-            })
-            .catch((error) => { })
-        }, 1000)
-      )
-  }, [searchTerm])
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            // Handle error by showing error message or reporting to server etc.
+          });
+      } else {
+        setLoading(false);
+
+        return;
+      }
+    }, 1000)
+
+
+    return () => {
+      isMounted = false;
+    };
+  }, [searchTerm, prevSearchTerm]);
+
 
   return (
     <>
@@ -108,12 +92,15 @@ const SearchBar = () => {
                   </svg>
                 </div>
                 <input
+                  value={searchTerm}
                   type="search"
                   id="default-search"
                   className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-0 bg-gray-50  dark:text-white "
                   placeholder="Search Products..."
                   required
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  onFocus={() => setPrevSearchTerm(!prevSearchTerm)}
+
                 />
               </div>
             </form>
@@ -140,7 +127,8 @@ const SearchBar = () => {
                           tabIndex="-1"
                           id="menu-item-0"
                         >
-                          {val?.title}
+                          <div className="w-full flex-row flex items-center">   <img src={val?.thumbnail} alt="" srcSet="" className="w-10 h-10 mr-2 object-contain" />  {val?.title}</div>
+
                         </Link> : <>
                           <div role="status">
                             <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,7 +138,6 @@ const SearchBar = () => {
                             <span class="sr-only">Loading...</span>
                           </div>
                         </>}
-
                       </div>
                     )
                   })}
