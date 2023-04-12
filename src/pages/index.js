@@ -35,9 +35,11 @@ export default function Index({ data }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Carousel />
-        <ProductsCarousel data={data} />
-        <ProductsCarousel data={data} />
+        <div className="container mx-auto mt-2">
+          <Carousel />
+          <ProductsCarousel data={data} />
+          <ProductsCarousel data={data} />
+        </div>
         <Highlight />
       </Suspense>
     </>
