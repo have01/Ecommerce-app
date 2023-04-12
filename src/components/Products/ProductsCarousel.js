@@ -13,21 +13,21 @@ import ProductCard from "./ProductCard"
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function ProductsCarousel({ data }) {
-  
+
   return (
     <>
       <div className="text-center mt-2 p-2 container mx-auto">
-        <h1 className="text-3xl font-semibold">Shop By Cateogries</h1>
+        <h1 className="text-3xl font-semibold">Shop By {data?.category}</h1>
       </div>
       <div className="container mx-auto mt-1 mb-2 ">
-        <div className="flex items-center justify-center w-full h-[400px]  sm:py-4  bg-gray-200">
+        <div className="flex items-center justify-center w-full h-[400px]  sm:py-4  ">
           {/* Carousel for desktop and large size devices */}
           <CarouselProvider
             className="lg:block hidden"
             naturalSlideWidth={100}
             isIntrinsicHeight={true}
-            totalSlides={8}
-            visibleSlides={4}
+            totalSlides={data.length}
+            visibleSlides={5}
             step={1}
             infinite={true}
           >
@@ -35,7 +35,7 @@ export default function ProductsCarousel({ data }) {
               <ButtonBack
                 role="button"
                 aria-label="slide backward"
-                className="absolute z-30 left-0 h-full border-1  px-2  cursor-pointer"
+                className="absolute z-30 -left-10 h-full border-1  px-2  cursor-pointer"
                 id="prev"
               >
                 <svg
@@ -67,38 +67,13 @@ export default function ProductsCarousel({ data }) {
                         </Slide>
                       )
                     })}
-
-                    {/* <Slide index={1}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={2}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={3}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={4}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={5}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={6}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={7}>
-                      <ProductCard />
-                    </Slide>
-                    <Slide index={8}>
-                      <ProductCard />
-                    </Slide> */}
                   </div>
                 </Slider>
               </div>
               <ButtonNext
                 role="button"
                 aria-label="slide forward"
-                className="absolute z-30 h-full border-1  px-2 cursor-pointer right-0 "
+                className="absolute z-30 h-full border-1  px-2 cursor-pointer -right-5 "
                 id="next"
               >
                 <svg

@@ -1,23 +1,21 @@
 import axios from "axios"
 import { useEffect } from "react"
-import Carousel from "../components/Carousel"
-import Faq1 from "../components/Faq"
-import Highlight from "../components/Highlights"
-import ProductsCarousel from "../components/Products/ProductsCarousel"
-
-export default function Index({ data }) {
-  return (
-    <>
-      <div className="container mx-auto  flex mt-2   justify-center items-center ">
-        <Carousel />
-      </div>
-      <ProductsCarousel data={data} />
-      <ProductsCarousel data={data} />
-      <Highlight />
-    </>
-  )
-}
-
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+import { lazy } from "react";
+import Loading from "../components/loading/loading"
+const ProductsCarousel = lazy(
+  () => import("../components/Products/ProductsCarousel"),
+  { suspense: true }
+);
+const Highlight = lazy(
+  () => import("../components/Highlights"),
+  { suspense: true }
+);
+const Carousel = lazy(
+  () => import("../components/Carousel"),
+  { suspense: true }
+);
 export async function getServerSideProps(context) {
   let data
   try {
@@ -25,7 +23,7 @@ export async function getServerSideProps(context) {
       `https://auth-task-app.up.railway.app/api/products/search/laptop`
     )
     data = response?.data
-  } catch (error) {}
+  } catch (error) { }
 
   return {
     props: {
@@ -33,3 +31,17 @@ export async function getServerSideProps(context) {
     },
   }
 }
+export default function Index({ data }) {
+  return (
+    <>
+      <Suspense fallback={<Loading />}>
+        <Carousel />
+        <ProductsCarousel data={data} />
+        <ProductsCarousel data={data} />
+        <Highlight />
+      </Suspense>
+    </>
+  )
+}
+
+

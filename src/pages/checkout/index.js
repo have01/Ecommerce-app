@@ -137,7 +137,7 @@ const index = () => {
               />
             </div>
           </div>
-          <button className=" bg-slate-800 border-none text-white py-2 mt-10 flex items-center justify-center">
+          <button className=" bg-blue-gray-800 border-none text-white py-2 mt-10 flex items-center justify-center">
             <HttpsIcon /> Checkout
           </button>
         </div>

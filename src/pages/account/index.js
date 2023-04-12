@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import Profile from "../../features/Profile"
+import Profile from "../../features/profile"
 import axios from "axios"
 
 // export async function getServerSideProps(req) {
@@ -27,8 +27,8 @@ const Index = () => {
       .get("https://auth-task-app.up.railway.app/api/users/v1/me", {
         headers: { Authorization: `Bearer ${tokenString}` },
       })
-      .then((response) => {})
-      .catch((error) => {})
+      .then((response) => { })
+      .catch((error) => { })
   }, [])
 
   return <Profile />
