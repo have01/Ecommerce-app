@@ -5,6 +5,7 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 
 const Register = () => {
+  const [errorMessage, setErrorMessage] = useState("")
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -27,7 +28,11 @@ const Register = () => {
         router.push("/auth/sign-in")
       })
       .catch(function (error) {
-        toast.error(error.response.data, {
+        const errorMessage1 = error?.response?.data;
+        if (errorMessage1 && errorMessage1.includes('duplicate')) {
+          setErrorMessage("Email already exist")
+        }
+        toast.error(errorMessage, {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,

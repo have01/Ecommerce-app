@@ -6,6 +6,7 @@ const ProductCard = ({ data }) => {
 
   return (
     <>
+
       <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-110 p-2 cursor-pointer ">
         <Link href={`/productDetail/${data._id}`}
         >

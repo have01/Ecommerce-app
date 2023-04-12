@@ -10,6 +10,7 @@ const ProductDetails = ({ data }) => {
       <div className="md:flex items-start container mx-auto justify-center py-12 2xl:px-20 md:px-6 px-4 my-2 shadow-2xl bg-white">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
           <ReactImageMagnify
+            cl
             {...{
               smallImage: {
                 alt: "Wristwatch by Ted Baker London",
@@ -18,13 +19,14 @@ const ProductDetails = ({ data }) => {
                 width: 300,
                 height: 300,
                 //   srcSet: this.srcSet,
-                //   sizes: '(min-width: 800px) 33.5vw, (min-width: 415px) 50vw, 100vw',
+
               },
               largeImage: {
                 alt: "",
                 src: data?.thumbnail,
-                width: 400,
-                height: 900,
+                width: 600,
+                height: 600,
+
               },
               lensStyle: {
                 width: 100,

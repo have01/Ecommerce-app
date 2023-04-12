@@ -10,6 +10,7 @@ import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded"
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded"
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded"
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded"
+import Link from "next/link"
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
@@ -32,7 +33,7 @@ export default function Example() {
         dispatch(profileAction.setProfile({}))
         router.push("/")
       })
-      .catch(function (error) {})
+      .catch(function (error) { })
   }
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -58,15 +59,17 @@ export default function Example() {
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <a
+                <button
                   href="#"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  <AccountCircleRoundedIcon /> Account settings
-                </a>
+                  <Link href="/account">
+                    <AccountCircleRoundedIcon /> Account settings
+                  </Link>
+                </button>
               )}
             </Menu.Item>
             <Menu.Item>
@@ -95,6 +98,7 @@ export default function Example() {
                 </a>
               )}
             </Menu.Item>
+
             <Menu.Item>
               {({ active }) => (
                 <button
@@ -108,6 +112,7 @@ export default function Example() {
                 </button>
               )}
             </Menu.Item>
+
           </div>
         </Menu.Items>
       </Transition>

@@ -26,8 +26,8 @@ const Index = () => {
       .get("https://auth-task-app.up.railway.app/api/users/v1/me", {
         headers: { Authorization: `Bearer ${tokenString}` },
       })
-      .then((response) => {})
-      .catch((error) => {})
+      .then((response) => { })
+      .catch((error) => { })
   }, [])
 
   return <></>

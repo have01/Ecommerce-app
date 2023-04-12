@@ -1,4 +1,5 @@
 import "../../styles/globals.css"
+import 'react-spinner-animated/dist/index.css'
 import "react-toastify/dist/ReactToastify.css"
 import Head from "next/head"
 import { ToastContainer } from "react-toastify"
@@ -36,9 +37,13 @@ function MyApp({ Component, pageProps }) {
             pauseOnHover
             theme="colored"
           />
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
+          <div class="flex flex-col min-h-screen">
+            <Header />
+            <main class="flex-grow">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </div>
         </PersistGate>
       </Provider>
     </>
