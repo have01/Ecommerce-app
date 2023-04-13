@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Profile from "../../features/Profile"
 
 // export async function getServerSideProps(req) {
 
@@ -29,6 +30,12 @@ const Index = () => {
       .then((response) => { })
       .catch((error) => { })
   }, [])
+
+  return (
+    <Profile />
+  )
+
+
 }
 
 export default Index

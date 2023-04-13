@@ -1,6 +1,3 @@
-const Home = () => {
-  return <div> Hello World </div>;
-};
+import Payment from "../components/checkoutpayement/payement"
 
-export default Home;
 

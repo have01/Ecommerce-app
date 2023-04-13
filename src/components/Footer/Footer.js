@@ -3,7 +3,7 @@ import React from "react"
 const Footer1 = () => {
   return (
 
-    <div className="mx-auto w-full py-16 xl:px-20 lg:px-12 sm:px-6 px-4 mt-auto bg-white">
+    <div className="mx-auto w-full py-16 xl:px-20 lg:px-12 sm:px-6 px-4 mt-auto bg-[#0F172A]">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
         <div className="flex flex-col flex-shrink-0">
           <div>
@@ -85,7 +85,7 @@ const Footer1 = () => {
           </div>
         </div>
         <div className="sm:ml-0 ml-8">
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
+          <h2 className="text-base font-semibold leading-4 text-white">
             Company
           </h2>
           <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
@@ -105,7 +105,7 @@ const Footer1 = () => {
           </p>
         </div>
         <div>
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
+          <h2 className="text-base font-semibold leading-4 text-white">
             Support
           </h2>
           <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
@@ -123,10 +123,10 @@ const Footer1 = () => {
         </div>
 
         <div className="mt-10 lg:block hidden">
-          <label className="text-xl font-medium leading-5 text-gray-800">
+          <label className="text-xl font-medium leading-5 text-white">
             Get updates
           </label>
-          <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4">
+          <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4 bg-white">
             <input
               type="text"
               className="text-base leading-4 p-4 w-full focus:outline-none text-gray-800 placeholder-gray-800"
