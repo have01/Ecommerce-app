@@ -39,7 +39,7 @@ const ProductDetails = ({ data }) => {
           <img
             className="w-full"
             alt="img of a girl posing"
-            src="https://i.ibb.co/QMdWfzX/component-image-one.png"
+            src={data?.thumbnail}
           />
           <div className="flex items-center justify-between mt-3 space-x-4 md:space-x-0">
             <img

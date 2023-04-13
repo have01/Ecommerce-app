@@ -3,6 +3,7 @@ import { Dialog, Disclosure } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useSelector } from "react-redux"
 import ProfileDropdown from "../ProfileDropdown"
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -30,13 +31,13 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white shadow-lg">
+      <header className=" bg-[#0F172A] shadow-lg">
         <div className=" container mx-auto">
           <div
             className="mx-auto flex w-full items-center justify-between p-4 lg:px-8"
             aria-label="Global"
           >
-            <div className="flex lg:flex-1">
+            <div className="flex items-center  lg:flex-1">
               <Link href="/" className="-m-1.5 p-1.5">
                 <img
                   className="h-8 w-auto"
@@ -44,6 +45,7 @@ const Header = () => {
                   alt=""
                 />
               </Link>
+              <span className="text-lg font-semibold leading-6 ml-1 text-white">Ecommerce app</span>
             </div>
 
             <div className="flex lg:hidden">
@@ -56,7 +58,8 @@ const Header = () => {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
-            <div className="hidden lg:block">
+
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
 
@@ -67,7 +70,7 @@ const Header = () => {
                 ) : (
                   <Link
                     href="/auth/sign-in"
-                    className="text-sm font-semibold leading-6 text-gray-900"
+                    className="text-sm font-semibold leading-6 text-white"
                   >
                     Login
                     <span aria-hidden="true">&rarr;</span>
@@ -77,9 +80,15 @@ const Header = () => {
               <div>
                 <Menu as="div" className="relative inline-block text-left">
                   <Link href="/cart">
-                    <button className="inline-flex w-full justify-center items-center gap-x-1.5  bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 ">
-                      <ShoppingBasketRoundedIcon /> Cart
-                    </button>
+                    <div className="relative">
+                      <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+
+                      {true > 0 && (
+                        <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
+                          1
+                        </div>
+                      )}
+                    </div>
                   </Link>
                 </Menu>
               </div>

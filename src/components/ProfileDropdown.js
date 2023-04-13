@@ -1,5 +1,4 @@
-import { Fragment } from "react"
-import { Menu, Transition } from "@headlessui/react"
+import React, { Fragment } from "react"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
@@ -10,10 +9,31 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded"
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded"
 import Link from "next/link"
+import {
+  Navbar,
+  MobileNav,
+  Typography,
+  Button,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Avatar,
+  Card,
+  IconButton,
+} from "@material-tailwind/react";
+import {
+  Cog6ToothIcon,
+  PowerIcon,
+} from "@heroicons/react/24/outline";
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 export default function Example() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
   const profileData = useSelector((state) => state?.profile?.profile)
   const router = useRouter()
   const dispatch = useDispatch()
@@ -30,91 +50,97 @@ export default function Example() {
         Cookies.remove("tokken")
         Cookies.remove("userName")
         dispatch(profileAction.setProfile({}))
+
         router.push("/")
+        setIsMenuOpen(false)
       })
       .catch(function (error) { })
   }
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="inline-flex w-full items-center justify-center gap-x-1.5  bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xl rounded-3xl ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-          <AccountCircleIcon /> {profileData?.user?.name}
-          <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
-            aria-hidden="true"
+    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+      <MenuHandler >
+        <Button
+          variant="text"
+          color="blue-gray"
+          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+        >
+          <Avatar
+            variant="circular"
+            size="sm"
+            alt="candice wu"
+            className="border border-blue-500 p-0.5"
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
           />
-        </Menu.Button>
-      </div>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700 rounded-lg",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  <Link href="/account">
-                    <AccountCircleIcon /> Account settings
-                  </Link>
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  <ShoppingCartRoundedIcon /> My order
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  <FavoriteRoundedIcon /> Wishlist
-                </a>
-              )}
-            </Menu.Item>
+          {profileData?.user?.name}
+          <ChevronDownIcon
+            strokeWidth={2.5}
+            className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
+              }`}
+          />
+        </Button>
+      </MenuHandler>
+      <MenuList className="p-1">
 
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  onClick={handleSignOut}
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block w-full px-4 py-2 text-left text-sm"
-                  )}
-                >
-                  <ExitToAppRoundedIcon /> Sign out
-                </button>
-              )}
-            </Menu.Item>
+        <Link href="/account" className="border-none hover:border-none">
+          <MenuItem
+            onClick={closeMenu}
+            className="flex items-center gap-2 rounded"
+          >
 
-          </div>
-        </Menu.Items>
-      </Transition>
+            {React.createElement(Cog6ToothIcon, {
+              className: "h-4 w-4",
+              strokeWidth: 2,
+            })}
+            <Typography
+              as="span"
+              variant="small"
+              className="font-normal"
+              color="inherit"
+            >
+              Edit Profile
+            </Typography>
+
+          </MenuItem>
+        </Link>
+        <MenuItem
+          onClick={closeMenu}
+          className="flex items-center gap-2 rounded"
+        >
+          {React.createElement(Cog6ToothIcon, {
+            className: "h-4 w-4",
+            strokeWidth: 2,
+          })}
+          <Typography
+            as="span"
+            variant="small"
+            className="font-normal"
+            color="inherit"
+          >
+            Wishlist
+          </Typography>
+        </MenuItem>
+
+        <MenuItem
+          onClick={handleSignOut}
+          className="flex items-center gap-2 rounded 
+            hover:bg-red-500/10 focus:bg-red-500/10 "
+
+        >
+          {React.createElement(PowerIcon, {
+            className: "h-4 w-4 text-red-500",
+            strokeWidth: 2,
+          })}
+          <Typography
+            as="span"
+            variant="small"
+            className="font-normal"
+            color="red"
+          >
+            Sign out
+          </Typography>
+        </MenuItem>
+
+      </MenuList>
     </Menu>
   )
 }

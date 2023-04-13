@@ -13,14 +13,14 @@ import ProductCard from "./ProductCard"
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function ProductsCarousel({ data }) {
-
+  console.log(data.category)
   return (
     <>
       <div className="text-center mt-2 p-2 container mx-auto">
-        <h1 className="text-3xl font-semibold">Shop By {data?.category}</h1>
+        <h1 className="text-2xl ">Shop By {data[0]?.category}</h1>
       </div>
       <div className="container mx-auto mt-1 mb-2 ">
-        <div className="flex items-center justify-center w-full h-[400px]  sm:py-4  ">
+        <div className="flex items-center justify-center w-full  sm:py-4  ">
           {/* Carousel for desktop and large size devices */}
           <CarouselProvider
             className="lg:block hidden"
@@ -31,7 +31,7 @@ export default function ProductsCarousel({ data }) {
             step={1}
             infinite={true}
           >
-            <div className="w-full h-[400px] relative flex items-center justify-center">
+            <div className="w-full relative flex items-center justify-center">
               <ButtonBack
                 role="button"
                 aria-label="slide backward"
@@ -58,7 +58,7 @@ export default function ProductsCarousel({ data }) {
                 <Slider>
                   <div
                     id="slider"
-                    className="h-[400px] flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
+                    className="h-auto p-4  flex lg:gap-10 md:gap-6 gap-14  items-center justify-start transition ease-out duration-700"
                   >
                     {data.map((val, ind) => {
                       return (

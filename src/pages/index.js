@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { lazy } from "react";
 import Loading from "../components/loading/loading"
+import SearchBar from "../components/SearchBar";
 const ProductsCarousel = lazy(
   () => import("../components/Products/ProductsCarousel"),
   { suspense: true }
@@ -35,8 +36,14 @@ export default function Index({ data }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <div className="container mx-auto mt-2">
+        <div className="lg:hidden sm:block md:hidden  w-full ">
+          <SearchBar />
+        </div>
+        <div className="container mx-auto">
           <Carousel />
+        </div>
+
+        <div className="container mx-auto mt-1">
           <ProductsCarousel data={data} />
           <ProductsCarousel data={data} />
         </div>

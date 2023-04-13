@@ -64,16 +64,10 @@ const SearchBar = () => {
         }}
       >
 
-        <div className="relative inline-block text-left">
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-center items-center">
-            <form>
-              <label
-                htmlFor="default-search"
-                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-              >
-                Search
-              </label>
-              <div className="relative w-[500px]">
+        <div className="relative w-full lg:w-[500px] inline-block text-left">
+          <div className=" w-full justify-center bg-[#0F172A] p-2 lg:p-0 sm:w-full items-center">
+            <form >
+              <div className="relative lg:w-full  sm:w-full p-0 sm:p-2">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg
                     aria-hidden="true"
@@ -108,7 +102,7 @@ const SearchBar = () => {
           {loading ? (
             <>
               <div
-                className="absolute w-[500px] right-0 z-10 mt-2 max-h-80 overflow-hidden origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="absolute w-[500px] right-0 z-10 mt-2 max-h-[370px] overflow-hidden origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"

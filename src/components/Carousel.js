@@ -11,6 +11,7 @@ const CarouselComponent = () => {
       showThumbs={false}
       interval={2000}
       showStatus={false}
+      className="mt-2"
     >
       <div>
         <img
