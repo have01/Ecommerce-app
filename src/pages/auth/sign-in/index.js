@@ -5,7 +5,9 @@ import { useRouter } from "next/router"
 import { useSelector } from "react-redux"
 
 const Index = () => {
+
   const profileData = useSelector((state) => state?.profile?.profile)
+
   const router = useRouter()
   if (profileData?.token) {
     router.push("/")
