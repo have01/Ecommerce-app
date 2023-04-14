@@ -41,7 +41,7 @@ const Profile = () => {
         </TabsHeader>
         <TabsBody>
           <TabPanel key={`html`} value={`html`}>
-            <div className="w-3/4">
+            <div className="w-full">
               <div className="w-full flex flex-row justify-around items-center">
                 <div className="w-2/4 flex flex-col p-2 ">
                   <label

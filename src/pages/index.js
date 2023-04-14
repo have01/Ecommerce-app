@@ -39,7 +39,7 @@ export default function Index({ data }) {
         <div className="lg:hidden sm:block md:hidden  w-full ">
           <SearchBar />
         </div>
-        <div className="container mx-auto">
+        <div className="container mx-auto mt-1">
           <Carousel />
         </div>
 
