@@ -37,9 +37,9 @@ function MyApp({ Component, pageProps }) {
             pauseOnHover
             theme="colored"
           />
-          <div class="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen">
             <Header />
-            <main class="flex-grow">
+            <main className="flex-grow">
               <Component {...pageProps} />
             </main>
             <Footer />
