@@ -75,9 +75,9 @@ export default function Example({ handleOpen, open, setOpen }) {
                             color="blue"
                             floated={false}
                             shadow={false}
-                            className="m-0 grid place-items-center rounded-b-none pt-2 pb-6 px-4 text-center"
+                            className="m-0 grid place-items-center rounded-b-none py-2 px-4 text-center"
                         >
-                            <div className="w-full flex  justify-end"><CloseIcon onClick={() => setOpen(!open)} /></div>
+                            <div className="w-full flex justify-end"><CloseIcon onClick={() => setOpen(!open)} /></div>
                             <Typography variant="h4" color="white">
                                 Ecommerce app
                             </Typography>
