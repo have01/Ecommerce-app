@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import {
   CarouselProvider,
   Slider,
@@ -8,15 +8,14 @@ import {
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
 import Rating from "@mui/material/Rating"
-import { styled } from "@mui/material/styles"
+import {styled} from "@mui/material/styles"
 import ProductCard from "./ProductCard"
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
-export default function ProductsCarousel({ data }) {
-  console.log(data.category)
+export default function ProductsCarousel({data}) {
   return (
     <>
-      <div className="text-center mt-2 p-2 container mx-auto">
+      <div className="text-center mt-2 p-2 container mx-auto hidden lg:block">
         <h1 className="text-2xl ">Shop By {data[0]?.category}</h1>
       </div>
       <div className="container mx-auto mt-1 mb-2 ">
@@ -94,8 +93,8 @@ export default function ProductsCarousel({ data }) {
               </ButtonNext>
             </div>
           </CarouselProvider>
-        </div >
-      </div >
+        </div>
+      </div>
     </>
   )
 }
