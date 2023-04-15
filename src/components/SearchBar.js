@@ -83,7 +83,7 @@ const SearchBar = () => {
                   value={searchTerm}
                   type="search"
                   id="default-search"
-                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-0 bg-gray-50  dark:text-white "
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300  focus:outline-0 bg-gray-50  dark:text-white "
                   placeholder="Search Products..."
                   required
                   onChange={(e) => setSearchTerm(e.target.value)}

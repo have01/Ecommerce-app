@@ -34,7 +34,7 @@ const Header = () => {
       <header className=" bg-[#0F172A] shadow-lg">
         <div className=" container mx-auto">
           <div
-            className="mx-auto flex w-full items-center justify-between p-4 lg:px-8"
+            className="mx-auto flex w-full items-center justify-between py-4 px-2 lg:px-8"
             aria-label="Global"
           >
             <div className="flex items-center justify-center lg:hidden">
@@ -52,20 +52,8 @@ const Header = () => {
                 </span>
               </Link>
             </div>
-            <Menu as="div" className="relative text-left">
-              <Link href="/cart">
-                <div className="relative">
-                  <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
 
-                  {true > 0 && (
-                    <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
-                      1
-                    </div>
-                  )}
-                </div>
-              </Link>
-            </Menu>
-            <div className="items-center hidden  lg:flex-1 lg:flex">
+            <div className="items-center hidden  lg:flex">
               <Link href="/" className="-m-1.5 p-1.5">
                 <img
                   className="h-8 w-auto"
@@ -78,12 +66,11 @@ const Header = () => {
               </span>
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end md:flex justify-center items-center">
+            <div className="hidden lg:flex  lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
-
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-center items-center">
-              <div className="mr-2">
+            <div className="flex items-center justify-between">
+              <div className="mr-0 lg:mr-2">
                 {profileData?.user?.name ? (
                   <ProfileDropdown profileData={profileData} />
                 ) : (
@@ -96,12 +83,11 @@ const Header = () => {
                   </Link>
                 )}
               </div>
-              <div>
+              <div className="flex justify-end   lg:flex lg:flex-1 lg:justify-end  items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <Link href="/cart">
                     <div className="relative">
                       <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
-
                       {true > 0 && (
                         <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
                           1
