@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import ReactImageMagnify from "react-image-magnify"
-import { Rating } from "@mui/material"
-const ProductDetails = ({ data }) => {
+import {Rating} from "@mui/material"
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
+const ProductDetails = ({data}) => {
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(false)
 
@@ -19,14 +20,12 @@ const ProductDetails = ({ data }) => {
                 width: 300,
                 height: 300,
                 //   srcSet: this.srcSet,
-
               },
               largeImage: {
                 alt: "",
                 src: data?.thumbnail,
                 width: 600,
                 height: 600,
-
               },
               lensStyle: {
                 width: 100,
@@ -85,7 +84,7 @@ const ProductDetails = ({ data }) => {
             <div className="w-full mt-2">
               <Rating name="size-small" defaultValue={2} size="small" />
             </div>
-            <p className="text-lg mt-4 font-bold leading-none text-blue-400">
+            <p className="text-xl mt-4 font-bold leading-none text-black">
               {data?.price} USD
             </p>
             <div className="w-full mt-2">
@@ -173,17 +172,17 @@ const ProductDetails = ({ data }) => {
           <div className="w-full flex flex-row justify-between">
             <button
               className="
-						focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
+						
 						text-base
 						flex
 						items-center
 						justify-center
 						leading-none
 						text-white
-						bg-gray-800
+						bg-orange-700
 						w-3/4
 						py-4
-						hover:bg-gray-700
+					
             mt-3
 					"
             >
@@ -191,21 +190,19 @@ const ProductDetails = ({ data }) => {
             </button>
             <button
               className="
-						focus:outline-none focus:ring-2 mx-1 focus:ring-offset-2 focus:ring-gray-800
 						text-base
 						flex
 						items-center
 						justify-center
-						leading-none
-						text-white
-						bg-gray-800
-						w-4/5
-						py-4
-						hover:bg-gray-700
+						leading-none					
+						w-1/5
+            text-blue-400
+						py-4					
             mt-3
+						border-2 border-blue-400
 					"
             >
-              Wishlist
+              <FavoriteBorderOutlinedIcon />
             </button>
           </div>
           <div></div>

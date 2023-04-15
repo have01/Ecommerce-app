@@ -1,22 +1,18 @@
-import { Rating } from "@mui/material"
+import {Rating} from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 
-const ProductCard = ({ data }) => {
-
+const ProductCard = ({data}) => {
   return (
     <>
-
       <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-110 p-2 cursor-pointer rounded-xl shadow-sm">
-        <Link href={`/productDetail/${data._id}`}
-        >
+        <Link href={`/productDetail/${data._id}`}>
           <div className="w-full ">
             <img
               className="w-[200px] h-[170px] object-contain"
               src={data?.thumbnail}
               alt="product image"
             />
-
           </div>
         </Link>
 
@@ -25,8 +21,8 @@ const ProductCard = ({ data }) => {
         </h5>
 
         <div className="flex items-center">
-          <span className="text-base font-bold text-blue-600 dark:text-white">
-            USD  {data?.price}
+          <span className="text-base  text-blue-600 dark:text-white">
+            USD {data?.price}
           </span>
           <span className="text-gray-900 text-xs ml-1 dark:text-white">
             {data?.discount}
