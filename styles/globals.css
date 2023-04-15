@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: rgb(229 231 235);
+  background-color: rgb(243 244 246);
 }
 .carousel .control-prev.control-arrow:before {
   border-right: 14px solid black;
@@ -20,4 +20,9 @@ body {
   carousel__slide
   carousel__slide--visible {
   width: 9.5%;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

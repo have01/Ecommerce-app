@@ -34,7 +34,7 @@ const Header = () => {
       <header className=" bg-[#0F172A] shadow-lg">
         <div className=" container mx-auto">
           <div
-            className="mx-auto flex w-full items-center justify-between py-4 px-2 lg:px-8"
+            className="mx-auto flex w-full items-center justify-between p-0 sm:py-4 sm:px-2 lg:px-0"
             aria-label="Global"
           >
             <div className="flex items-center justify-center lg:hidden">
@@ -55,11 +55,12 @@ const Header = () => {
 
             <div className="items-center hidden  lg:flex">
               <Link href="/" className="-m-1.5 p-1.5">
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
-                />
+                <Image
+                  src="/ekart.png"
+                  alt="logo"
+                  width="50"
+                  height="50"
+                ></Image>
               </Link>
               <span className="text-lg font-semibold leading-6 ml-1 text-white">
                 Ecommerce app
