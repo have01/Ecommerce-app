@@ -30,7 +30,7 @@ export default function ProductsCarousel({data}) {
             <div className="w-full relative flex flex-col">
               <div className=" flex justify-between container ">
                 <div>
-                  <h1 className="text-xl text-black">
+                  <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-white">
                     Shop by {data[0]?.category}
                   </h1>
                 </div>
@@ -38,7 +38,7 @@ export default function ProductsCarousel({data}) {
                   <ButtonBack
                     role="button"
                     aria-label="slide backward"
-                    className="  bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center mr-2 ml-2"
+                    className="  bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 transform transition duration-500 hover:scale-110 shadow-lg rounded-full flex items-center justify-center mr-2 ml-2"
                     id="prev"
                   >
                     <svg
@@ -60,7 +60,7 @@ export default function ProductsCarousel({data}) {
                   <ButtonNext
                     role="button"
                     aria-label="slide forward"
-                    className=" bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center "
+                    className=" bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg transform transition duration-500 hover:scale-110 rounded-full flex items-center justify-center "
                     id="next"
                   >
                     <svg
@@ -88,7 +88,7 @@ export default function ProductsCarousel({data}) {
                     id="slider"
                     className="h-auto p-4  flex lg:gap-10 md:gap-6 gap-14  items-center justify-start transition ease-out duration-700"
                   >
-                    {data?.reverse().map((val, ind) => {
+                    {data?.map((val, ind) => {
                       return (
                         <Slide index={ind} key={ind}>
                           <ProductCard data={val} />

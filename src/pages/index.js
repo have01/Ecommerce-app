@@ -7,6 +7,7 @@ import Loading from "../components/loading/loading"
 import SearchBar from "../components/SearchBar"
 import Mobileview from "../components/Homepage/mobile"
 import Image from "next/image"
+import Banner from "../components/banner"
 const ProductsCarousel = lazy(
   () => import("../components/Products/ProductsCarousel"),
   {suspense: true}
@@ -47,9 +48,14 @@ export default function Index({carouselData}) {
         <div className="container mx-auto mt-1">
           <Carousel />
         </div>
+
+<Banner/>
+
         <div className=" block lg:hidden md:hidden">
           <Mobileview />
         </div>
+
+
 
         {carouselData?.length > 0 ? (
           <div className="container mx-auto mt-1">

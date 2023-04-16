@@ -5,7 +5,7 @@ import Link from "next/link"
 const ProductCard = ({data}) => {
   return (
     <>
-      <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-110 p-2 cursor-pointer rounded-xl shadow-sm">
+      <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-95 p-2 cursor-pointer rounded-xl">
         <Link href={`/productDetail/${data._id}`}>
           <div className="w-full ">
             <img
