@@ -22,8 +22,9 @@ const ResetPassword = () => {
     const { id } = router.query
     if(user.newPassword === user.confirmPassword){
       axios
-      .patch(`https://auth-task-app.up.railway.app/api/change-password/${id}`, user.confirmPassword)
+      .patch(`https://auth-task-app.up.railway.app/api/change-password/${id}`, {'password': user.confirmPassword})
       .then(function (response) {
+        console.log('sss', response)
         router.push("/auth/sign-in")
       })
       .catch(function (error) {
