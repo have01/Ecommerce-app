@@ -42,7 +42,7 @@ const Mobile = () => {
                   View all
                 </Link>
               </div>
-              <div className="flex flex-wrap gap-3 justify-around ">
+              <div className="flex flex-wrap gap-4 justify-around ">
                 {val
                   .slice(5, 9)
                   .map((item /* use a unique value for the key prop */) => (
@@ -52,7 +52,7 @@ const Mobile = () => {
                           src={item?.thumbnail}
                           alt=""
                           srcset=""
-                          className="object-cover w-40 h-40"
+                          className="object-contain w-40 h-40"
                         />
                       </Link>
                     </div>
