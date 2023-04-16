@@ -15,7 +15,6 @@ const ProductDetails = ({data}) => {
             {...{
               smallImage: {
                 alt: "Wristwatch by Ted Baker London",
-                // isFluidWidth: true,
                 src: data?.thumbnail,
                 width: 300,
                 height: 300,
@@ -23,6 +22,7 @@ const ProductDetails = ({data}) => {
               },
               largeImage: {
                 src: data?.thumbnail,
+
                 width: 600,
                 height: 600,
               },
