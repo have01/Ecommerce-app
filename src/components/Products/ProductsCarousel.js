@@ -25,7 +25,7 @@ export default function ProductsCarousel({data}) {
             className="lg:block hidden"
             naturalSlideWidth={100}
             isIntrinsicHeight={true}
-            totalSlides={data.length}
+            totalSlides={data?.length}
             visibleSlides={5}
             step={1}
             infinite={true}
@@ -59,7 +59,7 @@ export default function ProductsCarousel({data}) {
                     id="slider"
                     className="h-auto p-4  flex lg:gap-10 md:gap-6 gap-14  items-center justify-start transition ease-out duration-700"
                   >
-                    {data.map((val, ind) => {
+                    {data?.map((val, ind) => {
                       return (
                         <Slide index={ind} key={ind}>
                           <ProductCard data={val} />
