@@ -1,8 +1,8 @@
 import axios from "axios"
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useState } from "react"
-import { toast } from "react-toastify"
+import {useRouter} from "next/router"
+import {useState} from "react"
+import {toast} from "react-toastify"
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -27,13 +27,13 @@ const Register = () => {
         router.push("/auth/sign-in")
       })
       .catch(function (error) {
-        console.log('error', error)
-        let errorMessage = error?.response?.data;
-        if (errorMessage && errorMessage.includes('duplicate')) {
+        console.log("error", error)
+        let errorMessage = error?.response?.data
+        if (errorMessage && errorMessage.includes("duplicate")) {
           errorMessage = "Email already exist"
-        } else if(errorMessage.includes('password')){
-          errorMessage = 'Password length must be greater than 7'
-          console.log('error', errorMessage)
+        } else if (errorMessage.includes("password")) {
+          errorMessage = "Password length must be greater than 7"
+          console.log("error", errorMessage)
         }
         toast.error(errorMessage, {
           position: "top-center",
@@ -46,6 +46,23 @@ const Register = () => {
           theme: "light",
         })
       })
+  }
+  const getStrengthClassColor = (password) => {
+    if (password.length === 0) {
+      return "text-gray-200"
+    } else if (password.length < 8) {
+      return "text-red-200"
+    } else if (!/\d/.test(password)) {
+      return "text-orange-800"
+    } else if (!/[a-z]/.test(password)) {
+      return "text-orange-800"
+    } else if (!/[A-Z]/.test(password)) {
+      return "text-orange-800"
+    } else if (!/[@#$%^&+=]/.test(password)) {
+      return "text-orange-800"
+    } else {
+      return "text-green-600"
+    }
   }
   const getStrengthClass = (password) => {
     if (password.length === 0) {
@@ -105,7 +122,7 @@ const Register = () => {
                     placeholder="Name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
-                    onChange={(e) => setUser({ ...user, name: e.target.value })}
+                    onChange={(e) => setUser({...user, name: e.target.value})}
                   />
                 </div>
                 <div>
@@ -122,9 +139,7 @@ const Register = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required
-                    onChange={(e) =>
-                      setUser({ ...user, email: e.target.value })
-                    }
+                    onChange={(e) => setUser({...user, email: e.target.value})}
                   />
                 </div>
                 <div>
@@ -144,7 +159,7 @@ const Register = () => {
                         password
                       )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                       onChange={(e) => {
-                        setUser({ ...user, password: e.target.value })
+                        setUser({...user, password: e.target.value})
                         setPassword(e.target.value)
                       }}
                     />
@@ -173,7 +188,6 @@ const Register = () => {
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-
                       ) : (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +207,9 @@ const Register = () => {
                     </div>
                   </div>
                   {password.length > 1 ? (
-                    <p className="text-sm mt-2 text-red-500">{getStrengthText(password)}</p>
+                    <p className={`${getStrengthClassColor(password)} mt-1`}>
+                      {getStrengthText(password)}
+                    </p>
                   ) : (
                     ""
                   )}
