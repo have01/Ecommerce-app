@@ -107,31 +107,31 @@ const Profile = ({userProfile}) => {
                 <div className="w-full flex flex-col ">
                   <div className="w-full  flex flex-col p-2 ">
                     <label
-                      htmlFor="old password"
+                      htmlFor="Current password"
                       className="block my-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Old password
+                      Current password
                     </label>
                     <input
                       type="text"
-                      placeholder="Enter your old password"
+                      placeholder="Enter your Current password"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
                   <div className="w-full  flex flex-col p-2 ">
                     <label
-                      htmlFor="new password"
+                      htmlFor="New password"
                       className="block my-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       New password
                     </label>
                     <input
                       type="text"
-                      placeholder="Enter your new password"
+                      placeholder="Enter your New password"
                       className="bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                     <label
-                      htmlFor="Name"
+                      htmlFor="Confirm password"
                       className="block my-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Confirm password

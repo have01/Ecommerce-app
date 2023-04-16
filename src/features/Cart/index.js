@@ -178,7 +178,7 @@ const index = () => {
                 <p class="mb-1 text-lg font-bold">134.98 INR</p>
               </div>
             </div>
-            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-blue-500 text-white text-center sm:hidd ">
+            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-blue-500 text-white text-center sm:hidden ">
               Checkout
             </button>
 
