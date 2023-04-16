@@ -15,9 +15,6 @@ import ProductCard from "./ProductCard"
 export default function ProductsCarousel({data}) {
   return (
     <>
-      <div className="text-center mt-2 p-2 container mx-auto hidden lg:block">
-        <h1 className="text-2xl ">Shop By {data[0]?.category}</h1>
-      </div>
       <div className="container mx-auto mt-1 mb-2 ">
         <div className="flex items-center justify-center w-full  sm:py-4  ">
           {/* Carousel for desktop and large size devices */}
@@ -25,41 +22,73 @@ export default function ProductsCarousel({data}) {
             className="lg:block hidden"
             naturalSlideWidth={100}
             isIntrinsicHeight={true}
-            totalSlides={data.length}
+            totalSlides={data?.length}
             visibleSlides={5}
             step={1}
             infinite={true}
           >
-            <div className="w-full relative flex items-center justify-center">
-              <ButtonBack
-                role="button"
-                aria-label="slide backward"
-                className="absolute z-30 -left-10 h-full border-1  px-2  cursor-pointer"
-                id="prev"
-              >
-                <svg
-                  width={8}
-                  height={14}
-                  viewBox="0 0 8 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7 1L1 7L7 13"
-                    stroke="black"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </ButtonBack>
-              <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+            <div className="w-full relative flex flex-col">
+              <div className=" flex justify-between container ">
+                <div>
+                  <h1 className="text-xl text-black">
+                    Shop by {data[0]?.category}
+                  </h1>
+                </div>
+                <div className=" flex flex-row justify-between ">
+                  <ButtonBack
+                    role="button"
+                    aria-label="slide backward"
+                    className="  bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center mr-2 ml-2"
+                    id="prev"
+                  >
+                    <svg
+                      width={6}
+                      height={8}
+                      viewBox="0 0 8 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 1L1 7L7 13"
+                        stroke="black"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </ButtonBack>
+                  <ButtonNext
+                    role="button"
+                    aria-label="slide forward"
+                    className=" bg-white dark:bg-slate-800 p-2 w-6 h-6 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center "
+                    id="next"
+                  >
+                    <svg
+                      width={6}
+                      height={8}
+                      viewBox="0 0 8 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 1L7 7L1 13"
+                        stroke="black"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </ButtonNext>
+                </div>
+              </div>
+
+              <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden bg-white mt-2">
                 <Slider>
                   <div
                     id="slider"
                     className="h-auto p-4  flex lg:gap-10 md:gap-6 gap-14  items-center justify-start transition ease-out duration-700"
                   >
-                    {data.map((val, ind) => {
+                    {data?.reverse().map((val, ind) => {
                       return (
                         <Slide index={ind} key={ind}>
                           <ProductCard data={val} />
@@ -69,28 +98,6 @@ export default function ProductsCarousel({data}) {
                   </div>
                 </Slider>
               </div>
-              <ButtonNext
-                role="button"
-                aria-label="slide forward"
-                className="absolute z-30 h-full border-1  px-2 cursor-pointer -right-5 "
-                id="next"
-              >
-                <svg
-                  width={8}
-                  height={14}
-                  viewBox="0 0 8 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1L7 7L1 13"
-                    stroke="black"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </ButtonNext>
             </div>
           </CarouselProvider>
         </div>

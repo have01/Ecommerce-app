@@ -14,7 +14,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "rukminim1.flixcart.com",
         port: "",
-        pathname: "fk-p-flap/1688/280/image/**",
+        pathname: "image/**",
       },
       {
         protocol: "https",
@@ -31,5 +31,4 @@ const nextConfig = {
     ],
   },
 }
-
 module.exports = nextConfig
