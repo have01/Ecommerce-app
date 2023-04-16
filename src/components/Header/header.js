@@ -55,7 +55,7 @@ const Header = () => {
 
             <div className="items-center hidden  lg:flex">
               <Link href="/" className="-m-1.5 p-1.5">
-                <Image
+                <Image className="w-[15%]; aspect-[3/2] object-contain "
                   src="/logo.png"
                   alt="logo"
                   width="50"
