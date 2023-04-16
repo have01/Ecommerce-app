@@ -36,7 +36,7 @@ const Index = ({data}) => {
                 src={item?.thumbnail}
                 alt=""
                 srcset=""
-                className="object-cover w-40 h-40"
+                className="object-contain w-40 h-40"
               />
             </Link>
             <p className="text-sm text-light-blue-600 mt-2 h-4 overflow-clip">
