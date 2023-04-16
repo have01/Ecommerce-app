@@ -162,7 +162,7 @@ const index = () => {
 
           {/* sub total */}
 
-          <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+          <div class="mt-6 mb-16 lg:mb-2 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
             <div class="mb-2 flex justify-between">
               <p class="text-gray-700">Subtotal</p>
               <p class="text-gray-700">1129</p>
@@ -172,13 +172,17 @@ const index = () => {
               <p class="text-gray-700">1400</p>
             </div>
             <hr class="my-4" />
-            <div class="flex justify-between">
+            <div class="flex justify-between mb-4">
               <p class="text-lg font-bold">Total</p>
               <div class="">
                 <p class="mb-1 text-lg font-bold">134.98 INR</p>
               </div>
             </div>
-            <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-blue-500 text-white text-center sm:hidd ">
+              Checkout
+            </button>
+
+            <button class="mt-6 w-full hidden lg:block md:block bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
               Check out
             </button>
           </div>
