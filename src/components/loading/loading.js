@@ -8,6 +8,7 @@ const loading = () => {
         center={false}
         width={"150px"}
         height={"150px"}
+        fill={"black"}
       />
     </div>
   )
