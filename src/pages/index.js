@@ -6,6 +6,7 @@ import {lazy} from "react"
 import Loading from "../components/loading/loading"
 import SearchBar from "../components/SearchBar"
 import Mobileview from "../components/Homepage/mobile"
+import Image from "next/image"
 const ProductsCarousel = lazy(
   () => import("../components/Products/ProductsCarousel"),
   {suspense: true}
@@ -15,7 +16,7 @@ const Highlight = lazy(() => import("../components/Highlights"), {
 })
 const Carousel = lazy(() => import("../components/Carousel"), {suspense: true})
 export async function getServerSideProps(context) {
-  let data
+  let data = []
   try {
     const response = await axios.get(
       `https://auth-task-app.up.railway.app/api/products/search/laptop`
@@ -43,10 +44,21 @@ export default function Index({data}) {
           <Mobileview />
         </div>
 
-        <div className="container mx-auto mt-1">
-          <ProductsCarousel data={data} />
-          <ProductsCarousel data={data} />
-        </div>
+        {data?.length > 0 ? (
+          <div className="container mx-auto mt-1">
+            <ProductsCarousel data={data} />
+            <ProductsCarousel data={data} />
+          </div>
+        ) : (
+          <div className="container mx-auto flex justify-center">
+            <Image
+              src="/nproduct.png"
+              alt="no-product"
+              width={600}
+              height={200}
+            />
+          </div>
+        )}
         <Highlight />
       </Suspense>
     </>
