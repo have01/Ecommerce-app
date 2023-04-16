@@ -1,14 +1,12 @@
 import axios from "axios"
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { toast } from "react-toastify"
 
 const ResetPassword = () => {
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
+    newPassword:"",
+    confirmPassword: "",
   })
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [password, setPassword] = useState("")
@@ -20,10 +18,12 @@ const ResetPassword = () => {
   const router = useRouter()
   const handleSignUp = async (e) => {
     e.preventDefault()
-
-    axios
-      .post("https://auth-task-app.up.railway.app/api/users", user)
+    const { id } = router.query
+    if(user.newPassword === user.confirmPassword){
+      axios
+      .patch(`https://auth-task-app.up.railway.app/api/change-password/${id}`, {'password': user.confirmPassword})
       .then(function (response) {
+        console.log('sss', response)
         router.push("/auth/sign-in")
       })
       .catch(function (error) {
@@ -38,6 +38,20 @@ const ResetPassword = () => {
           theme: "light",
         })
       })
+    } else {
+      toast.error('Both password not match!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    }
+
+   
   }
   const getStrengthClass = (password) => {
     if (password.length === 0) {
@@ -94,14 +108,14 @@ const ResetPassword = () => {
                 <div className="relative w-full container mx-auto">
                   <input
                     type={isPasswordVisible ? "text" : "password"}
-                    id="password"
+                    id="newPassword"
                     required
                     placeholder="Password"
                     className={`${getStrengthClass(
                       password
                     )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     onChange={(e) => {
-                      setUser({ ...user, password: e.target.value })
+                      setUser({ ...user, newPassword: e.target.value })
                       setPassword(e.target.value)
                     }}
                   />
@@ -165,15 +179,12 @@ const ResetPassword = () => {
                 <div className="relative w-full container mx-auto">
                   <input
                     type={isPasswordVisible ? "text" : "password"}
-                    id="password"
+                    id="confirmPassword"
                     required
                     placeholder="Password"
-                    className={`${getStrengthClass(
-                      password
-                    )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                    className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     onChange={(e) => {
-                      setUser({ ...user, password: e.target.value })
-                      setPassword(e.target.value)
+                      setUser({ ...user, confirmPassword: e.target.value })
                     }}
                   />
 
@@ -219,11 +230,11 @@ const ResetPassword = () => {
                     )}
                   </div>
                 </div>
-                {password.length > 1 ? (
+                {/* {password.length > 1 ? (
                   <p className="text-sm mt-2">{getStrengthText(password)}</p>
                 ) : (
                   ""
-                )}
+                )} */}
               </div>
 
               <button
