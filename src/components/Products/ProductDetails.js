@@ -15,21 +15,21 @@ const ProductDetails = ({data}) => {
             {...{
               smallImage: {
                 alt: "Wristwatch by Ted Baker London",
-                //   isFluidWidth: true,
+                  // isFluidWidth: true,
                 src: data?.thumbnail,
                 width: 300,
                 height: 300,
                 //   srcSet: this.srcSet,
               },
               largeImage: {
-                alt: "",
-                src: data?.thumbnail,
+              src: data?.thumbnail,
                 width: 600,
                 height: 600,
               },
               lensStyle: {
                 width: 100,
               },
+           
               isHintEnabled: true,
             }}
           />
@@ -149,7 +149,7 @@ const ProductDetails = ({data}) => {
             </div>
           </div>
           <div>
-            <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 mt-7">
+            <p className="lg:pr-full text-base lg:leading-tight leading-normal text-gray-600 mt-7">
               {data?.description}
             </p>
             {/* <p className="text-base leading-4 mt-7 text-gray-600">
