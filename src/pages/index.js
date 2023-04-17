@@ -38,7 +38,6 @@ export async function getServerSideProps(context) {
   }
 }
 export default function Index({carouselData}) {
-  console.log(carouselData.length)
   return (
     <>
       <Suspense fallback={<Loading />}>
@@ -49,13 +48,11 @@ export default function Index({carouselData}) {
           <Carousel />
         </div>
 
-<Banner/>
+        <Banner />
 
         <div className=" block lg:hidden md:hidden">
           <Mobileview />
         </div>
-
-
 
         {carouselData?.length > 0 ? (
           <div className="container mx-auto mt-1">

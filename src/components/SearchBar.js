@@ -20,7 +20,6 @@ const SearchBar = () => {
   const [searchProductsData, setSearchProductsData] = useState([])
   const [prevSearchTerm, setPrevSearchTerm] = useState(true)
   useEffect(() => {
-    console.log(searchTerm, prevSearchTerm)
     let isMounted = true
     const term = searchTerm || prevSearchTerm
     setTimeout(() => {

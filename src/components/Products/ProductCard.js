@@ -5,7 +5,7 @@ import Link from "next/link"
 const ProductCard = ({data}) => {
   return (
     <>
-      <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-95 p-2 cursor-pointer rounded-xl">
+      <div className="flex flex-col bg-white  transform transition duration-500 hover:scale-110 p-2 cursor-pointer rounded-xl shadow-sm">
         <Link href={`/productDetail/${data._id}`}>
           <div className="w-full ">
             <img
@@ -22,7 +22,7 @@ const ProductCard = ({data}) => {
 
         <div className="flex items-center">
           <span className="text-base  text-blue-600 dark:text-white">
-            USD {data?.price}
+            INR {data?.price}
           </span>
           <span className="text-gray-900 text-xs ml-1 dark:text-white">
             {data?.discount}

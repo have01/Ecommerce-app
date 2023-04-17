@@ -10,9 +10,12 @@ import "pure-react-carousel/dist/react-carousel.es.css"
 import Rating from "@mui/material/Rating"
 import {styled} from "@mui/material/styles"
 import ProductCard from "./ProductCard"
+
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function ProductsCarousel({data}) {
+  const shopBy = [...data].reverse()
+
   return (
     <>
       <div className="container mx-auto mt-1 mb-2 ">
@@ -31,7 +34,9 @@ export default function ProductsCarousel({data}) {
               <div className=" flex justify-between container ">
                 <div>
                   <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-white">
-                    Shop by {data[0]?.category}
+                    Shop by{" "}
+                    {data[0]?.category.charAt(0).toUpperCase() +
+                      data[0]?.category.slice(1)}
                   </h1>
                 </div>
                 <div className=" flex flex-row justify-between ">
@@ -88,7 +93,7 @@ export default function ProductsCarousel({data}) {
                     id="slider"
                     className="h-auto p-4  flex lg:gap-10 md:gap-6 gap-14  items-center justify-start transition ease-out duration-700"
                   >
-                    {data?.map((val, ind) => {
+                    {shopBy.map((val, ind) => {
                       return (
                         <Slide index={ind} key={ind}>
                           <ProductCard data={val} />

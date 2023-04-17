@@ -27,13 +27,11 @@ const Register = () => {
         router.push("/auth/sign-in")
       })
       .catch(function (error) {
-        console.log("error", error)
         let errorMessage = error?.response?.data
         if (errorMessage && errorMessage.includes("duplicate")) {
           errorMessage = "Email already exist"
         } else if (errorMessage.includes("password")) {
           errorMessage = "Password length must be greater than 7"
-          console.log("error", errorMessage)
         }
         toast.error(errorMessage, {
           position: "top-center",

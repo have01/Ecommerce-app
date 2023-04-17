@@ -28,6 +28,7 @@ function classNames(...classes) {
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const profileData = useSelector((state) => state?.profile?.profile)
+  const items = useSelector((state) => state.cart)
 
   return (
     <>
@@ -55,7 +56,8 @@ const Header = () => {
 
             <div className="items-center hidden  lg:flex">
               <Link href="/" className="-m-1.5 p-1.5">
-                <Image className="w-[15%]; aspect-[3/2] object-contain "
+                <Image
+                  className="w-[15%]; aspect-[3/2] object-contain "
                   src="/logo.png"
                   alt="logo"
                   width="50"
@@ -91,7 +93,7 @@ const Header = () => {
                       <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
                       {true > 0 && (
                         <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
-                          1
+                          {items.length}
                         </div>
                       )}
                     </div>
@@ -107,12 +109,12 @@ const Header = () => {
             onClose={setMobileMenuOpen}
           >
             <div className="fixed inset-0 z-10" />
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-              <div className="flex items-center justify-between">
+            <Dialog.Panel className="fixed inset-y-0 w-3/5 left-0 z-10 mobile-menu-wrapper   transition-all duration-500 ease-in-out overflow-y-auto bg-[#0F172A] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div className="flex items-center justify-between text-white">
                 <h1>Ecommerce App</h1>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  className="-m-2.5 rounded-md p-2.5 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>

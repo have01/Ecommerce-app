@@ -1,52 +1,47 @@
-import React, { useState } from 'react'
-import { toast } from "react-toastify"
-
+import React, {useState} from "react"
+import {toast} from "react-toastify"
 
 const ForgetPassword = () => {
+  const [email, setEmail] = useState("")
 
-  const [email, setEmail] = useState('')
-
-const handleEmail = async (e) => {
-  e.preventDefault()
-  e.stopPropagation()
-
-  console.log(email)
-  const response = await fetch(
-    `https://auth-task-app.up.railway.app/api/password-reset/${email}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+  const handleEmail = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const response = await fetch(
+      `https://auth-task-app.up.railway.app/api/password-reset/${email}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       }
+    )
+    const resp = await response.json()
+    if (resp.success) {
+      toast.info("Please check your email!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    } else {
+      toast.error(resp?.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     }
-  )
-  const resp = await response.json()
-    console.log('response', resp)
-  if (resp.success) {
-    toast.info('Please check your email!', {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
-  } else {
-    toast.error(resp?.message, {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
   }
-}
 
   return (
     <>
@@ -58,7 +53,6 @@ const handleEmail = async (e) => {
                 Forget Password
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleEmail}>
-
                 <div>
                   <label
                     htmlFor="email"
@@ -72,13 +66,10 @@ const handleEmail = async (e) => {
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
-                    onChange={(e) =>
-                      setEmail(e.target.value)
-                    }
+                    onChange={(e) => setEmail(e.target.value)}
                     required=""
                   />
                 </div>
-
 
                 <button
                   type="submit"
@@ -86,7 +77,6 @@ const handleEmail = async (e) => {
                 >
                   Check Email
                 </button>
-
               </form>
             </div>
           </div>
