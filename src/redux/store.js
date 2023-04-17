@@ -3,7 +3,7 @@ import storage from "redux-persist/lib/storage"
 import thunk from "redux-thunk"
 import {persistReducer, persistStore} from "redux-persist"
 import profileSlice from "./profileSlice"
-import {cartSlice} from "./cartSlice"
+import cartSlice from "./cartSlice"
 
 const persistConfig = {
   key: "root",
@@ -12,7 +12,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
- cart: cartSlice,
+ cart: cartSlice.reducer,
   profile: profileSlice,
 })
 
