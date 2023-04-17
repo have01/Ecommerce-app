@@ -26,7 +26,7 @@ const Index = () => {
 
         <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div class="rounded-lg md:w-2/3">
-            {items.map((value, index) => (
+            {items?.map((value, index) => (
               <div
                 key={index}
                 class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
