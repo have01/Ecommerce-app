@@ -1,11 +1,11 @@
 import axios from "axios"
-import { useRouter } from "next/router"
-import { useState } from "react"
-import { toast } from "react-toastify"
+import {useRouter} from "next/router"
+import {useState} from "react"
+import {toast} from "react-toastify"
 
 const ResetPassword = () => {
   const [user, setUser] = useState({
-    newPassword:"",
+    newPassword: "",
     confirmPassword: "",
   })
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -18,28 +18,30 @@ const ResetPassword = () => {
   const router = useRouter()
   const handleSignUp = async (e) => {
     e.preventDefault()
-    const { id } = router.query
-    if(user.newPassword === user.confirmPassword){
+    const {id} = router.query
+    if (user.newPassword === user.confirmPassword) {
       axios
-      .patch(`https://auth-task-app.up.railway.app/api/change-password/${id}`, {'password': user.confirmPassword})
-      .then(function (response) {
-        console.log('sss', response)
-        router.push("/auth/sign-in")
-      })
-      .catch(function (error) {
-        toast.error(error.response.data, {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
+        .patch(
+          `https://auth-task-app.up.railway.app/api/change-password/${id}`,
+          {password: user.confirmPassword}
+        )
+        .then(function (response) {
+          router.push("/auth/sign-in")
         })
-      })
+        .catch(function (error) {
+          toast.error(error.response.data, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+        })
     } else {
-      toast.error('Both password not match!', {
+      toast.error("Both password not match!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -50,8 +52,6 @@ const ResetPassword = () => {
         theme: "light",
       })
     }
-
-   
   }
   const getStrengthClass = (password) => {
     if (password.length === 0) {
@@ -88,7 +88,6 @@ const ResetPassword = () => {
     }
   }
   return (
-
     <section className="bg-gray-200 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -97,7 +96,6 @@ const ResetPassword = () => {
               Reset your Password
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSignUp}>
-
               <div>
                 <label
                   htmlFor="password"
@@ -115,7 +113,7 @@ const ResetPassword = () => {
                       password
                     )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     onChange={(e) => {
-                      setUser({ ...user, newPassword: e.target.value })
+                      setUser({...user, newPassword: e.target.value})
                       setPassword(e.target.value)
                     }}
                   />
@@ -184,7 +182,7 @@ const ResetPassword = () => {
                     placeholder="Password"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     onChange={(e) => {
-                      setUser({ ...user, confirmPassword: e.target.value })
+                      setUser({...user, confirmPassword: e.target.value})
                     }}
                   />
 
@@ -243,13 +241,11 @@ const ResetPassword = () => {
               >
                 Reset Password
               </button>
-
             </form>
           </div>
         </div>
       </div>
     </section>
-
   )
 }
 

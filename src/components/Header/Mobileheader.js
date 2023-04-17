@@ -1,12 +1,12 @@
-import { Disclosure } from "@headlessui/react"
+import {Disclosure} from "@headlessui/react"
 import Link from "next/link"
-import React, { useState } from "react"
-import { ChevronDownIcon } from "@heroicons/react/20/solid"
-import { useDispatch, useSelector } from "react-redux"
-import { profileAction } from "../../redux/profileSlice"
+import React, {useState} from "react"
+import {ChevronDownIcon} from "@heroicons/react/20/solid"
+import {useDispatch, useSelector} from "react-redux"
+import {profileAction} from "../../redux/profileSlice"
 import Cookies from "js-cookie"
 
-const Mobileheader = ({ setMobileMenuOpen, profile }) => {
+const Mobileheader = ({setMobileMenuOpen, profile}) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
   }
@@ -35,9 +35,9 @@ const Mobileheader = ({ setMobileMenuOpen, profile }) => {
       <div className="-my-6 divide-y divide-gray-500/10">
         <div className="space-y-2 py-6">
           <Disclosure as="div" className="-mx-3">
-            {({ open }) => (
+            {({open}) => (
               <>
-                <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
+                <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-white">
                   Product
                   <ChevronDownIcon
                     className={classNames(
@@ -53,19 +53,19 @@ const Mobileheader = ({ setMobileMenuOpen, profile }) => {
           </Disclosure>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
           >
             Features
           </a>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
           >
             Marketplace
           </a>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
           >
             Company
           </a>

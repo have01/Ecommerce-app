@@ -1,6 +1,6 @@
 import React from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { Carousel } from "react-responsive-carousel"
+import {Carousel} from "react-responsive-carousel"
 
 const CarouselComponent = () => {
   return (
@@ -12,6 +12,7 @@ const CarouselComponent = () => {
       interval={2000}
       showStatus={false}
       className="mt-2"
+      renderIndicator={false}
     >
       <div>
         <img

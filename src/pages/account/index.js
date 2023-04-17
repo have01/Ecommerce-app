@@ -13,9 +13,7 @@ const Index = () => {
         headers: {Authorization: `Bearer ${tokenString}`},
       })
       .then((response) => setUserProfile(response.data))
-      .catch((error) => {
-        console.log(error, "error")
-      })
+      .catch((error) => {})
   })
 
   return <Profile userProfile={userProfile} />

@@ -8,7 +8,7 @@ export async function getServerSideProps(context) {
     const response = await axios.get(
       `https://auth-task-app.up.railway.app/api/products/search/${cateorgy}`
     )
-    console.log(response.data)
+
     return {
       props: {
         data: response.data,

@@ -2,9 +2,18 @@ import React, {useState} from "react"
 import ReactImageMagnify from "react-image-magnify"
 import {Rating} from "@mui/material"
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
+import {useDispatch, useSelector} from "react-redux"
+const fmt = require("indian-number-format")
+import {cartSliceAction} from "../../redux/cartSlice"
+
 const ProductDetails = ({data}) => {
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(false)
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (data) => {
+    dispatch(cartSliceAction.addItem(data))
+  }
 
   return (
     <>
@@ -85,7 +94,7 @@ const ProductDetails = ({data}) => {
               <Rating name="size-small" defaultValue={2} size="small" />
             </div>
             <p className="text-xl mt-4 font-bold leading-none text-black">
-              {data?.price} USD
+              {fmt.format(data?.price)} INR
             </p>
             <div className="w-full mt-2">
               <p></p>
@@ -171,6 +180,7 @@ const ProductDetails = ({data}) => {
 
           <div className="w-full flex flex-row justify-between">
             <button
+              onClick={() => handleAddToCart(data)}
               className="
 						
 						text-base
