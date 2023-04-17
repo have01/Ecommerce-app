@@ -5,9 +5,9 @@ import {cartSliceAction} from "../../redux/cartSlice"
 const fmt = require("indian-number-format")
 const Index = () => {
   const dispatch = useDispatch()
-  const items = useSelector((state) => state.cart)
-  const totalPrice = items.reduce((acc, item) => {
-    return acc + item.price * item.quantity
+  const items = useSelector((state) => state?.cart)
+  const totalPrice = items?.reduce((acc, item) => {
+    return acc + item?.price * item?.quantity
   }, 0)
   const handleRemoveFromCart = (id) => {
     dispatch(cartSliceAction.removeFromCart({id}))
