@@ -93,7 +93,7 @@ const Header = () => {
                       <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
                       {true > 0 && (
                         <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
-                          {items.length}
+                          {items?.length}
                         </div>
                       )}
                     </div>
