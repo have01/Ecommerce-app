@@ -12,8 +12,8 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  cart: cartSlice.reducer,
-  profile: profileSlice.reducer,
+ cart: cartSlice,
+  profile: profileSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
