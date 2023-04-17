@@ -12,6 +12,7 @@ const ProductDetails = ({data}) => {
   const dispatch = useDispatch()
 
   const handleAddToCart = (data) => {
+    console.log(data);
     dispatch(cartSliceAction.addItem(data))
   }
 

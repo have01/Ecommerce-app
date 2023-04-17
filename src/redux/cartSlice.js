@@ -5,6 +5,7 @@ export const cartSlice = createSlice({
   initialState: [],
   reducers: {
     addItem: (state, action) => {
+      console.log(action.payload._id)
       const item = state.find((item) => item._id === action.payload._id)
       if (item) {
         item.quantity += 1
@@ -35,4 +36,4 @@ export const cartSlice = createSlice({
 })
 
 export const cartSliceAction = cartSlice.actions
-export default cartSlice.reducer
+export default cartSlice
