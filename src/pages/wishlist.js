@@ -1,15 +1,16 @@
-import {Rating} from "@mui/material"
+import { Rating } from "@mui/material"
 import Link from "next/link"
 import React from "react"
-import {useSelector,useDispatch} from "react-redux"
-import {cartSliceAction} from "../redux/cartSlice"
+import { useSelector, useDispatch } from "react-redux"
+import { cartSliceAction } from "../redux/cartSlice"
 import { wishlistSliceAction } from "../redux/wishlistSlice"
 const Wishlist = () => {
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const items = useSelector((state) => state?.cart)
   const wishlistItem = useSelector((state) => state?.wishlist?.wishlistItems)
-  const handleMovetoCart =(val)=> {
+  const handleMovetoCart = (val) => {
     dispatch(wishlistSliceAction.removeFromWishlist(val?._id))
-     dispatch(cartSliceAction.addItem(val))
+    dispatch(cartSliceAction.addItem(val))
   }
   return (
     <>
@@ -38,7 +39,7 @@ const dispatch = useDispatch()
                 defaultValue={val?.rating}
                 size="small"
               />
-              <button onClick={()=>handleMovetoCart(val)} className=" text-center px-6 py-2 ml-2 bg-indigo-600 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-white hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+              <button onClick={() => handleMovetoCart(val)} className=" text-center px-6 py-2 ml-2 bg-indigo-600 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-white hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                 Move to cart
               </button>
             </div>

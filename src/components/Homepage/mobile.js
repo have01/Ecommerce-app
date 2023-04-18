@@ -37,7 +37,7 @@ const Mobile = () => {
                 <h1>Shop by {val[0].category}</h1>{" "}
                 {/* use the first element's category */}
                 <Link
-                  href={`/products/${val[0].category}`}
+                  href={`/category/${val[0].category}`}
                   className="bg-indigo-600 px-6 py-2 text-white text-xs"
                 >
                   View all

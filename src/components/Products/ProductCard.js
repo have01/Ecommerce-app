@@ -1,12 +1,12 @@
-import {Rating} from "@mui/material"
+import { Rating } from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 
-const ProductCard = ({data}) => {
+const ProductCard = ({ data }) => {
   return (
     <>
       <div className="flex flex-col shadow-md items-center rounded-lg transform transition duration-500 hover:scale-95 p-2 cursor-pointer">
-        <Link href={`/productDetail/${data._id}`}>
+        <Link href={`/category/${data.category}`}>
           <div className="w-full h-full">
             <img
               className="w-[200px] h-[200px] object-contain"
@@ -21,7 +21,7 @@ const ProductCard = ({data}) => {
         </h5>
 
         <div className="flex items-center"></div>
-       
+
       </div>
     </>
   )

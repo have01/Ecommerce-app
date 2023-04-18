@@ -1,18 +1,36 @@
 import React from "react"
 import { useState } from "react"
-
-import MobileFilter from "../components/filters/mobileFilter"
-import Sort from "../components/filters/sort"
+import MobileFilter from "../../components/filters/mobileFilter"
+import Sort from "../../components/filters/sort"
 import { Slider } from "@mui/material"
+import axios from "axios"
+import Link from "next/link"
+
 
 function valuetext(value) {
   return `${value}°C`;
 }
-const Filter = () => {
+export async function getServerSideProps(context) {
+  const { category } = context.query
+  let data
+  try {
+    const response = await axios.get(`https://auth-task-app.up.railway.app/api/products/search/${category}`);
+    data = response?.data
+  } catch (error) {
+    console.error(error)
+  }
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+
+const Filter = ({ data }) => {
   const [filterActive, setfilterActive] = useState(false)
   const [toggleBrand, setToggleBrand] = useState(true)
   const [toggleRating, setToggleRating] = useState(true)
-
   const [value, setValue] = React.useState([1000, 8000]);
 
   const handleChange = (event, newValue) => {
@@ -77,8 +95,8 @@ const Filter = () => {
               Products
             </h2>
 
-            <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              <form class="hidden lg:block">
+            <div class="conatiner mx-auto flex justify-between ">
+              <form class="hidden lg:block w-1/4">
                 <h3 class="sr-only">Categories</h3>
                 <ul
                   role="list"
@@ -495,7 +513,34 @@ const Filter = () => {
                   </div>
                 </div> */}
               </form>
-              <div class="lg:col-span-3"></div>
+              <div class=" w-full">
+                <div class="flex flex-row flex-wrap w-full">
+
+                  {data?.map((val, index) =>
+                    <div
+                      key={index}
+                      className="group  shadow-lg   flex flex-col   object-contain gap-3 p-4 w-[300px] h-[312px]  ml-5 box rounded-xl"
+                    >
+                      <div className="h-[180px]">
+                        <Link href={`/productDetail/${val?._id}`}>
+                          <img
+                            src={val?.thumbnail}
+                            className="h-full w-full object-contain "
+                          />
+                        </Link>
+                      </div>
+                      <div>
+                        <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
+                          {val.title}
+                        </h1>
+                      </div>
+
+                    </div>
+
+                  )}
+
+                </div>
+              </div>
             </div>
           </section>
         </main>
