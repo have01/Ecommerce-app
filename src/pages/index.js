@@ -19,9 +19,9 @@ const Carousel = lazy(() => import("../components/Carousel"), {suspense: true})
 export async function getServerSideProps(context) {
   let carouselData = []
   const urls = [
+    `https://auth-task-app.up.railway.app/api/products/search/laptop`,
     `https://auth-task-app.up.railway.app/api/products/search/fashion`,
     `https://auth-task-app.up.railway.app/api/products/search/smartphones`,
-    `https://auth-task-app.up.railway.app/api/products/search/laptop`,
   ]
   try {
     const response = await Promise.all(urls.map((url) => axios.get(url)))

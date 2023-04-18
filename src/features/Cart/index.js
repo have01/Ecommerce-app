@@ -5,9 +5,9 @@ import {cartSliceAction} from "../../redux/cartSlice"
 const fmt = require("indian-number-format")
 const Index = () => {
   const dispatch = useDispatch()
-  const items = useSelector((state) => state.cart)
-  const totalPrice = items.reduce((acc, item) => {
-    return acc + item.price * item.quantity
+  const items = useSelector((state) => state?.cart)
+  const totalPrice = items?.reduce((acc, item) => {
+    return acc + item?.price * item?.quantity
   }, 0)
   const handleRemoveFromCart = (id) => {
     dispatch(cartSliceAction.removeFromCart({id}))
@@ -26,26 +26,49 @@ const Index = () => {
 
         <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div class="rounded-lg md:w-2/3">
-            {items.map((value, index) => (
+            {items?.map((value, index) => (
               <div
                 key={index}
                 class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
               >
-                <img
+
+ <div
+                      class="flex items-center justify-end border-gray-100 sm:hidden"
+                      onClick={() => handleRemoveFromCart(value?._id)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </div>
+
+               <div className="sm:w-[150px]">
+                 <img
                   src={value?.thumbnail}
                   alt="product-image"
                   class="w-full h-40 object-contain rounded-lg sm:w-40"
                 />
-                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+               </div>
+                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-around">
                   <div class="mt-5 sm:mt-0">
-                    <h4 class="text-sm font-bold text-gray-900 w-[300px] h-10 overflow-hidden">
-                      {value?.title}
+                    <h4 class="text-sm font-bold text-gray-900">
+                      {value?.title.slice(0, 50)}
                     </h4>
                     <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
                   </div>
                   <div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                     <div
-                      class="flex items-center justify-end border-gray-100"
+                      class="sm:flex items-center justify-end border-gray-100 hidden "
                       onClick={() => handleRemoveFromCart(value?._id)}
                     >
                       <svg
