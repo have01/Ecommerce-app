@@ -3,7 +3,7 @@ import Cart from "../../features/Cart/index"
 import { Container } from "postcss";
 import Link from "next/link";
 
-const index = () => {
+const Index = () => {
    const items = useSelector((state) => state?.cart)
   console.log(items.length);
    return  items.length>0?<Cart/>:<>
@@ -26,4 +26,4 @@ Continue shopping
    
 }
 
-export default index
+export default Index
