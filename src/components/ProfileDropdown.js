@@ -22,8 +22,8 @@ import {
   Card,
   IconButton,
 } from "@material-tailwind/react"
-import {Cog6ToothIcon, PowerIcon} from "@heroicons/react/24/outline"
-
+import {Cog6ToothIcon, PowerIcon, HeartIcon} from "@heroicons/react/24/outline"
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
@@ -96,24 +96,25 @@ export default function Example() {
             </Typography>
           </MenuItem>
         </Link>
-        <MenuItem
-          onClick={closeMenu}
-          className="flex items-center gap-2 rounded"
-        >
-          {React.createElement(Cog6ToothIcon, {
-            className: "h-4 w-4",
-            strokeWidth: 2,
-          })}
-          <Typography
-            as="span"
-            variant="small"
-            className="font-normal"
-            color="inherit"
+        <Link href="/wishlist" className="border-none hover:border-none">
+          <MenuItem
+            onClick={closeMenu}
+            className="flex items-center gap-2 rounded"
           >
-            Wishlist
-          </Typography>
-        </MenuItem>
-
+            {React.createElement(HeartIcon, {
+              className: "h-4 w-4",
+              strokeWidth: 2,
+            })}
+            <Typography
+              as="span"
+              variant="small"
+              className="font-normal"
+              color="inherit"
+            >
+              Wishlist
+            </Typography>
+          </MenuItem>
+        </Link>
         <MenuItem
           onClick={handleSignOut}
           className="flex items-center gap-2 rounded 

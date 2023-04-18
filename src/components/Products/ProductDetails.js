@@ -1,47 +1,38 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import ReactImageMagnify from "react-image-magnify"
-import {Rating} from "@mui/material"
+import { Rating } from "@mui/material"
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
-import {useDispatch, useSelector} from "react-redux"
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import { useDispatch, useSelector } from "react-redux"
 const fmt = require("indian-number-format")
-import {cartSliceAction} from "../../redux/cartSlice"
-
-const ProductDetails = ({data}) => {
+import { cartSliceAction } from "../../redux/cartSlice"
+import { wishlistSliceAction } from "../../redux/wishlistSlice"
+import { useRouter } from "next/router"
+const ProductDetails = ({ data }) => {
+  const router = useRouter()
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(false)
   const dispatch = useDispatch()
-
+  const { id } = router.query
+  const wishlistItem = useSelector((state) => state?.wishlist?.wishlistItems)
   const handleAddToCart = (data) => {
-    console.log(data);
     dispatch(cartSliceAction.addItem(data))
+  }
+  const handleAddToWishlist = (data) => {
+    dispatch(wishlistSliceAction.addToWishlist(data))
+  }
+  const handleremoveFromWishlist = (id) => {
+    dispatch(wishlistSliceAction.removeFromWishlist(id))
   }
 
   return (
     <>
-      <div className="md:flex items-start container mx-auto justify-center py-12 2xl:px-20 md:px-6 px-4 my-2 shadow-2xl bg-white">
+      <div className="md:flex items-start container mx-auto justify-center py-4 2xl:px-20 md:px-6 px-4 my-2 shadow-2xl bg-white">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-          <ReactImageMagnify
-            cl
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                src: data?.thumbnail,
-                width: 300,
-                height: 300,
-                //   srcSet: this.srcSet,
-              },
-              largeImage: {
-                src: data?.thumbnail,
-
-                width: 600,
-                height: 600,
-              },
-              lensStyle: {
-                width: 100,
-              },
-
-              isHintEnabled: true,
-            }}
+          <img
+            className="w-[300px]"
+            alt="img of a girl posing"
+            src={data?.thumbnail}
           />
         </div>
         <div className="md:hidden ">
@@ -182,8 +173,7 @@ const ProductDetails = ({data}) => {
           <div className="w-full flex flex-row justify-between">
             <button
               onClick={() => handleAddToCart(data)}
-              className="
-						
+              className="						
 						text-base
 						flex
 						items-center
@@ -193,14 +183,15 @@ const ProductDetails = ({data}) => {
 						bg-orange-700
 						w-3/4
 						py-4
-					
             mt-3
 					"
             >
               Add to cart
             </button>
-            <button
-              className="
+            {wishlistItem.some((item) => item._id === id) ?
+              <button
+                onClick={() => handleremoveFromWishlist(data._id)}
+                className="
 						text-base
 						flex
 						items-center
@@ -212,9 +203,25 @@ const ProductDetails = ({data}) => {
             mt-3
 						border-2 border-blue-400
 					"
-            >
-              <FavoriteBorderOutlinedIcon />
-            </button>
+              >
+                <FavoriteOutlinedIcon />
+              </button> : <button
+                onClick={() => handleAddToWishlist(data)}
+                className="
+						text-base
+						flex
+						items-center
+						justify-center
+						leading-none					
+						w-1/5
+            text-blue-400
+						py-4					
+            mt-3
+						border-2 border-blue-400
+					"
+              >
+                <FavoriteBorderOutlinedIcon />
+              </button>}
           </div>
           <div></div>
           <div></div>

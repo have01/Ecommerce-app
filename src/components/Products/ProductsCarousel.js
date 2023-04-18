@@ -34,7 +34,7 @@ export default function ProductsCarousel({data}) {
               <div className=" flex justify-between container ">
                 <div>
                   <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-white">
-                    Shop by{" "}
+                    Shop by
                     {data[0]?.category.charAt(0).toUpperCase() +
                       data[0]?.category.slice(1)}
                   </h1>
@@ -87,7 +87,7 @@ export default function ProductsCarousel({data}) {
                 </div>
               </div>
 
-              <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden bg-white mt-2">
+              <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden  mt-2">
                 <Slider>
                   <div
                     id="slider"

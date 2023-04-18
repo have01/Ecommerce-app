@@ -1,14 +1,14 @@
-import {Button} from "@mui/material"
+import { Button } from "@mui/material"
 import axios from "axios"
 import Link from "next/link"
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 
 const Mobile = () => {
   const urls = [
     `https://auth-task-app.up.railway.app/api/products/search/laptop`,
     `https://auth-task-app.up.railway.app/api/products/search/fashion`,
     `https://auth-task-app.up.railway.app/api/products/search/smartphones`,
-    
+
   ]
   const [categoryData, setCategoryData] = useState([]) // initialize with empty array
   const handleURL = async () => {
@@ -45,7 +45,7 @@ const Mobile = () => {
               </div>
               <div className="flex flex-wrap gap-4 justify-around ">
                 {val
-                  .slice(1, 5)
+                  .slice(val.length - 5, val.length - 1)
                   .map((item /* use a unique value for the key prop */) => (
                     <div className="w-40 h-40 transform transition duration-500 hover:scale-90" key={item._id}>
                       <Link href={`/productDetail/${item?._id}`}>
