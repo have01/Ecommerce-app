@@ -22,6 +22,7 @@ export async function getServerSideProps(context) {
     `https://auth-task-app.up.railway.app/api/products/search/laptop`,
     `https://auth-task-app.up.railway.app/api/products/search/fashion`,
     `https://auth-task-app.up.railway.app/api/products/search/smartphones`,
+    `https://auth-task-app.up.railway.app/api/products/search/gaming`,
   ]
   try {
     const response = await Promise.all(urls.map((url) => axios.get(url)))
