@@ -1,7 +1,7 @@
 import DeleteIcon from "@mui/icons-material/Delete"
 import Link from "next/link"
-import {useDispatch, useSelector} from "react-redux"
-import {cartSliceAction} from "../../redux/cartSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { cartSliceAction } from "../../redux/cartSlice"
 const fmt = require("indian-number-format")
 const Index = () => {
   const dispatch = useDispatch()
@@ -10,13 +10,13 @@ const Index = () => {
     return acc + item?.price * item?.quantity
   }, 0)
   const handleRemoveFromCart = (id) => {
-    dispatch(cartSliceAction.removeFromCart({id}))
+    dispatch(cartSliceAction.removeFromCart({ id }))
   }
   const handleDecreaseQuantity = (id) => {
-    dispatch(cartSliceAction.decreaseQuantity({id}))
+    dispatch(cartSliceAction.decreaseQuantity({ id }))
   }
   const handleIncreaseQuantity = (id) => {
-    dispatch(cartSliceAction.increaseQuantity({id}))
+    dispatch(cartSliceAction.increaseQuantity({ id }))
   }
 
   return (
@@ -32,33 +32,33 @@ const Index = () => {
                 class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
               >
 
- <div
-                      class="flex items-center justify-end border-gray-100 sm:hidden"
-                      onClick={() => handleRemoveFromCart(value?._id)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </div>
+                <div
+                  class="flex items-center justify-end border-gray-100 sm:hidden"
+                  onClick={() => handleRemoveFromCart(value?._id)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
 
-               <div className="sm:w-[150px]">
-                 <img
-                  src={value?.thumbnail}
-                  alt="product-image"
-                  class="w-full h-40 object-contain rounded-lg sm:w-40"
-                />
-               </div>
+                <div className="sm:w-[150px]">
+                  <img
+                    src={value?.thumbnail}
+                    alt="product-image"
+                    class="w-full h-40 object-contain rounded-lg sm:w-40"
+                  />
+                </div>
                 <div class="sm:ml-4 sm:flex sm:w-full sm:justify-around">
                   <div class="mt-5 sm:mt-0">
                     <h4 class="text-sm font-bold text-gray-900">
@@ -136,11 +136,11 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-blue-500 text-white text-center sm:hidden ">
+            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden ">
               Checkout
             </button>
 
-            <button class="mt-6 w-full hidden lg:block md:block bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+            <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
               Check out
             </button>
           </div>

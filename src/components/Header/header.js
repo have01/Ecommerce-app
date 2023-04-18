@@ -48,15 +48,15 @@ const Header = () => {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
               <Link href="/" >
-                <span className="text-lg font-semibold leading-6 ml-1 text-white">
-                  <Image
-                    className="w-[15%]; aspect-[3/2] object-contain "
-                    src="/logo.png"
-                    alt="logo"
-                    width="50"
-                    height="50"
-                  ></Image>
-                </span>
+
+                <Image
+                  className="w-[15%]; aspect-[3/2] object-contain "
+                  src="/logo.png"
+                  alt="logo"
+                  width="50"
+                  height="50"
+                />
+
               </Link>
             </div>
 
@@ -68,7 +68,7 @@ const Header = () => {
                   alt="logo"
                   width="50"
                   height="50"
-                ></Image>
+                />
               </Link>
               <span className="text-lg font-semibold leading-6 ml-1 text-white">
                 Ecommerce app

@@ -8,6 +8,7 @@ const fmt = require("indian-number-format")
 import { cartSliceAction } from "../../redux/cartSlice"
 import { wishlistSliceAction } from "../../redux/wishlistSlice"
 import { useRouter } from "next/router"
+import Link from "next/link";
 const ProductDetails = ({ data }) => {
   const router = useRouter()
   const [show, setShow] = useState(false)
@@ -15,6 +16,7 @@ const ProductDetails = ({ data }) => {
   const dispatch = useDispatch()
   const { id } = router.query
   const wishlistItem = useSelector((state) => state?.wishlist?.wishlistItems)
+  const items = useSelector((state) => state?.cart)
   const handleAddToCart = (data) => {
     dispatch(cartSliceAction.addItem(data))
   }
@@ -153,56 +155,24 @@ const ProductDetails = ({ data }) => {
             <p className="lg:pr-full text-base lg:leading-tight leading-normal text-gray-600 mt-7">
               {data?.description}
             </p>
-            {/* <p className="text-base leading-4 mt-7 text-gray-600">
-            Product Code: 8BN321AF2IF0NYA
-          </p>
-          <p className="text-base leading-4 mt-4 text-gray-600">
-            Length: 13.2 inches
-          </p>
-          <p className="text-base leading-4 mt-4 text-gray-600">
-            Height: 10 inches
-          </p>
-          <p className="text-base leading-4 mt-4 text-gray-600">
-            Depth: 5.1 inches
-          </p>
-          <p className="md:w-96 text-base leading-normal text-gray-600 mt-4">
-            Composition: 100% calf leather, inside: 100% lamb leather
-          </p> */}
+
           </div>
 
           <div className="w-full flex flex-row justify-between">
-            <button
-              onClick={() => handleAddToCart(data)}
-              className="						
-						text-base
-						flex
-						items-center
-						justify-center
-						leading-none
-						text-white
-						bg-orange-700
-						w-3/4
-						py-4
-            mt-3
-					"
-            >
-              Add to cart
-            </button>
+            {items.some((item) => item._id === id) ?
+              <Link href='/cart' className="flex	items-center justify-center leading-none py-4	text-white  bg-indigo-700 w-3/4 mt-3 text-base" >
+                Go to Cart
+              </Link> : <button
+                onClick={() => handleAddToCart(data)}
+                className="flex	items-center justify-center leading-none py-4	text-white bg-indigo-700 w-3/4 mt-3 text-base"
+              >
+                Add to cart
+              </button>}
+
             {wishlistItem.some((item) => item._id === id) ?
               <button
                 onClick={() => handleremoveFromWishlist(data._id)}
-                className="
-						text-base
-						flex
-						items-center
-						justify-center
-						leading-none					
-						w-1/5
-            text-blue-400
-						py-4					
-            mt-3
-						border-2 border-blue-400
-					"
+                className="text-base flex items-center justify-center leading-non	w-1/5 text-blue-400 py-4 mt-3 border-2 border-blue-400"
               >
                 <FavoriteOutlinedIcon />
               </button> : <button
@@ -214,12 +184,7 @@ const ProductDetails = ({ data }) => {
 						justify-center
 						leading-none					
 						w-1/5
-            text-blue-400
-						py-4					
-            mt-3
-						border-2 border-blue-400
-					"
-              >
+            text-blue-400 py-4	mt-3 border-2 border-blue-400 ">
                 <FavoriteBorderOutlinedIcon />
               </button>}
           </div>

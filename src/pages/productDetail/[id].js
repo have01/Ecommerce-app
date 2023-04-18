@@ -1,7 +1,7 @@
 import axios from "axios"
 import ProductDetails from "../../components/Products/ProductDetails"
 export async function getServerSideProps(context) {
-  const {id} = context.query
+  const { id } = context.query
   let data
   try {
     const response = await axios.get(
@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-const Index = ({data}) => {
+const Index = ({ data }) => {
   return <ProductDetails data={data} />
 }
 
