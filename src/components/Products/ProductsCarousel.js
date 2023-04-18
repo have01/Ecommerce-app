@@ -34,9 +34,7 @@ export default function ProductsCarousel({data}) {
               <div className=" flex justify-between container ">
                 <div>
                   <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-white">
-                    Shop by
-                    {data[0]?.category.charAt(0).toUpperCase() +
-                      data[0]?.category.slice(1)}
+                    Shop by {data[0]?.category.charAt(0).toUpperCase() + data[0]?.category.slice(1)}
                   </h1>
                 </div>
                 <div className=" flex flex-row justify-between ">
