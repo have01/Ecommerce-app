@@ -59,7 +59,7 @@ const Index = () => {
                     class="w-full h-40 object-contain rounded-lg sm:w-40"
                   />
                 </div>
-                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-around">
+                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                   <div class="mt-5 sm:mt-0">
                     <h4 class="text-sm font-bold text-gray-900">
                       {value?.title.slice(0, 50)}
