@@ -37,11 +37,11 @@ const Filter = ({ data }) => {
     setValue(newValue);
   };
   return (
-    <div class="bg-white">
+    <div class="">
       <div>
         {filterActive ? <MobileFilter setfilterActive={setfilterActive} /> : ""}
 
-        <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        < main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" >
           <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6 sm:pt-24">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900">
               New Arrivals
@@ -514,12 +514,12 @@ const Filter = ({ data }) => {
                 </div> */}
               </form>
               <div class=" w-full">
-                <div class="flex flex-row flex-wrap w-full">
+                <div class="flex flex-row flex-wrap w-full gap-y-10">
 
                   {data?.map((val, index) =>
                     <div
                       key={index}
-                      className="group  shadow-lg   flex flex-col   object-contain gap-3 p-4 w-[300px] h-[312px]  ml-5 box rounded-xl"
+                      className="group  shadow-md flex flex-col object-contain  p-4 w-[286px] h-[300px]  ml-5 box rounded-xl"
                     >
                       <div className="h-[180px]">
                         <Link href={`/productDetail/${val?._id}`}>
@@ -543,9 +543,9 @@ const Filter = ({ data }) => {
               </div>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+        </main >
+      </div >
+    </div >
   )
 }
 

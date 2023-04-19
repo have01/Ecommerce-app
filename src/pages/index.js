@@ -52,7 +52,7 @@ export default function Index({ carouselData }) {
         <Banner />
 
         <div className=" block lg:hidden md:hidden">
-          <Mobileview />
+          <Mobileview carouselData={carouselData} />
         </div>
 
         {carouselData?.length > 0 ? (

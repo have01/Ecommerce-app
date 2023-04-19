@@ -1,19 +1,8 @@
 import axios from "axios"
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import OutsideClickHandler from "react-outside-click-handler/build/OutsideClickHandler"
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-}
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
@@ -57,7 +46,7 @@ const SearchBar = () => {
           setLoading(false)
         }}
       >
-        <div className="relative w-full lg:w-[500px] inline-block text-left">
+        <div className="relative w-full lg:w-[480px] inline-block text-left">
           <div className=" w-full justify-center bg-[#0F172A] p-2 lg:p-0 sm:w-full items-center">
             <form>
               <div className="relative lg:w-full  sm:w-full p-0 sm:p-2">
@@ -94,14 +83,14 @@ const SearchBar = () => {
           {loading ? (
             <>
               <div
-                className="absolute w-full lg:w-[500px] right-0 z-10 mt-2  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="absolute w-full lg:w-[470px] right-0 z-10 mt-2  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                <div className="py-1" role="none">
-                  {searchProductsData?.slice(0, 5).map((val, index) => {
+                <div className={`py-1  overflow-y-scroll ${searchProductsData?.length > 4 ? "h-[480px]" : "h-auto"} `} role="none">
+                  {searchProductsData?.map((val, index) => {
                     return (
                       <div key={index} onClick={() => setLoading(false)}>
                         {val.title ? (
@@ -119,7 +108,7 @@ const SearchBar = () => {
                                 srcSet=""
                                 className="w-10 h-10 mr-2 object-contain"
                               />
-                              {val?.title}
+                              <p className="line-clamp-2">{val?.title}</p>
                             </div>
                           </Link>
                         ) : (
