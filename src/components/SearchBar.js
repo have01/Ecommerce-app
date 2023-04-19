@@ -89,7 +89,7 @@ const SearchBar = () => {
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                <div className={`py-1  overflow-y-scroll ${searchProductsData?.length > 4 ? "h-[480px]" : "h-auto"} `} role="none">
+                <div className={`py-1 h-[220px] overflow-y-scroll ${searchProductsData?.length > 4 ? "sm:h-[480px]" : "sm:h-auto"} `} role="none">
                   {searchProductsData?.map((val, index) => {
                     return (
                       <div key={index} onClick={() => setLoading(false)}>
