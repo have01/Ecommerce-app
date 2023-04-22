@@ -14,6 +14,7 @@ const Wishlist = () => {
   }
   return (
     <>
+      <div className="container mx-auto text-center mt-2"><h1 className="text-3xl font-semibold">Wishlist ❤</h1></div>
       <div class="grid grid-flow-row gap-8 mb-10 text-neutral-600 container mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {wishlistItem?.map((val, index) => (
           <div

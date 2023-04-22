@@ -8,6 +8,7 @@ import SearchBar from "../components/SearchBar"
 import Mobileview from "../components/Homepage/mobile"
 import Image from "next/image"
 import Banner from "../components/banner"
+import { API_BASE_URL_AUTH } from "@constants/ApiConstants"
 const ProductsCarousel = lazy(
   () => import("../components/Products/ProductsCarousel"),
   { suspense: true }
@@ -19,10 +20,8 @@ const Carousel = lazy(() => import("../components/Carousel"), { suspense: true }
 export async function getServerSideProps(context) {
   let carouselData = []
   const urls = [
-    `https://auth-task-app.up.railway.app/api/products/search/laptop`,
-    `https://auth-task-app.up.railway.app/api/products/search/fashion`,
-    `https://auth-task-app.up.railway.app/api/products/search/smartphones`,
-    `https://auth-task-app.up.railway.app/api/products/search/gaming`,
+    `${API_BASE_URL_AUTH}/api/products/search/fashion`,
+    `${API_BASE_URL_AUTH}/api/products/search/laptop`,
   ]
   try {
     const response = await Promise.all(urls.map((url) => axios.get(url)))

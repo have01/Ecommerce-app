@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import Cookies from "js-cookie"
 import { useDispatch } from "react-redux"
 import { profileAction } from "../../redux/profileSlice"
-
+import { API_BASE_URL_AUTH, API_LOGIN_URL } from "@constants/ApiConstants"
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault()
     e.stopPropagation()
     const response = await fetch(
-      "https://auth-task-app.up.railway.app/api/users/login",
+      `${API_BASE_URL_AUTH}${API_LOGIN_URL}`,
       {
         method: "POST",
         headers: {
