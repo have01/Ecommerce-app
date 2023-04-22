@@ -19,7 +19,7 @@ const Wishlist = () => {
         {wishlistItem?.map((val, index) => (
           <div
             key={index}
-            className="group hover:scale-110 shadow-lg transition duration-300 ease-in flex flex-col   object-contain gap-3 p-4 h-[340px] mt-10 ml-5 box rounded-xl"
+            className="group hover:scale-110 shadow-lg transition duration-300 ease-in flex flex-col bg-white  object-contain gap-3 p-4 h-[340px] mt-10 ml-5 box rounded-xl"
           >
             <div className="h-[180px]">
               <Link href={`/productDetail/${val?._id}`}>
