@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { API_BASE_URL_AUTH, API_REGISTER_URL } from "@constants/ApiConstants"
+
 const Register = () => {
   const [user, setUser] = useState({
     name: "",
@@ -12,7 +12,8 @@ const Register = () => {
   })
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [password, setPassword] = useState("")
-
+ const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'=
+ const API_REGISTER_URL = '/api/users'
   function togglePasswordVisibility(event) {
     event.stopPropagation()
     setIsPasswordVisible((prevState) => !prevState)
