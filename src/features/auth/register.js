@@ -12,7 +12,7 @@ const Register = () => {
   })
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [password, setPassword] = useState("")
- const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'=
+ const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'
  const API_REGISTER_URL = '/api/users'
   function togglePasswordVisibility(event) {
     event.stopPropagation()
