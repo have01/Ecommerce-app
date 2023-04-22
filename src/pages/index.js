@@ -23,6 +23,7 @@ export async function getServerSideProps(context) {
     `${API_BASE_URL_AUTH}/api/products/search/fashion`,
     `${API_BASE_URL_AUTH}/api/products/search/laptop`,
     `${API_BASE_URL_AUTH}/api/products/search/Smartphones`,
+    `${API_BASE_URL_AUTH}/api/products/search/Electronics`,
   ]
   try {
     const response = await Promise.all(urls.map((url) => axios.get(url)))
