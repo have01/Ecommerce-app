@@ -8,7 +8,6 @@ import SearchBar from "../components/SearchBar"
 import Mobileview from "../components/Homepage/mobile"
 import Image from "next/image"
 import Banner from "../components/banner"
-import { API_BASE_URL_AUTH } from "@constants/ApiConstants"
 const ProductsCarousel = lazy(
   () => import("../components/Products/ProductsCarousel"),
   { suspense: true }
@@ -19,6 +18,7 @@ const Highlight = lazy(() => import("../components/Highlights"), {
 const Carousel = lazy(() => import("../components/Carousel"), { suspense: true })
 export async function getServerSideProps(context) {
   let carouselData = []
+  const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'
   const urls = [
     `${API_BASE_URL_AUTH}/api/products/search/fashion`,
     `${API_BASE_URL_AUTH}/api/products/search/laptop`,
