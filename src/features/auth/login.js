@@ -7,7 +7,6 @@ import { useRouter } from "next/router"
 import Cookies from "js-cookie"
 import { useDispatch } from "react-redux"
 import { profileAction } from "../../redux/profileSlice"
-import { API_BASE_URL_AUTH, API_LOGIN_URL } from "@constants/ApiConstants"
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -20,6 +19,8 @@ const Login = () => {
     event.stopPropagation()
     setIsPasswordVisible((prevState) => !prevState)
   }
+    const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'
+ const API_LOGIN_URL = '/api/users/login'
   const dispatch = useDispatch()
   const router = useRouter()
   const handleLogin = async (e) => {
