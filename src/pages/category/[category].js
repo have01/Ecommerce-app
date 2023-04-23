@@ -514,7 +514,7 @@ const Filter = ({ data }) => {
                 </div> */}
               </form>
               <div class=" w-full">
-                <div class="flex flex-row flex-wrap w-full gap-y-10">
+                <div class="flex flex-row flex-wrap w-full justify-center  md:justify-between gap-y-10">
 
                   {data?.map((val, index) =>
                     <div

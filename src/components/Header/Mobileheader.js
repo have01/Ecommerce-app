@@ -1,12 +1,12 @@
-import {Disclosure} from "@headlessui/react"
+import { Disclosure } from "@headlessui/react"
 import Link from "next/link"
-import React, {useState} from "react"
-import {ChevronDownIcon} from "@heroicons/react/20/solid"
-import {useDispatch, useSelector} from "react-redux"
-import {profileAction} from "../../redux/profileSlice"
+import React, { useState } from "react"
+import { ChevronDownIcon } from "@heroicons/react/20/solid"
+import { useDispatch, useSelector } from "react-redux"
+import { profileAction } from "../../redux/profileSlice"
 import Cookies from "js-cookie"
 
-const Mobileheader = ({setMobileMenuOpen, profile}) => {
+const Mobileheader = ({ setMobileMenuOpen, profile }) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
   }
@@ -28,17 +28,17 @@ const Mobileheader = ({setMobileMenuOpen, profile}) => {
         setMobileMenuOpen(false)
         router.push("/")
       })
-      .catch(function (error) {})
+      .catch(function (error) { })
   }
   return (
     <div className="mt-6 flow-root">
       <div className="-my-6 divide-y divide-gray-500/10">
         <div className="space-y-2 py-6">
-          <Disclosure as="div" className="-mx-3">
-            {({open}) => (
+          <Disclosure as="div" className="-mx-2">
+            {({ open }) => (
               <>
                 <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-white">
-                  Product
+                  All categories
                   <ChevronDownIcon
                     className={classNames(
                       open ? "rotate-180" : "",
@@ -47,28 +47,82 @@ const Mobileheader = ({setMobileMenuOpen, profile}) => {
                     aria-hidden="true"
                   />
                 </Disclosure.Button>
-                <Disclosure.Panel className="mt-2 space-y-2"></Disclosure.Panel>
+                <Disclosure.Panel className="mt-2 space-y-2 mx-3">
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Fashions"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Fashion
+                  </Link>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Electronics"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Electronics
+                  </Link>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Laptop"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Laptop
+                  </Link>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Gaming"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Gaming
+                  </Link>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Women"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Women
+                  </Link>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Men"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Men
+                  </Link>
+
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href="/category/Smartphones"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
+                  >
+                    Smartphones
+                  </Link>
+                </Disclosure.Panel>
               </>
             )}
           </Disclosure>
-          <a
-            href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+          <Link
+            onClick={() => setMobileMenuOpen(false)}
+            href="/account"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >
-            Features
-          </a>
-          <a
-            href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+            Account
+          </Link>
+          <Link
+            onClick={() => setMobileMenuOpen(false)}
+            href="/wishlist"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >
-            Marketplace
-          </a>
-          <a
-            href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+            Wishlist
+          </Link>
+          <Link
+            onClick={() => setMobileMenuOpen(false)}
+            href="/cart"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >
-            Company
-          </a>
+            Cart
+          </Link>
         </div>
         <div className="py-6">
           {profileData?.user?.name ? (

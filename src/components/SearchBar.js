@@ -32,7 +32,7 @@ const SearchBar = () => {
 
         return
       }
-    }, 1000)
+    }, 3000)
 
     return () => {
       isMounted = false

@@ -1,5 +1,5 @@
 import React from "react"
-
+import Link from "next/link"
 const Footer1 = () => {
   return (
     <div className="mx-auto hidden md:block lg:block w-full py-16 xl:px-20 lg:px-12 sm:px-6 px-4 mt-auto bg-[#0F172A]">
@@ -83,25 +83,24 @@ const Footer1 = () => {
             </div>
           </div>
         </div>
-        <div className="sm:ml-0 ml-8">
+        <div className="sm:ml-0 ml-8 flex flex-col">
           <h2 className="text-base font-semibold leading-4 text-white">
-            Company
+            Shop
           </h2>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Blog
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Pricing
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            About Us
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Contact us
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Testimonials
-          </p>
+          <Link
+            href="/category/Men" className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+            Men
+          </Link>
+          <Link href="/category/Women" className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+            Women
+          </Link>
+          <Link href="/category/Smartphones" className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+            Smartphones
+          </Link>
+          <Link href="/category/Fashions" className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+            Fashions
+          </Link>
+
         </div>
         <div>
           <h2 className="text-base font-semibold leading-4 text-white">
