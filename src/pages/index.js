@@ -49,7 +49,6 @@ export default function Index({ carouselData }) {
         <div className="container mx-auto mt-1">
           <Carousel />
         </div>
-
         <Banner />
 
         <div className=" block lg:hidden md:hidden">
