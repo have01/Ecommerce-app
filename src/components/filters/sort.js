@@ -1,11 +1,12 @@
 import React, {useState} from "react"
 import OutsideClickHandler from "react-outside-click-handler/build/OutsideClickHandler"
 
-const Sort = () => {
+const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
   const [sort, setSort] = useState(false)
   const handleSort = () => {
     setSort(!sort)
   }
+ 
   return (
     <>
       <OutsideClickHandler
@@ -45,25 +46,28 @@ const Sort = () => {
               tabindex="-1"
             >
               <div class="py-1" role="none">
-                <a
-                  href="#"
+                <p
+                
                   class="font-medium text-gray-900 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-0"
                 >
                   Most Popular
-                </a>
+                </p>
 
-                <a
-                  href="#"
+                <button 
+                onClick={() => {
+                    handleRating()
+                    setSort(!sort)
+                  }}  
                   class="text-gray-500 block px-4 py-2 text-sm"
                   role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-1"
+                  tabindex="-2"
+                  id="menu-item-2"
                 >
                   Best Rating
-                </a>
+                </button>
 
                 <a
                   href="#"
@@ -75,25 +79,29 @@ const Sort = () => {
                   Newest
                 </a>
 
-                <a
-                  href="#"
+                <button
+                    onClick={() => {
+                    handleLowToHigh()
+                    setSort(!sort)
+                  }}
                   class="text-gray-500 block px-4 py-2 text-sm"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-3"
+          
                 >
                   Price: Low to High
-                </a>
+                </button>
 
-                <a
-                  href="#"
+                <button
+                  onClick={() => {
+                    handleHighToLow()
+                    setSort(!sort)
+                  }}
                   class="text-gray-500 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-4"
                 >
                   Price: High to Low
-                </a>
+                </button>
               </div>
             </div>
           ) : (
