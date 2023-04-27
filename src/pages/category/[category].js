@@ -542,7 +542,7 @@ const Filter = ({ data }) => {
 
                 <div class="flex flex-row flex-wrap w-full justify-center  md:justify-between gap-y-10">
 
-                  {products?.map((val, index) =>
+                {products?.map((val, index) =>
                     <Link href={`/productDetail/${val?._id}`} key={index}>
                       <div
                         className="group  shadow-md flex flex-col object-contain  p-4 w-[286px] h-[300px]  ml-5 box rounded-xl"
