@@ -1,20 +1,13 @@
 import axios from "axios"
-import { useEffect } from "react"
-import { Suspense } from "react"
 import dynamic from "next/dynamic"
-import { lazy } from "react"
+import { lazy, memo, useEffect, Suspense } from "react"
 import Loading from "../components/loading/loading"
 import SearchBar from "../components/SearchBar"
 import Mobileview from "../components/Homepage/mobile"
 import Image from "next/image"
 import Banner from "../components/banner"
-const ProductsCarousel = lazy(
-  () => import("../components/Products/ProductsCarousel"),
-  { suspense: true }
-)
-const Highlight = lazy(() => import("../components/Highlights"), {
-  suspense: true,
-})
+const ProductsCarousel = lazy(() => import("../components/Products/ProductsCarousel"), { suspense: true })
+const Highlight = lazy(() => import("../components/Highlights"), { suspense: true, })
 const Carousel = lazy(() => import("../components/Carousel"), { suspense: true })
 export async function getServerSideProps(context) {
   let carouselData = []
@@ -39,7 +32,7 @@ export async function getServerSideProps(context) {
     },
   }
 }
-export default function Index({ carouselData }) {
+function Index({ carouselData }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
@@ -54,7 +47,6 @@ export default function Index({ carouselData }) {
         <div className=" block lg:hidden md:hidden">
           <Mobileview carouselData={carouselData} />
         </div>
-
         {carouselData?.length > 0 ? (
           <div className="container mx-auto mt-1">
             {carouselData?.map((val, ind) => (
@@ -79,3 +71,4 @@ export default function Index({ carouselData }) {
     </>
   )
 }
+export default memo(Index)

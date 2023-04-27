@@ -10,6 +10,8 @@ import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
 import Footer from "../components/Footer/Footer"
 
+
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
