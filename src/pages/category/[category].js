@@ -542,28 +542,27 @@ const Filter = ({ data }) => {
 
                 <div class="flex flex-row flex-wrap w-full justify-center  md:justify-between gap-y-10">
 
-                  {products?.map((val, index) =>
+                {products?.map((val, index) =>
                     <Link href={`/productDetail/${val?._id}`} key={index}>
-                    <div
-                      
-                      className="group shadow-md flex flex-col object-contain  p-4 w-[286px] h-[300px]  ml-5 box rounded-xl"
-                    >
-                      <div className="h-[180px]">
-                      
+                      <div
+                        className="group  shadow-md flex flex-col object-contain  p-4 w-[286px] h-[300px]  ml-5 box rounded-xl"
+                      >
+                        <div className="h-[180px]">
+
                           <img
                             src={val?.thumbnail}
                             className="h-full w-full object-contain "
                           />
-                       
-                      </div>
-                      <div>
-                        <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
-                          {val.title}
-                        </h1>
-                      </div>
-                      </Link>
-                    </div>
 
+                        </div>
+                        <div>
+                          <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
+                            {val.title}
+                          </h1>
+                        </div>
+
+                      </div>
+                    </Link>
                   )}
 
                 </div>

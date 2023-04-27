@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import Link from "next/link"
 const Footer1 = () => {
   return (
@@ -177,4 +177,4 @@ const Footer1 = () => {
   )
 }
 
-export default Footer1
+export default memo(Footer1)

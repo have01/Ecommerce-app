@@ -10,7 +10,7 @@ import { wishlistSliceAction } from "../../redux/wishlistSlice"
 import { useRouter } from "next/router"
 import Link from "next/link";
 import LocalMallIcon from '@mui/icons-material/LocalMall';
-
+import { memo } from "react";
 const ProductDetails = ({ data }) => {
   const router = useRouter()
   const [show, setShow] = useState(false)
@@ -290,4 +290,4 @@ const ProductDetails = ({ data }) => {
   )
 }
 
-export default ProductDetails
+export default memo(ProductDetails) 
