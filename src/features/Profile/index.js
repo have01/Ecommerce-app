@@ -26,7 +26,7 @@ const Profile = ({ userProfile, loading }) => {
   ]
   return (
     <>
-      {loading ? <>    <div className="container h-auto lg:h-[500px] bg-white mt-1 mx-auto flex justify-center items-center">
+      <div className="container h-auto lg:h-[500px] bg-white mt-1 mx-auto flex justify-center items-center">
         <Tabs value="profile" className="max-w-[40rem] sm:h-[400px]  mt-5">
           <TabsHeader
             className="bg-transparent"
@@ -150,9 +150,7 @@ const Profile = ({ userProfile, loading }) => {
             </TabPanel>
           </TabsBody>
         </Tabs>
-      </div></> : <p><Loading /></p>}
-
-    </>
+      </div></>
   )
 }
 

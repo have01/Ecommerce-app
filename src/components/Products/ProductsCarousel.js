@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import {
   CarouselProvider,
   Slider,
@@ -8,12 +8,12 @@ import {
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
 import Rating from "@mui/material/Rating"
-import {styled} from "@mui/material/styles"
+import { styled } from "@mui/material/styles"
 import ProductCard from "./ProductCard"
-
+import { memo } from "react"
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
-export default function ProductsCarousel({data}) {
+function ProductsCarousel({ data }) {
   const shopBy = [...data].reverse()
 
   return (
@@ -93,9 +93,7 @@ export default function ProductsCarousel({data}) {
                   >
                     {shopBy.map((val, ind) => {
                       return (
-                        <Slide index={ind} key={ind}>
-                          <ProductCard data={val} />
-                        </Slide>
+                        <ProductCard data={val} ind={ind} key={ind} />
                       )
                     })}
                   </div>
@@ -108,3 +106,4 @@ export default function ProductsCarousel({data}) {
     </>
   )
 }
+export default memo(ProductsCarousel)

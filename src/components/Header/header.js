@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, memo } from "react"
 import { Dialog, Disclosure } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useSelector } from "react-redux"
@@ -138,4 +138,4 @@ const Header = () => {
     </>
   )
 }
-export default Header
+export default memo(Header)

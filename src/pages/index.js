@@ -58,7 +58,9 @@ export default function Index({ carouselData }) {
         {carouselData?.length > 0 ? (
           <div className="container mx-auto mt-1">
             {carouselData?.map((val, ind) => (
-              <ProductsCarousel data={val} key={ind} />
+              <Suspense fallback={<Loading />} key={ind}>
+                <ProductsCarousel data={val} key={ind} />
+              </Suspense>
             ))}
           </div>
         ) : (

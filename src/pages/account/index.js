@@ -1,25 +1,43 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import Profile from "../../features/Profile"
+import Loading from "../../components/loading/loading"
 import { useSelector } from "react-redux"
+import { useCallback, memo, lazy } from "react"
+import { Suspense } from "react"
+import { useRouter } from "next/router"
 
+const Profile = lazy(() => import("../../features/Profile"))
 const Index = () => {
+  const router = useRouter()
   const profileData = useSelector((state) => state?.profile?.profile)
   const tokenString = profileData?.token
   const [userProfile, setUserProfile] = useState()
   const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    axios
-      .get("https://auth-task-app.up.railway.app/api/users/v1/me", {
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await axios("https://auth-task-app.up.railway.app/api/users/v1/me", {
         headers: { Authorization: `Bearer ${tokenString}` },
-      })
-      .then((response) => {
-        setUserProfile(response.data)
-        setLoading(true)
-      })
-      .catch((error) => { })
-  })
+      });
+      setUserProfile(response.data);
+      setLoading(true);
+    } catch (error) {
+      // handle error
+    }
+  }, [tokenString]);
 
-  return <Profile userProfile={userProfile} loading={loading} />
+  useEffect(() => {
+    fetchData();
+  }, [tokenString]);
+
+  if (!profileData?.token) {
+    router.push("auth/sign-in")
+  } else {
+    return (
+      <Suspense fallback={<h1><Loading /></h1>}>
+        <Profile userProfile={userProfile} loading={loading} />
+      </Suspense>)
+  }
+
+
 }
-export default Index
+export default memo(Index);

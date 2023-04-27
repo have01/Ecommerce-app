@@ -1,5 +1,7 @@
 import axios from "axios"
-import ProductDetails from "../../components/Products/ProductDetails"
+import { Suspense, lazy, memo } from "react"
+
+const ProductDetails = lazy(() => import("../../components/Products/ProductDetails"))
 export async function getServerSideProps(context) {
   const { id } = context.query
   let data
@@ -19,7 +21,8 @@ export async function getServerSideProps(context) {
 }
 
 const Index = ({ data }) => {
-  return <ProductDetails data={data} />
+  return <Suspense fallback={<h1>Loading..</h1>}><ProductDetails data={data} /></Suspense>
+
 }
 
-export default Index
+export default memo(Index)
