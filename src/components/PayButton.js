@@ -11,8 +11,6 @@ const PayButton = () => {
     const cartItems = items ? items : []
 
     // const dispatch = useDispatch()
-
-
     const handleCheckout = () => {
         axios.post(`${API_BASE_URL_AUTH}/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
             .then((res) => {
