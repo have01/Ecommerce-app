@@ -2,6 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import { cartSliceAction } from "../../redux/cartSlice"
+import PayButton from "../../components/PayButton"
 const fmt = require("indian-number-format")
 const Index = () => {
   const dispatch = useDispatch()
@@ -140,9 +141,10 @@ const Index = () => {
               Checkout
             </button>
 
-            <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
+            {/* <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
               Check out
-            </button>
+            </button> */}
+            <PayButton />
           </div>
         </div>
       </div>
