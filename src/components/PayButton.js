@@ -14,7 +14,7 @@ const PayButton = () => {
 
 
     const handleCheckout = () => {
-        axios.post(`http://localhost:8000/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
+        axios.post(`${API_BASE_URL_AUTH}/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
             .then((res) => {
                 if (res.data.url) {
                     window.location.href = res.data.url
