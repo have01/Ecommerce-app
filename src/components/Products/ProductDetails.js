@@ -10,7 +10,7 @@ import { wishlistSliceAction } from "../../redux/wishlistSlice"
 import { useRouter } from "next/router"
 import Link from "next/link";
 import LocalMallIcon from '@mui/icons-material/LocalMall';
-import { memo } from "react";
+
 const ProductDetails = ({ data }) => {
   const router = useRouter()
   const [show, setShow] = useState(false)
@@ -70,9 +70,6 @@ const ProductDetails = ({ data }) => {
         </div>
         <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
           <div className="border-b border-gray-200 pb-6">
-            <p className="text-sm leading-none text-gray-600">
-              Best Collection
-            </p>
             <h1
               className="
 							lg:text-2xl
@@ -162,11 +159,12 @@ const ProductDetails = ({ data }) => {
 
           <div className="w-full flex flex-row justify-between">
             {items.some((item) => item._id === id) ?
-              <Link href='/cart' class="flex	items-center justify-center leading-none py-4	text-white bg-indigo-700 w-3/4 mt-3 text-base">
-                <LocalMallIcon />
-                <span class="ml-1">Go to cart</span>
-              </Link>
-              : <button
+
+<Link href='/cart' class="flex	items-center justify-center leading-none py-4	text-white bg-indigo-700 w-3/4 mt-3 text-base">
+    <LocalMallIcon/>
+    <span class="ml-1">Go to cart</span>
+</Link>
+ : <button
                 onClick={() => handleAddToCart(data)}
                 className="flex	items-center justify-center leading-none py-4	text-white bg-indigo-700 w-3/4 mt-3 text-base"
               >
@@ -290,4 +288,4 @@ const ProductDetails = ({ data }) => {
   )
 }
 
-export default memo(ProductDetails) 
+export default ProductDetails

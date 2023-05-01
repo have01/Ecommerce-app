@@ -2,7 +2,6 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import { cartSliceAction } from "../../redux/cartSlice"
-import PayButton from "../../components/PayButton"
 const fmt = require("indian-number-format")
 const Index = () => {
   const dispatch = useDispatch()
@@ -60,7 +59,7 @@ const Index = () => {
                     class="w-full h-40 object-contain rounded-lg sm:w-40"
                   />
                 </div>
-                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-around">
                   <div class="mt-5 sm:mt-0">
                     <h4 class="text-sm font-bold text-gray-900">
                       {value?.title.slice(0, 50)}
@@ -137,14 +136,13 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden ">
+            <button class="fixed z-50 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden ">
               Checkout
             </button>
 
-            {/* <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
+            <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
               Check out
-            </button> */}
-            <PayButton />
+            </button>
           </div>
         </div>
       </div>

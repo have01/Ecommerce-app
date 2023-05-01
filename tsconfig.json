@@ -10,9 +10,6 @@
       ],
       "@features/*": [
         "src/features/*"
-      ],
-      "@constants/*": [
-        "src/constants/*"
       ]
     },
     "lib": [
@@ -36,9 +33,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src/components/checkoutpayement/payement.js"
-  ],
+    "**/*.tsx"
+, "src/components/checkoutpayement/payement.js"  ],
   "exclude": [
     "node_modules"
   ]

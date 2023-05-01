@@ -1,4 +1,4 @@
-import { useState, memo } from "react"
+import { useState } from "react"
 import { Dialog, Disclosure } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useSelector } from "react-redux"
@@ -110,12 +110,12 @@ const Header = () => {
           </div>
           <Dialog
             as="div"
-            className="lg:hidden ease-in duration-500 z-99"
+            className="lg:hidden"
             open={mobileMenuOpen}
             onClose={setMobileMenuOpen}
           >
             <div className="fixed inset-0 z-10" />
-            <Dialog.Panel className="fixed inset-y-0 w-3/5 left-0 z-10 mobile-menu-wrapper ease-in duration-500   overflow-y-auto bg-[#0F172A] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <Dialog.Panel className="fixed inset-y-0 w-3/5 left-0 z-10 mobile-menu-wrapper   transition-all duration-500 ease-in-out overflow-y-auto bg-[#0F172A] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between text-white">
                 <h1>Ecommerce App</h1>
                 <button
@@ -138,4 +138,4 @@ const Header = () => {
     </>
   )
 }
-export default memo(Header)
+export default Header

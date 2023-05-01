@@ -5,9 +5,9 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react"
-import { useState } from "react"
-import Loading from "../../components/loading/loading"
-const Profile = ({ userProfile, loading }) => {
+import {useState} from "react"
+
+const Profile = ({userProfile}) => {
   const [firstName, setFirstName] = useState("")
   const data = [
     {
@@ -27,14 +27,14 @@ const Profile = ({ userProfile, loading }) => {
   return (
     <>
       <div className="container h-auto lg:h-[500px] bg-white mt-1 mx-auto flex justify-center items-center">
-        <Tabs value="profile" className="max-w-[40rem] sm:h-[400px]  mt-5">
+        <Tabs value="profile" className="max-w-[40rem] mt-5">
           <TabsHeader
             className="bg-transparent"
             indicatorProps={{
               className: "bg-blue-500/10 shadow-none text-blue-500",
             }}
           >
-            {data.map(({ label, value }) => (
+            {data.map(({label, value}) => (
               <Tab key={value} value={value}>
                 {label}
               </Tab>
@@ -42,9 +42,9 @@ const Profile = ({ userProfile, loading }) => {
           </TabsHeader>
           <TabsBody>
             <TabPanel key={`profile`} value={`profile`}>
-              <div className="w-full sm:w-[400px]">
-                <div className="w-full sm:w-[400px] flex flex-col lg:flex-row justify-around items-center">
-                  <div className="w-full sm:w-[400px] lg:w-2/4 flex flex-col p-2 ">
+              <div className="w-full">
+                <div className="w-full flex flex-col lg:flex-row justify-around items-center">
+                  <div className="w-full lg:w-2/4 flex flex-col p-2 ">
                     <label
                       htmlFor="Name"
                       className="block my-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -103,9 +103,9 @@ const Profile = ({ userProfile, loading }) => {
               </div>
             </TabPanel>
             <TabPanel key={`password`} value={`password`}>
-              <div className="w-full sm:w-[400px]">
-                <div className="w-full sm:w-[400px] flex flex-col ">
-                  <div className="w-full sm:w-[400px]  flex flex-col p-2 ">
+              <div className="w-full">
+                <div className="w-full flex flex-col ">
+                  <div className="w-full  flex flex-col p-2 ">
                     <label
                       htmlFor="Current password"
                       className="block my-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -150,7 +150,8 @@ const Profile = ({ userProfile, loading }) => {
             </TabPanel>
           </TabsBody>
         </Tabs>
-      </div></>
+      </div>
+    </>
   )
 }
 
