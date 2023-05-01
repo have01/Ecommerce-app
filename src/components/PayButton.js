@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { API_BASE_URL_AUTH } from '../constants/APIConstants'
 import { cartSliceAction } from "../redux/cartSlice"
-import './PayButton.css'
+
 
 const PayButton = () => {
     const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const PayButton = () => {
             console.log('res', res)
             if (res.data?.session?.url) {
                 // clear cart
-                dispatch(cartSliceAction.clearCart())
+
                 window.location.href = res.data.session.url
             }
         } catch (err) {
