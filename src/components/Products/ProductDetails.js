@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import ReactImageMagnify from "react-image-magnify"
 import { Rating } from "@mui/material"
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';

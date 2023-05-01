@@ -1,10 +1,7 @@
 const stripe = require('stripe')('sk_test_51N1sTXSGLzKrHE9vxrtXbM6r4MLCcDkGJUgzHbwdfG9Kq9XDSmaoquhfnmxzAEkUqMXzLhMGnojUBqcePGagIZBq00VxAq6BPV')
 
 
-export default async function handler(
-  req,
-  res
-) {
+export default async function handler(req, res) {
 
   // const { cart } = JSON.parse(req.body);
 
@@ -34,8 +31,9 @@ export default async function handler(
   //     quantity: cart[key].qty
   //   });
   // }
-
-  const line_items = req.body.cartItems.map(item => {
+  console.log("req hit")
+  const line_items = req.body?.cartItems?.map(item => {
+    console.log(item)
     return {
       price_data: {
         currency: 'INR',
@@ -47,13 +45,15 @@ export default async function handler(
             id: item?.id
           }
         },
-        unit_amount: 2000,
+        unit_amount: item?.price,
       },
       quantity: 1,
     }
   })
+  console.log(line_items)
 
   const session = await stripe.checkout.sessions.create({
+
     line_items: [...line_items],
     mode: 'payment',
     success_url: `${process.env.CLIENT_URL}/checkout-success`,
