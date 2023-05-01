@@ -18,11 +18,12 @@ const Highlight = lazy(() => import("../components/Highlights"), {
 const Carousel = lazy(() => import("../components/Carousel"), { suspense: true })
 export async function getServerSideProps(context) {
   let carouselData = []
+  const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'
   const urls = [
-    `https://auth-task-app.up.railway.app/api/products/search/laptop`,
-    `https://auth-task-app.up.railway.app/api/products/search/fashion`,
-    `https://auth-task-app.up.railway.app/api/products/search/smartphones`,
-    `https://auth-task-app.up.railway.app/api/products/search/gaming`,
+    `${API_BASE_URL_AUTH}/api/products/search/fashion`,
+    `${API_BASE_URL_AUTH}/api/products/search/laptop`,
+    `${API_BASE_URL_AUTH}/api/products/search/Smartphones`,
+    `${API_BASE_URL_AUTH}/api/products/search/Electronics`,
   ]
   try {
     const response = await Promise.all(urls.map((url) => axios.get(url)))
@@ -48,17 +49,18 @@ export default function Index({ carouselData }) {
         <div className="container mx-auto mt-1">
           <Carousel />
         </div>
-
         <Banner />
 
         <div className=" block lg:hidden md:hidden">
-          <Mobileview />
+          <Mobileview carouselData={carouselData} />
         </div>
 
         {carouselData?.length > 0 ? (
           <div className="container mx-auto mt-1">
             {carouselData?.map((val, ind) => (
-              <ProductsCarousel data={val} key={ind} />
+              <Suspense fallback={<Loading />} key={ind}>
+                <ProductsCarousel data={val} key={ind} />
+              </Suspense>
             ))}
           </div>
         ) : (
