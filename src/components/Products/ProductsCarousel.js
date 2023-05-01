@@ -31,9 +31,9 @@ function ProductsCarousel({ data }) {
             infinite={true}
           >
             <div className="w-full relative flex flex-col">
-              <div className=" flex justify-between container ">
+              <div className=" flex justify-between container px-6">
                 <div>
-                  <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-white">
+                  <h1 className="text-3xl lg:text-2xl font-semibold text-black dark:text-white">
                     Shop by {data[0]?.category.charAt(0).toUpperCase() + data[0]?.category.slice(1)}
                   </h1>
                 </div>

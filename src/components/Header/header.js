@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useSelector } from "react-redux"
 import ProfileDropdown from "../ProfileDropdown"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -15,6 +16,7 @@ import { Menu } from "@headlessui/react"
 import Image from "next/image"
 import HomeIcon from "@mui/icons-material/Home"
 import ShoppingBasketRoundedIcon from "@mui/icons-material/ShoppingBasketRounded"
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import Mobileheader from "./Mobileheader"
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
@@ -85,14 +87,21 @@ const Header = () => {
                 ) : (
                   <Link
                     href="/auth/sign-in"
-                    className="text-sm font-semibold leading-6 text-white"
+                    className="text-lg flex items-center  font-semibold leading-6 text-white"
                   >
-                    Login
-                    <span aria-hidden="true">&rarr;</span>
+                    <Person2RoundedIcon className="text-2xl mr-1 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />     Login
                   </Link>
                 )}
               </div>
               <div className="flex justify-end   lg:flex lg:flex-1 lg:justify-end  items-center">
+
+                <Menu as="div" className="relative inline-block text-left">
+                  <Link href="/wishlist">
+                    <div className="relative">
+                      <FavoriteBorderRoundedIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+                    </div>
+                  </Link>
+                </Menu>
                 <Menu as="div" className="relative inline-block text-left">
                   <Link href="/cart">
                     <div className="relative">

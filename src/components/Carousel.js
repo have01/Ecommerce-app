@@ -1,6 +1,6 @@
 import React from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import {Carousel} from "react-responsive-carousel"
+import { Carousel } from "react-responsive-carousel"
 
 const CarouselComponent = () => {
   return (
@@ -15,23 +15,29 @@ const CarouselComponent = () => {
       renderIndicator={false}
     >
       <div>
+
         <img
-          src="https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/09a4d20b8c2f5d10.jpg?q=50"
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fdbba696398723.5ead7fda36a50.jpg"
           alt="First Image"
+          className="h-[400px]"
+        />
+      </div>
+      <div>
+
+        <img
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/26272874884703.5c3d5dc92e10f.jpg"
+          alt="First Image"
+          className="h-[400px]"
         />
       </div>
       <div>
         <img
-          src="https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/ee120ff9f0f728b3.jpg?q=50"
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/867c5085166225.5d737ca402162.jpg"
           alt="Second Image"
+          className="h-[400px]"
         />
       </div>
-      <div>
-        <img
-          src="https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/2ffe80d45cc64b2c.jpg?q=50"
-          alt="Third Image"
-        />
-      </div>
+
     </Carousel>
   )
 }

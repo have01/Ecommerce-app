@@ -1,12 +1,12 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import OutsideClickHandler from "react-outside-click-handler/build/OutsideClickHandler"
 
-const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
+const Sort = ({ handleLowToHigh, handleHighToLow, handleRating }) => {
   const [sort, setSort] = useState(false)
   const handleSort = () => {
     setSort(!sort)
   }
- 
+
   return (
     <>
       <OutsideClickHandler
@@ -23,7 +23,7 @@ const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
             >
               Sort
               <svg
-                class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-900"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -47,7 +47,7 @@ const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
             >
               <div class="py-1" role="none">
                 <p
-                
+
                   class="font-medium text-gray-900 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
@@ -56,12 +56,12 @@ const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
                   Most Popular
                 </p>
 
-                <button 
-                onClick={() => {
+                <button
+                  onClick={() => {
                     handleRating()
                     setSort(!sort)
-                  }}  
-                  class="text-gray-500 block px-4 py-2 text-sm"
+                  }}
+                  class="text-gray-900 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-2"
                   id="menu-item-2"
@@ -69,23 +69,15 @@ const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
                   Best Rating
                 </button>
 
-                <a
-                  href="#"
-                  class="text-gray-500 block px-4 py-2 text-sm"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-2"
-                >
-                  Newest
-                </a>
+
 
                 <button
-                    onClick={() => {
+                  onClick={() => {
                     handleLowToHigh()
                     setSort(!sort)
                   }}
-                  class="text-gray-500 block px-4 py-2 text-sm"
-          
+                  class="text-gray-900 block px-4 py-2 text-sm"
+
                 >
                   Price: Low to High
                 </button>
@@ -95,7 +87,7 @@ const Sort = ({handleLowToHigh,handleHighToLow,handleRating}) => {
                     handleHighToLow()
                     setSort(!sort)
                   }}
-                  class="text-gray-500 block px-4 py-2 text-sm"
+                  class="text-gray-900 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-4"
