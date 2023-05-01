@@ -1,6 +1,5 @@
 const stripe = require('stripe')('sk_test_51N1sTXSGLzKrHE9vxrtXbM6r4MLCcDkGJUgzHbwdfG9Kq9XDSmaoquhfnmxzAEkUqMXzLhMGnojUBqcePGagIZBq00VxAq6BPV')
 
-
 export default async function handler(req, res) {
 
   // const { cart } = JSON.parse(req.body);

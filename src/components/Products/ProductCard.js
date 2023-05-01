@@ -17,7 +17,7 @@ const ProductCard = ({ data, ind }) => {
   return (
     <>
       <Slide index={ind} key={ind}>
-        <div className="flex flex-col shadow-md items-center rounded-lg transform bg-white transition duration-500 hover:scale-95 p-2 cursor-pointer">
+        <div className="flex flex-col shadow-lg items-center rounded-lg transform bg-white transition duration-500 hover:scale-95 p-2 cursor-pointer">
 
           <div className="w-full h-full" onClick={() => handleNavigation(data)}>
             <img
@@ -26,7 +26,7 @@ const ProductCard = ({ data, ind }) => {
               alt="product image"
             />
           </div>
-          <h5 className="text-base font-semibold line-clamp-2  h-5  text-gray-700 dark:text-white mt-2 mb-2">
+          <h5 className="text-base font-semibold line-clamp-2  h-5  text-black dark:text-white mt-2 mb-2">
             {data?.title}
           </h5>
         </div>

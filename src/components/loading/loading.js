@@ -1,17 +1,22 @@
 import React from "react"
-import {BarLoader} from "react-spinner-animated"
-const loading = () => {
+import { BarLoader } from "react-spinner-animated"
+import { useState, CSSProperties } from "react";
+import PuffLoader from "react-spinners/ClipLoader";
+
+
+const Loading = () => {
+  let [loading, setLoading] = useState(true);
   return (
     <div className="container mx-auto flex justify-center items-center h-[600px]">
-      <BarLoader
-        text={"Loading..."}
-        center={false}
-        width={"150px"}
-        height={"150px"}
-        fill={"black"}
+      <PuffLoader
+        color={'blue'}
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
       />
     </div>
   )
 }
 
-export default loading
+export default Loading
