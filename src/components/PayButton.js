@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { API_BASE_URL_AUTH } from '../constants/APIConstants'
-// import { cartSliceAction } from "../redux/cartSlice"
+import { cartSliceAction } from "../redux/cartSlice"
 
 const PayButton = () => {
 
@@ -11,15 +11,17 @@ const PayButton = () => {
     const profileData = useSelector((state) => state?.profile?.profile)
     const cartItems = items ? items : []
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const handleCheckout = () => {
-        axios.post(`${API_BASE_URL_AUTH}/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
+        axios.post(`/api/stripe`, { cartItems, userId: profileData?.user?._id })
             .then((res) => {
-                if (res.data.url) {
-                    window.location.href = res.data.url
+                console.log('res', res)
+                if (res.data?.session?.url) {
+                    // // clear cart
+                    // dispatch(cartSliceAction.clearCart())
 
-                    // clear cart
-                    // dispatch(cartSliceAction.removeAllFromCart())
+                    window.location.href = res.data?.session?.url
+
                 }
             })
             .catch((err) => console.log('Error:', err.message))

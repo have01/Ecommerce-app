@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
       if (item) {
         item.quantity += 1
       } else {
-        state.push({...action.payload, quantity: 1})
+        state.push({ ...action.payload, quantity: 1 })
       }
     },
     removeFromCart: (state, action) => {
@@ -19,6 +19,9 @@ export const cartSlice = createSlice({
       if (index !== -1) {
         state.splice(index, 1)
       }
+    },
+    clearCart: (state, action) => {
+      return state = []
     },
     decreaseQuantity: (state, action) => {
       const item = state.find((item) => item._id === action.payload.id)
