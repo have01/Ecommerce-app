@@ -29,7 +29,6 @@ export async function getServerSideProps(context) {
     const response = await Promise.all(urls.map((url) => axios.get(url)))
     const data = response.map((res) => res.data)
     carouselData = data
-    consol.log(data)
   } catch (error) {
     console.error(error)
   }
