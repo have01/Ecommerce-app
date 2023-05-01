@@ -63,7 +63,7 @@ const Index = () => {
                 <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                   <div class="mt-5 sm:mt-0">
                     <h4 class="text-sm font-bold text-gray-900">
-                      {value?.title.slice(0, 50)}
+                      {value?.title?.slice(0, 50)}
                     </h4>
                     <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
                   </div>
