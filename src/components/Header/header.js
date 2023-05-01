@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import ProfileDropdown from "../ProfileDropdown"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -80,7 +81,7 @@ const Header = () => {
             <div className="hidden lg:flex  lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between sm:w-[200px]">
               <div className="mr-0 lg:mr-2">
                 {profileData?.user?.name ? (
                   <ProfileDropdown profileData={profileData} />
@@ -89,23 +90,23 @@ const Header = () => {
                     href="/auth/sign-in"
                     className="text-lg flex items-center  font-semibold leading-6 text-white"
                   >
-                    <Person2RoundedIcon className="text-2xl mr-1 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />     Login
+                    <AccountCircleOutlinedIcon className="text-2xl mr-1 sm:mr-1 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />     Login
                   </Link>
                 )}
               </div>
               <div className="flex justify-end   lg:flex lg:flex-1 lg:justify-end  items-center">
 
-                <Menu as="div" className="relative inline-block text-left">
+                <Menu as="div" className="relative hidden sm:block text-left">
                   <Link href="/wishlist">
                     <div className="relative">
-                      <FavoriteBorderRoundedIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+                      <FavoriteBorderRoundedIcon className="text-2xl mr-2 sm:mr-7  cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
                     </div>
                   </Link>
                 </Menu>
                 <Menu as="div" className="relative inline-block text-left">
                   <Link href="/cart">
                     <div className="relative">
-                      <ShoppingCartIcon className="text-2xl mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+                      <ShoppingCartIcon className="text-2xl ml-2 sm:ml-0 mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
                       {true > 0 && (
                         <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
                           {items?.length}
