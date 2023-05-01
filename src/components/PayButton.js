@@ -28,7 +28,7 @@ const PayButton = () => {
     }
 
     return (
-        <button className="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600" onClick={() => handleCheckout()}>Check Out</button>
+        <button className="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50" onClick={() => handleCheckout()}>Check Out</button>
     )
 }
 
