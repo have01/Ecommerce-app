@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import MobileFilter from "../../components/filters/mobileFilter"
 import Sort from "../../components/filters/sort"
@@ -32,27 +32,55 @@ const Filter = ({ data }) => {
   const [toggleBrand, setToggleBrand] = useState(true)
   const [toggleRating, setToggleRating] = useState(true)
   const [value, setValue] = React.useState([1000, 8000]);
-
+  const [products, setProducts] = useState(data)
+  const [loading, setLoading] = useState(false)
+  const [grid, setGrid] = useState(false)
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    const filterPrice = products.filter((val) => {
+      return val.price < newValue
+    })
+    setProducts(filterPrice)
+    setLoading(!loading)
+    console.log(filterPrice, newValue)
   };
+  const handleLowToHigh = () => {
+    const sortedItems = products.sort((a, b) => a.price - b.price);
+    setProducts(sortedItems)
+    setLoading(!loading)
+  }
+  const handleHighToLow = () => {
+    const sortedItems = products.sort((a, b) => b.price - a.price);
+    setProducts(sortedItems)
+    setLoading(!loading)
+
+  }
+  const handleRating = () => {
+    const sortedItems = products.sort((a, b) => a.rating - b.rating);
+    setProducts(sortedItems)
+    setLoading(!loading)
+  }
+  useEffect(() => {
+
+  }, [loading])
+
   return (
-    <div class="bg-white">
+    <div class="">
       <div>
         {filterActive ? <MobileFilter setfilterActive={setfilterActive} /> : ""}
 
-        <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" >
           <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6 sm:pt-24">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900">
               New Arrivals
             </h1>
 
             <div class="flex items-center">
-              <Sort />
+              <Sort handleLowToHigh={handleLowToHigh} handleHighToLow={handleHighToLow} handleRating={handleRating} />
 
               <button
                 type="button"
                 class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+                onClick={() => setGrid(!grid)}
               >
                 <span class="sr-only">View grid</span>
                 <svg
@@ -139,19 +167,16 @@ const Filter = ({ data }) => {
 
                   <div class="pt-6" id="filter-section-0">
                     <div class="space-y-4">
-
-
                       <div class="flex items-center">
                         <Slider
-                          aria-label="Always visible"
-                          getAriaLabel={() => 'Temperature range'}
-                          value={value}
+                          aria-label="Small steps"
+                          defaultValue={500}
                           onChange={handleChange}
                           valueLabelDisplay="auto"
                           getAriaValueText={valuetext}
                           min={1000}
                           step={1}
-                          max={10000}
+                          max={30000}
                         />
                       </div>
                     </div>
@@ -514,38 +539,39 @@ const Filter = ({ data }) => {
                 </div> */}
               </form>
               <div class=" w-full">
-                <div class="flex flex-row flex-wrap w-full">
 
-                  {data?.map((val, index) =>
-                    <div
-                      key={index}
-                      className="group  shadow-lg   flex flex-col   object-contain gap-3 p-4 w-[300px] h-[312px]  ml-5 box rounded-xl"
-                    >
-                      <div className="h-[180px]">
-                        <Link href={`/productDetail/${val?._id}`}>
+                <div class="flex flex-row flex-wrap w-full justify-center  md:justify-between gap-y-10">
+
+                {products?.map((val, index) =>
+                    <Link href={`/productDetail/${val?._id}`} key={index}>
+                      <div
+                        className="group  shadow-md flex flex-col object-contain  p-4 w-[286px] h-[300px]  ml-5 box rounded-xl"
+                      >
+                        <div className="h-[180px]">
+
                           <img
                             src={val?.thumbnail}
                             className="h-full w-full object-contain "
                           />
-                        </Link>
-                      </div>
-                      <div>
-                        <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
-                          {val.title}
-                        </h1>
-                      </div>
 
-                    </div>
+                        </div>
+                        <div>
+                          <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
+                            {val.title}
+                          </h1>
+                        </div>
 
+                      </div>
+                    </Link>
                   )}
 
                 </div>
               </div>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+        </main >
+      </div >
+    </div >
   )
 }
 

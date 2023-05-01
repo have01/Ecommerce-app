@@ -1,8 +1,8 @@
 import axios from "axios"
 import Link from "next/link"
-import {useRouter} from "next/router"
-import {useState} from "react"
-import {toast} from "react-toastify"
+import { useRouter } from "next/router"
+import { useState } from "react"
+import { toast } from "react-toastify"
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -12,7 +12,8 @@ const Register = () => {
   })
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [password, setPassword] = useState("")
-
+ const API_BASE_URL_AUTH = 'https://auth-task-app.up.railway.app'
+ const API_REGISTER_URL = '/api/users'
   function togglePasswordVisibility(event) {
     event.stopPropagation()
     setIsPasswordVisible((prevState) => !prevState)
@@ -22,7 +23,7 @@ const Register = () => {
     e.preventDefault()
 
     axios
-      .post("https://auth-task-app.up.railway.app/api/users", user)
+      .post(`${API_BASE_URL_AUTH}${API_REGISTER_URL}`, user)
       .then(function (response) {
         router.push("/auth/sign-in")
       })
@@ -120,7 +121,7 @@ const Register = () => {
                     placeholder="Name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
-                    onChange={(e) => setUser({...user, name: e.target.value})}
+                    onChange={(e) => setUser({ ...user, name: e.target.value })}
                   />
                 </div>
                 <div>
@@ -137,7 +138,7 @@ const Register = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required
-                    onChange={(e) => setUser({...user, email: e.target.value})}
+                    onChange={(e) => setUser({ ...user, email: e.target.value })}
                   />
                 </div>
                 <div>
@@ -157,7 +158,7 @@ const Register = () => {
                         password
                       )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                       onChange={(e) => {
-                        setUser({...user, password: e.target.value})
+                        setUser({ ...user, password: e.target.value })
                         setPassword(e.target.value)
                       }}
                     />
