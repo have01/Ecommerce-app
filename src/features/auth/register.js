@@ -99,7 +99,7 @@ const Register = () => {
   }
   return (
     <>
-      <div className="h-full  bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
+      <div className="h-[100vh] sm:h-full  bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:w-[350px] xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -119,7 +119,7 @@ const Register = () => {
                     name="Name"
                     id="Name"
                     placeholder="Name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                     required
                     onChange={(e) => setUser({ ...user, name: e.target.value })}
                   />
@@ -135,7 +135,7 @@ const Register = () => {
                     type="email"
                     name="email"
                     id="email"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                     placeholder="name@company.com"
                     required
                     onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -156,7 +156,7 @@ const Register = () => {
                       placeholder="Password"
                       className={`${getStrengthClass(
                         password
-                      )} bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                      )} bg-gray-200 border  text-xs rounded border-gray-300 focus:outline-none font-medium leading-none text-gray-800 sm:text-sm mt-2  focus:ring-primary-600 pl-3 focus:border-primary-600 block w-full py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                       onChange={(e) => {
                         setUser({ ...user, password: e.target.value })
                         setPassword(e.target.value)

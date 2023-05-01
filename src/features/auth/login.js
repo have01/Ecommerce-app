@@ -61,10 +61,9 @@ const Login = () => {
   }
   return (
     <>
-      <div className="h-full  bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
-        <div className=" container mx-auto flex  items-center  justify-center w-3/5">
-
-          <div className="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16">
+      <div className="h-[100vh] sm:h-full overflow-y-hidden bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-8 px-4">
+        <div className=" container mx-auto flex  items-center  justify-center w-full sm:w-3/5">
+          <div className="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-10">
             <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl font-extrabold leading-6 text-gray-800">
               Login to your account
             </p>
