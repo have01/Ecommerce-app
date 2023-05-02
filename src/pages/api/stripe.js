@@ -45,10 +45,9 @@ export default async function handler(req, res) {
         line_items: req.body.lineItems,
         mode: 'payment',
         payment_method_types: ['card'],
-        success_url: `${process.env.CLIENT_URL}/checkout-success`,
-        cancel_url: `${process.env.CLIENT_URL}/cart`
+        success_url: `https://shopkart-app.vercel.app/cart/checkout-success`,
+        cancel_url: `https://shopkart-app.vercel.app/cart`
       })
-
       return res.status(201).json(session)
     } catch (error) {
       return res.status(500).json(error)

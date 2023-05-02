@@ -6,7 +6,6 @@ import { cartSliceAction } from "../redux/cartSlice"
 import { loadStripe } from '@stripe/stripe-js';
 
 const PayButton = () => {
-
     const items = useSelector((state) => state?.cart)
     const [id, setId] = useState("")
     const profileData = useSelector((state) => state?.profile?.profile)
@@ -43,12 +42,10 @@ const PayButton = () => {
                 quantity: item.quantity
             }
         })
-
-
         const { data } = await axios.post('https://shopkart-app.vercel.app/api/stripe', { lineItems })
-        console.log(data.id)
+        console.log(data)
         const stripe = await stripePromise
-    
+        console.log("id", id)
         await stripe.redirectToCheckout({ sessionId: data?.id })
     }
 
