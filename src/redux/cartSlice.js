@@ -20,21 +20,20 @@ export const cartSlice = createSlice({
         state.splice(index, 1)
       }
     },
-    clearCart: (state, action) => {
-      return state = []
-    },
     decreaseQuantity: (state, action) => {
       const item = state.find((item) => item._id === action.payload.id)
       if (item) {
         item.quantity <= 1 ? item.quantity : (item.quantity -= 1)
       }
     },
+
     increaseQuantity: (state, action) => {
       const item = state.find((item) => item._id === action.payload.id)
       if (item) {
         item.quantity += 1
       }
     },
+    clearCart: (state)
   },
 })
 

@@ -24,7 +24,6 @@ const Index = () => {
     <>
       <div class="h-full  mt-2">
         <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
-
         <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div class="rounded-lg md:w-2/3">
             {items?.map((value, index) => (
@@ -132,7 +131,6 @@ const Index = () => {
               <p class="text-lg font-bold">Total</p>
               <div class="">
                 <p class="mb-1 text-lg font-bold">
-                  {" "}
                   {fmt.format(totalPrice + 140)} INR
                 </p>
               </div>
