@@ -6,6 +6,7 @@ import { cartSliceAction } from "../redux/cartSlice"
 import { loadStripe } from '@stripe/stripe-js';
 
 const PayButton = () => {
+
     const items = useSelector((state) => state?.cart)
     const [id, setId] = useState("")
     const profileData = useSelector((state) => state?.profile?.profile)
@@ -31,18 +32,24 @@ const PayButton = () => {
     const handleCheckout = async () => {
 
         const lineItems = cartItems.map((item) => {
+            console.log(item.price)
             return {
                 price_data: {
                     currency: 'INR',
                     product_data: {
-                        name: item.title
+                        name: item.title,
+                        images: [item?.thumbnail],
+                        description: item?.description,
+                        metadata: {
+                            id: item?._id
+                        }
                     },
-                    unit_amount: item.price  // because stripe interprets price in cents
+                    unit_amount: item.price * 100  // because stripe interprets price in cents
                 },
                 quantity: item.quantity
             }
         })
-        const { data } = await axios.post('https://shopkart-app.vercel.app/api/stripe', { lineItems })
+        const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
         console.log(data)
         const stripe = await stripePromise
         console.log("id", id)
