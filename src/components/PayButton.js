@@ -49,7 +49,7 @@ const PayButton = () => {
                 quantity: item.quantity
             }
         })
-        const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
+        const { data } = await axios.post('https://shopkart-app.vercel.app/api/stripe', { lineItems })
         console.log(data)
         const stripe = await stripePromise
         console.log("id", id)
