@@ -46,8 +46,9 @@ const PayButton = () => {
 
 
         const { data } = await axios.post('https://shopkart-app.vercel.app/api/stripe', { lineItems })
+        console.log(data.id)
         const stripe = await stripePromise
-        console.log("id", id)
+    
         await stripe.redirectToCheckout({ sessionId: data?.id })
     }
 
