@@ -5,7 +5,7 @@ import Sort from "../../components/filters/sort"
 import { Slider } from "@mui/material"
 import axios from "axios"
 import Link from "next/link"
-
+import Loader from "../../components/loading/loading"
 
 function valuetext(value) {
   return `${value}°C`;
@@ -64,7 +64,8 @@ const Filter = ({ data }) => {
   }, [loading])
 
   return (
-    <div class="">
+
+    products ? <div class="" >
       <div>
         {filterActive ? <MobileFilter setfilterActive={setfilterActive} /> : ""}
 
@@ -571,7 +572,8 @@ const Filter = ({ data }) => {
           </section>
         </main >
       </div >
-    </div >
+    </div > : <div className="container mx-auto w-screen h-screen justify-center items-center flex"><Loader /></div>
+
   )
 }
 

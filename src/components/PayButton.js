@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { API_BASE_URL_AUTH } from '../constants/APIConstants'
 import { cartSliceAction } from "../redux/cartSlice"
 import { loadStripe } from '@stripe/stripe-js';
+import { useRouter } from 'next/router'
 
 const PayButton = () => {
 
@@ -14,47 +15,55 @@ const PayButton = () => {
 
     const stripePromise = loadStripe('pk_test_51N1sTXSGLzKrHE9v83gHnBgs5oc1W4971x5cUeLhtBV9vgsP4fNtKxftlksJAOnlueIm28R2kab0mBAM7UfTG59M00rckxiEET')
     const dispatch = useDispatch()
-     const handleCheckout = () => {
-        setloading(true)
-        axios.post(`https://auth-task-app.up.railway.app/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
-            .then((res) => {
-                console.log('res', res)
-                if (res.data?.url) {
-                    // // clear cart
-                    // dispatch(cartSliceAction.clearCart())
+    const router = useRouter()
 
-                    window.location.href = res.data?.url
+    const handleCheckout = () => {
+        if (!profileData?.token) {
+            router.push("/auth/sign-in")
+        }
+        else {
 
-                }
-            })
-            .catch((err) => console.log('Error:', err.message))
+            setloading(true)
+            axios.post(`https://auth-task-app.up.railway.app/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
+                .then((res) => {
+                    console.log('res', res)
+                    if (res.data?.url) {
+                        // // clear cart
+                        // dispatch(cartSliceAction.clearCart())
+
+                        window.location.href = res.data?.url
+
+                    }
+                })
+                .catch((err) => console.log('Error:', err.message))
+        }
     }
 
-//     const handleCheckout = async () => {
-//         setloading(true)
-//         const lineItems = cartItems.map((item) => {
-//             console.log(item.price)
-//             return {
-//                 price_data: {
-//                     currency: 'INR',
-//                     product_data: {
-//                         name: item.title,
-//                         images: [item?.thumbnail],
-//                         description: item?.description,
-//                         metadata: {
-//                             id: item?._id
-//                         }
-//                     },
-//                     unit_amount: item.price  // because stripe interprets price in cents
-//                 },
-//                 quantity: item.quantity
-//             }
-//         })
-//         const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
-//         const stripe = await stripePromise
-//         await stripe.redirectToCheckout({ sessionId: data?.id })
-//         setloading(false)
-//     }
+    //     const handleCheckout = async () => {
+    //         setloading(true)
+    //         const lineItems = cartItems.map((item) => {
+    //             console.log(item.price)
+    //             return {
+    //                 price_data: {
+    //                     currency: 'INR',
+    //                     product_data: {
+    //                         name: item.title,
+    //                         images: [item?.thumbnail],
+    //                         description: item?.description,
+    //                         metadata: {
+    //                             id: item?._id
+    //                         }
+    //                     },
+    //                     unit_amount: item.price  // because stripe interprets price in cents
+    //                 },
+    //                 quantity: item.quantity
+    //             }
+    //         })
+    //         const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
+    //         const stripe = await stripePromise
+    //         await stripe.redirectToCheckout({ sessionId: data?.id })
+    //         setloading(false)
+    //     }
 
     return (
         <>

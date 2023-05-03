@@ -99,8 +99,7 @@ const Register = () => {
   }
   return (
     <>
-      <div className="h-[100vh] sm:h-full w-screen mx-auto flex items-center justify-center bg-gradient-to-tl from-green-400 to-indigo-900  py-16 px-4">
-
+      <div className="h-[85vh] sm:h-full w-screen mx-auto flex items-center justify-center bg-gradient-to-tl from-green-400 to-indigo-900  py-16 px-4">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:w-[430px] xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -156,7 +155,7 @@ const Register = () => {
                     placeholder="Password"
                     className={`${getStrengthClass(
                       password
-                    )} bg-gray-200 border  text-xs rounded border-gray-300 focus:outline-none font-medium leading-none text-gray-800 sm:text-sm mt-2  focus:ring-primary-600 pl-3 focus:border-primary-600 block w-full py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                    )} bg-gray-200  rounded border-gray-300 focus:outline-none font-medium leading-none text-gray-800 text-xs mt-2  focus:ring-primary-600 pl-3 focus:border-primary-600 block w-full py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     onChange={(e) => {
                       setUser({ ...user, password: e.target.value })
                       setPassword(e.target.value)
