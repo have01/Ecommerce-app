@@ -152,13 +152,6 @@ const ProductDetails = ({ data }) => {
               </svg>
             </div>
           </div>
-          <div>
-            <p className="lg:pr-full text-base lg:leading-tight leading-normal text-gray-600 mt-7">
-              {data?.description}
-            </p>
-
-          </div>
-
           <div className="w-full flex flex-row justify-between">
             {items.some((item) => item._id === id) ?
               <Link href='/cart' class="flex	items-center justify-center leading-none py-4	text-white bg-indigo-700 w-3/4 mt-3 text-base">
@@ -191,6 +184,14 @@ const ProductDetails = ({ data }) => {
                 <FavoriteBorderOutlinedIcon />
               </button>}
           </div>
+          <div>
+            <p className="lg:pr-full text-base lg:leading-tight leading-normal text-gray-600 mt-7">
+              {data?.description}
+            </p>
+
+          </div>
+
+
           <div></div>
           <div></div>
         </div>

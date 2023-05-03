@@ -99,7 +99,7 @@ const Header = () => {
                 <Menu as="div" className="relative hidden sm:block text-left">
                   <Link href="/wishlist">
                     <div className="relative">
-                      <FavoriteBorderRoundedIcon className="text-2xl mr-2 sm:mr-7  cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+                      <FavoriteBorderRoundedIcon className="text-2xl mr-q sm:mr-3  cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
                     </div>
                   </Link>
                 </Menu>
