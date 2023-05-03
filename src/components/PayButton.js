@@ -85,7 +85,7 @@ const PayButton = () => {
                     </svg>
                     Checkout
                 </button> :
-                <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden rounded-md " >
+                <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden rounded-md " onClick={() => handleCheckout()} >
                     Checkout
                 </button>}
 
