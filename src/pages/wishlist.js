@@ -6,10 +6,6 @@ import { cartSliceAction } from "../redux/cartSlice"
 import { wishlistSliceAction } from "../redux/wishlistSlice"
 import { useRouter } from "next/router"
 const Wishlist = () => {
-  const router = useRouter()
-  const prevRoute = router.back();
-
-  console.log(prevRoute)
   const dispatch = useDispatch()
   const items = useSelector((state) => state?.cart)
   const wishlistItem = useSelector((state) => state?.wishlist?.wishlistItems)
