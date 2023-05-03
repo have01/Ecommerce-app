@@ -15,7 +15,7 @@ const PayButton = () => {
     const stripePromise = loadStripe('pk_test_51N1sTXSGLzKrHE9v83gHnBgs5oc1W4971x5cUeLhtBV9vgsP4fNtKxftlksJAOnlueIm28R2kab0mBAM7UfTG59M00rckxiEET')
     const dispatch = useDispatch()
      const handleCheckout = () => {
-        console.log("clicked")
+        setloading(true)
         axios.post(`https://auth-task-app.up.railway.app/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
             .then((res) => {
                 console.log('res', res)
