@@ -14,21 +14,7 @@ const PayButton = () => {
 
     const stripePromise = loadStripe('pk_test_51N1sTXSGLzKrHE9v83gHnBgs5oc1W4971x5cUeLhtBV9vgsP4fNtKxftlksJAOnlueIm28R2kab0mBAM7UfTG59M00rckxiEET')
     const dispatch = useDispatch()
-    // const handleCheckout = () => {
-    //     console.log("clicked")
-    //     axios.post(`/api/stripe`, { cartItems, userId: profileData?.user?._id })
-    //         .then((res) => {
-    //             console.log('res', res)
-    //             if (res.data?.session?.url) {
-    //                 // // clear cart
-    //                 // dispatch(cartSliceAction.clearCart())
 
-    //                 window.location.href = res.data?.session?.url
-
-    //             }
-    //         })
-    //         .catch((err) => console.log('Error:', err.message))
-    // }
     const handleCheckout = async () => {
         setloading(true)
         const lineItems = cartItems.map((item) => {
