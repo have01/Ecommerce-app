@@ -14,32 +14,47 @@ const PayButton = () => {
 
     const stripePromise = loadStripe('pk_test_51N1sTXSGLzKrHE9v83gHnBgs5oc1W4971x5cUeLhtBV9vgsP4fNtKxftlksJAOnlueIm28R2kab0mBAM7UfTG59M00rckxiEET')
     const dispatch = useDispatch()
+     const handleCheckout = () => {
+        console.log("clicked")
+        axios.post(`https://auth-task-app.up.railway.app/api/stripe/create-checkout-session`, { cartItems, userId: profileData?.user?._id })
+            .then((res) => {
+                console.log('res', res)
+                if (res.data?.url) {
+                    // // clear cart
+                    // dispatch(cartSliceAction.clearCart())
 
-    const handleCheckout = async () => {
-        setloading(true)
-        const lineItems = cartItems.map((item) => {
-            console.log(item.price)
-            return {
-                price_data: {
-                    currency: 'INR',
-                    product_data: {
-                        name: item.title,
-                        images: [item?.thumbnail],
-                        description: item?.description,
-                        metadata: {
-                            id: item?._id
-                        }
-                    },
-                    unit_amount: item.price  // because stripe interprets price in cents
-                },
-                quantity: item.quantity
-            }
-        })
-        const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
-        const stripe = await stripePromise
-        await stripe.redirectToCheckout({ sessionId: data?.id })
-        setloading(false)
+                    window.location.href = res.data?.url
+
+                }
+            })
+            .catch((err) => console.log('Error:', err.message))
     }
+
+//     const handleCheckout = async () => {
+//         setloading(true)
+//         const lineItems = cartItems.map((item) => {
+//             console.log(item.price)
+//             return {
+//                 price_data: {
+//                     currency: 'INR',
+//                     product_data: {
+//                         name: item.title,
+//                         images: [item?.thumbnail],
+//                         description: item?.description,
+//                         metadata: {
+//                             id: item?._id
+//                         }
+//                     },
+//                     unit_amount: item.price  // because stripe interprets price in cents
+//                 },
+//                 quantity: item.quantity
+//             }
+//         })
+//         const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
+//         const stripe = await stripePromise
+//         await stripe.redirectToCheckout({ sessionId: data?.id })
+//         setloading(false)
+//     }
 
     return (
         <>
