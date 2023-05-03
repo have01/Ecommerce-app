@@ -8,7 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const PayButton = () => {
 
     const items = useSelector((state) => state?.cart)
-    const [id, setId] = useState("")
+    const [loading, setloading] = useState(false)
     const profileData = useSelector((state) => state?.profile?.profile)
     const cartItems = items ? items : []
 
@@ -30,7 +30,7 @@ const PayButton = () => {
     //         .catch((err) => console.log('Error:', err.message))
     // }
     const handleCheckout = async () => {
-
+        setloading(true)
         const lineItems = cartItems.map((item) => {
             console.log(item.price)
             return {
@@ -44,20 +44,54 @@ const PayButton = () => {
                             id: item?._id
                         }
                     },
-                    unit_amount: item.price * 100  // because stripe interprets price in cents
+                    unit_amount: item.price  // because stripe interprets price in cents
                 },
                 quantity: item.quantity
             }
         })
         const { data } = await axios.post('https://auth-task-app.up.railway.app/api/stripe/create-checkout-session', { lineItems })
-        console.log(data)
         const stripe = await stripePromise
-        console.log("id", id)
         await stripe.redirectToCheckout({ sessionId: data?.id })
+        setloading(false)
     }
 
     return (
-        <button className="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50" onClick={() => handleCheckout()}>Check Out</button>
+        <>
+            {loading ?
+                <button type="button"
+                    className=" hidden lg:inline-flex items-center justify-center w-full px-4 py-3  font-semibold leading-6 text-white transition duration-150 ease-in-out bg-indigo-700 rounded-md shadow cursor-not-allowed hover:bg-indigo-400"
+                    disabled="">
+                    <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    Checkout
+                </button> :
+                <button className="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50" onClick={() => handleCheckout()}>Check Out</button>}
+            {loading ?
+                <button type="button"
+                    className=" inline-flex fixed z-5 bottom-0 left-0 right-0 md:hidden items-center justify-center w-full px-4 py-3  font-semibold leading-6 text-white transition duration-150 ease-in-out bg-indigo-700 rounded-md shadow cursor-not-allowed hover:bg-indigo-400"
+                    disabled="">
+                    <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    Checkout
+                </button> :
+                <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden rounded-md " >
+                    Checkout
+                </button>}
+
+
+
+        </>
+
     )
 }
 
