@@ -81,7 +81,7 @@ const Header = () => {
             <div className="hidden lg:flex  lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
-            <div className="flex items-center justify-between sm:min-w-[160px]">
+            <div className="flex items-center justify-between sm:min-w-[135px]">
               <div className="mr-0 lg:mr-2">
                 {profileData?.user?.name ? (
                   <ProfileDropdown profileData={profileData} />
