@@ -135,13 +135,6 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden ">
-              Checkout
-            </button>
-
-            {/* <button class="mt-6 w-full hidden lg:block md:block bg-indigo-700 py-3 font-medium text-blue-50 hover:bg-blue-600">
-              Check out
-            </button> */}
             <PayButton />
           </div>
         </div>
