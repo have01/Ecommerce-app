@@ -81,7 +81,7 @@ const Header = () => {
             <div className="hidden lg:flex  lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
-            <div className="flex items-center justify-between sm:min-w-[200px]">
+            <div className="flex items-center justify-between sm:min-w-[160px]">
               <div className="mr-0 lg:mr-2">
                 {profileData?.user?.name ? (
                   <ProfileDropdown profileData={profileData} />
@@ -90,7 +90,7 @@ const Header = () => {
                     href="/auth/sign-in"
                     className="text-lg flex items-center  font-semibold leading-6 text-white"
                   >
-                    <AccountCircleOutlinedIcon className="text-2xl mr-1 sm:mr-1 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />     Login
+                    Login
                   </Link>
                 )}
               </div>
