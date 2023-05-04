@@ -99,8 +99,8 @@ const Register = () => {
   }
   return (
     <>
-      <div className="h-[85vh] sm:h-full w-screen mx-auto flex items-center justify-center bg-gradient-to-tl from-green-400 to-indigo-900  py-16 px-4">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:w-[430px] xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div className="h-[85vh] sm:h-full w-screen mx-auto flex items-center justify-center   py-16 px-4">
+        <div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:w-[430px] xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create and account
@@ -122,6 +122,7 @@ const Register = () => {
                   required
                   onChange={(e) => setUser({ ...user, name: e.target.value })}
                 />
+
               </div>
               <div>
                 <label
@@ -243,6 +244,7 @@ const Register = () => {
               >
                 Create an account
               </button>
+
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?
                 <Link

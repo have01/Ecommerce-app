@@ -11,12 +11,11 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid"
+import { ShoppingBagIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import SearchBar from "../SearchBar"
 import { Menu } from "@headlessui/react"
 import Image from "next/image"
-import HomeIcon from "@mui/icons-material/Home"
-import ShoppingBasketRoundedIcon from "@mui/icons-material/ShoppingBasketRounded"
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import Mobileheader from "./Mobileheader"
 const callsToAction = [
@@ -35,10 +34,10 @@ const Header = () => {
 
   return (
     <>
-      <header className=" bg-[#0F172A] shadow-lg">
+      <header className=" bg-[#0F172A] shadow-lg mt-0">
         <div className=" container mx-auto">
           <div
-            className="mx-auto flex w-full items-center justify-between px-4 py-4  lg:px-0"
+            className="mx-auto flex w-full items-center justify-between px-4 py-2  lg:px-0"
             aria-label="Global"
           >
             <div className="flex items-center justify-center lg:hidden">
@@ -81,14 +80,14 @@ const Header = () => {
             <div className="hidden lg:flex  lg:justify-end md:flex justify-center items-center">
               <SearchBar />
             </div>
-            <div className="flex items-center justify-between sm:min-w-[135px]">
+            <div className="flex items-center justify-between sm:ml-8 sm:min-w-[115px]">
               <div className="mr-0 lg:mr-2">
                 {profileData?.user?.name ? (
                   <ProfileDropdown profileData={profileData} />
                 ) : (
                   <Link
                     href="/auth/sign-in"
-                    className="text-lg flex items-center  font-semibold leading-6 text-white"
+                    className="text-base flex items-center   leading-6 text-white  hover:text-purple-600"
                   >
                     Login
                   </Link>
@@ -106,9 +105,9 @@ const Header = () => {
                 <Menu as="div" className="relative inline-block text-left">
                   <Link href="/cart">
                     <div className="relative">
-                      <ShoppingCartIcon className="text-2xl ml-2 sm:ml-0 mr-3 cursor-pointer text-white  hover:text-purple-600 transition transform duration-200" />
+                      <ShoppingBagIcon className="w-6 h-6 text-white hover:text-purple-600" />
                       {true > 0 && (
-                        <div className="absolute bg-purple-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
+                        <div className="absolute bg-purple-600 text-xs w-4 h-4 flex justify-center items-center animate-bounce -top-2 -right-2 rounded-full top- text-white">
                           {items?.length}
                         </div>
                       )}

@@ -32,7 +32,7 @@ const SearchBar = () => {
 
         return
       }
-    }, 3000)
+    }, 2000)
 
     return () => {
       isMounted = false
@@ -49,8 +49,19 @@ const SearchBar = () => {
         <div className="relative w-full lg:w-[480px] inline-block text-left">
           <div className=" w-full justify-center bg-[#0F172A] p-2 lg:p-0 sm:w-full items-center">
             <form>
-              <div className="relative lg:w-full  sm:w-full p-0 sm:p-2">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="relative lg:w-full  sm:w-full p-0 rounded-md">
+
+                <input
+                  value={searchTerm}
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-2 pl-14  bg-gray-200 text-sm text-gray-900 border border-gray-300  focus:outline-0  "
+                  placeholder="Search Products,Brands & More..."
+                  required
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onFocus={() => setPrevSearchTerm(!prevSearchTerm)}
+                />
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none px-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -67,29 +78,19 @@ const SearchBar = () => {
                     ></path>
                   </svg>
                 </div>
-                <input
-                  value={searchTerm}
-                  type="search"
-                  id="default-search"
-                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300  focus:outline-0 bg-gray-50  dark:text-white "
-                  placeholder="Search Products..."
-                  required
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onFocus={() => setPrevSearchTerm(!prevSearchTerm)}
-                />
               </div>
             </form>
           </div>
           {loading ? (
             <>
               <div
-                className="absolute w-full lg:w-[470px] right-0 z-10 mt-2  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="absolute w-full lg:w-[480px] right-0 z-10 mt-2  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                <div className={`py-1 h-[220px] overflow-y-scroll ${searchProductsData?.length > 4 ? "sm:h-[480px]" : "sm:h-auto"} `} role="none">
+                <div className={`py-1 h-[220px] overflow-y-scroll ${searchProductsData?.length > 4 ? "sm:h-[450px]" : "sm:h-auto"} `} role="none">
                   {searchProductsData?.map((val, index) => {
                     return (
                       <div key={index} onClick={() => setLoading(false)}>
