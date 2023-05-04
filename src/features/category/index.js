@@ -500,9 +500,9 @@ const Index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterAc
                                             <div
                                                 key={index}
                                                 onClick={() => handleProductDetails(val?._id)}
-                                                className="group  shadow-md flex flex-col object-contain  p-4 w-[125px] sm:w-[206px] h-[250px] bg-white  ml-5 box rounded-sm cursor-pointer"
+                                                className="group  shadow-md flex flex-col object-contain p-2 sm:p-4 w-[130px] sm:w-[206px] h-[210px] sm:h-[250px] bg-white  ml-5 box rounded-sm cursor-pointer"
                                             >
-                                                <div className="h-[180px]">
+                                                <div className="h-[134px] sm:h-[180px]">
 
                                                     <img
                                                         src={val?.thumbnail}
