@@ -4,7 +4,17 @@ import Sort from "../../components/filters/sort"
 import { Slider } from "@mui/material"
 import Link from "next/link"
 import Loader from "../../components/loading/loading"
-const index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterActive, setToggleBrand, setToggleRating, products, handleRating, handleChange, handleHighToLow, handleLowToHigh }) => {
+import { useRouter } from 'next/router'
+
+
+
+const Index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterActive, setToggleBrand, setToggleRating, products, handleRating, handleChange, handleHighToLow, handleLowToHigh }) => {
+    const router = useRouter()
+
+    const handleProductDetails = (id) => {
+        router.push(`/productDetail/${id}`)
+    }
+
     return (
         <>
             <div class="" >
@@ -486,26 +496,28 @@ const index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterAc
                                     <div class="flex flex-row flex-wrap w-full justify-center  md:justify-start gap-y-10">
 
                                         {products?.map((val, index) =>
-                                            <Link href={`/productDetail/${val?._id}`} key={index}>
-                                                <div
-                                                    className="group  shadow-md flex flex-col object-contain  p-4 w-[206px] h-[270px] bg-white  ml-5 box rounded-xl"
-                                                >
-                                                    <div className="h-[180px]">
 
-                                                        <img
-                                                            src={val?.thumbnail}
-                                                            className="h-full w-full object-contain "
-                                                        />
+                                            <div
+                                                key={index}
+                                                onClick={() => handleProductDetails(val?._id)}
+                                                className="group  shadow-md flex flex-col object-contain  p-4 w-[160px] sm:w-[206px] h-[270px] bg-white  ml-5 box rounded-xl cursor-pointer"
+                                            >
+                                                <div className="h-[180px]">
 
-                                                    </div>
-                                                    <div>
-                                                        <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
-                                                            {val.title}
-                                                        </h1>
-                                                    </div>
+                                                    <img
+                                                        src={val?.thumbnail}
+                                                        className="h-full w-full object-contain "
+                                                    />
 
                                                 </div>
-                                            </Link>
+                                                <div>
+                                                    <h1 className="w-full mt-3 text-gray-700 line-clamp-2 text-sm ">
+                                                        {val.title}
+                                                    </h1>
+                                                </div>
+
+                                            </div>
+
                                         )}
 
                                     </div>
@@ -519,4 +531,4 @@ const index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterAc
     )
 }
 
-export default index
+export default Index
