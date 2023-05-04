@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <>
-      <header className=" bg-[#0F172A] shadow-lg mt-0">
+      <header className=" bg-[#0F172A] shadow-lg border-none mt-0">
         <div className=" container mx-auto">
           <div
             className="mx-auto flex w-full items-center justify-between px-4 py-2  lg:px-0"
@@ -87,7 +87,7 @@ const Header = () => {
                 ) : (
                   <Link
                     href="/auth/sign-in"
-                    className="text-base flex items-center   leading-6 text-white  hover:text-purple-600"
+                    className="text-base flex items-center mr-2 sm:mr-0  leading-6 text-white  hover:text-purple-600"
                   >
                     Login
                   </Link>
