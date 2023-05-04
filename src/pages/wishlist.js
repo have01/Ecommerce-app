@@ -49,7 +49,7 @@ const Wishlist = () => {
           </div>
         ))}
       </div> </> : <div className="flex flex-col container mx-auto h-[100vh] gap-5 items-center"> <div className="flex justify-center mt-8 ">
-        <img className="w-[300px] h-[300px] sm:w-auto sm:h-[400px]" src="/wish.png" alt="" />
+        <img className="w-[300px] h-[300px] sm:w-auto sm:h-[400px]" src="/wish.PNG" alt="" />
       </div>
       <p className="text-red-500 text-xl font-bold">Your Wishlist is Empty!</p>
       <p className="text-blue-600 text-sm font-semibold text-center">seems like you dont have any wishes here. <br /> Make a wish! </p>
