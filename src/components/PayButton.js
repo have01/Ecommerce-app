@@ -1,8 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API_BASE_URL_AUTH } from '../constants/APIConstants'
-import { cartSliceAction } from "../redux/cartSlice"
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router'
 
@@ -97,9 +95,6 @@ const PayButton = () => {
                 <button class="fixed  z-5 bottom-0 left-0 right-0 py-3 bg-indigo-700 text-white text-center sm:hidden rounded-md " onClick={() => handleCheckout()} >
                     Checkout
                 </button>}
-
-
-
         </>
 
     )
