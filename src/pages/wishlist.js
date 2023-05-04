@@ -15,7 +15,7 @@ const Wishlist = () => {
   }
   return (
 
-    wishlistItem.length > 0 ? <> z<div className="container mx-auto text-center mt-2"><h1 className="text-3xl flex justify-center gap-2 font-semibold">Wishlist <img src="   https://cdn-icons-png.flaticon.com/512/4379/4379680.png " alt="" width="35" height="30" /></h1></div>
+    wishlistItem.length > 0 ? <> <div className="container mx-auto text-center mt-2"><h1 className="text-3xl flex justify-center gap-2 font-semibold">Wishlist <img src="   https://cdn-icons-png.flaticon.com/512/4379/4379680.png " alt="" width="35" height="30" /></h1></div>
 
       <div className="grid   grid-flow-row gap-8 mb-10 text-neutral-600 container mx-auto sm:grid-cols-1 md:grid-cols-2 justify-center sm:justify-end lg:grid-cols-3 xl:grid-cols-4">
         {wishlistItem?.map((val, index) => (
