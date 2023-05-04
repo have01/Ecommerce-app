@@ -493,14 +493,14 @@ const Index = ({ valuetext, filterActive, toggleBrand, toggleRating, setfilterAc
                                 </form>
                                 <div class=" w-full">
 
-                                    <div class="flex flex-row flex-wrap w-full justify-center  md:justify-start gap-y-10">
+                                    <div class="flex flex-row flex-wrap w-full items-center  md:justify-start gap-y-10">
 
                                         {products?.map((val, index) =>
 
                                             <div
                                                 key={index}
                                                 onClick={() => handleProductDetails(val?._id)}
-                                                className="group  shadow-md flex flex-col object-contain  p-4 w-[160px] sm:w-[206px] h-[270px] bg-white  ml-5 box rounded-xl cursor-pointer"
+                                                className="group  shadow-md flex flex-col object-contain  p-4 w-[155px] sm:w-[206px] h-[250px] bg-white  ml-5 box rounded-xl cursor-pointer"
                                             >
                                                 <div className="h-[180px]">
 
