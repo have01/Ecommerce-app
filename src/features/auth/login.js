@@ -161,7 +161,14 @@ const Login = () => {
                 <button role="button" aria-label="create my account" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
                   Login
                 </button>
-
+              </div>
+              <div className="mt-4">
+                <Link
+                  href="/auth/forget-password"
+                  className="text-sm font-medium text-blue-600 hover:underline dark:text-primary-500"
+                >
+                  Forgot password?
+                </Link>
               </div>
             </form>
 
