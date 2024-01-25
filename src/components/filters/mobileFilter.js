@@ -285,4 +285,4 @@ const MobileFilter = ({
   );
 };
 
-export default mobileFilter;
+export default MobileFilter;
